@@ -1,0 +1,6 @@
+<div id="shoutbox-widget">
+  <span>{{ id }}</span>
+  <div class="messages">
+    <message v-for="message in messages" :data="message" track-by="id"/>
+  </div>
+</div>

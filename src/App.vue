@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/App.scss"></style>
-<template lang="pug" src="./templates/App.pug"></template>
+<template lang="html" src="./templates/App.html"></template>
 <script>
-import Hello from './components/Hello.vue'
+import Message from './components/Message.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
@@ -11,7 +11,6 @@ io.sails.url = 'https://shoutbox.rozhlas.cz'
 const socket = io.socket
 
 socket.on('connect', () => {
-  console.log('Socket connected')
   socket.get('/csrfToken', (data) => {
     io.sails.headers = {
       'x-csrf-token': data._csrf
@@ -28,7 +27,16 @@ var App = Vue.component('app', {
     page: 0
   },
   components: {
-    Hello
+    Message
+  },
+  data() {
+    return {
+      name: this.name,
+      id: this.id,
+      form: this.form,
+      messages: this.messages,
+      page: this.page
+    }
   },
   created() {
     this.init()
