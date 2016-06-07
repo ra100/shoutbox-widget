@@ -69,7 +69,6 @@ var App = Vue.component('app', {
         }
         this.id = data.id
         this.form = data.form
-        console.log(this.id)
         resolve()
       })
     },
@@ -87,7 +86,6 @@ var App = Vue.component('app', {
           return reject(err)
         }
         this.messages = data
-        console.log(this.messages)
         resolve()
       })
     }
