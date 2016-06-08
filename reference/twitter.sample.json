@@ -1,0 +1,612 @@
+[
+  {
+    "feedType": "twitter_hashtag",
+    "message": "#CivilWar https://t.co/WbR5bJQikY",
+    "created": "2016-06-08T12:37:04.000Z",
+    "link": "https://twitter.com/statuses/740523036743368705",
+    "author": {
+      "name": "Sri Mulyani",
+      "handle": "kyurapi88",
+      "id": 110995064,
+      "url": "https://twitter.com/kyurapi88",
+      "picture": "https://pbs.twimg.com/profile_images/724951860038135808/6pJQb8S3_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "CivilWar",
+            "indices": [
+              0,
+              9
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/WbR5bJQikY",
+            "expanded_url": "https://twitter.com/whysoduck/status/740522169940254720",
+            "display_url": "twitter.com/whysoduck/stat…",
+            "indices": [
+              10,
+              33
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "575811716512651315c7459c"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "It's crazy how much season 5 Mike Ross/ @halfadams looks like #SebastianStan \n\n#Suits #WinterSoldier",
+    "created": "2016-06-08T12:36:57.000Z",
+    "link": "https://twitter.com/statuses/740523005844070401",
+    "author": {
+      "name": "Riya Rajiv",
+      "handle": "today812",
+      "id": 1413126408,
+      "url": "https://twitter.com/today812",
+      "picture": "https://pbs.twimg.com/profile_images/611282923531034624/jdRQkYYK_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "SebastianStan",
+            "indices": [
+              62,
+              76
+            ]
+          },
+          {
+            "text": "Suits",
+            "indices": [
+              79,
+              85
+            ]
+          },
+          {
+            "text": "WinterSoldier",
+            "indices": [
+              86,
+              100
+            ]
+          }
+        ],
+        "urls": [],
+        "user_mentions": [
+          {
+            "screen_name": "halfadams",
+            "name": "Patrick J Adams",
+            "id": 40342628,
+            "id_str": "40342628",
+            "indices": [
+              40,
+              50
+            ]
+          }
+        ],
+        "symbols": []
+      }
+    },
+    "id": "575811696512651315c7459b"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "シビル・ウォーを再現しました  #civilwar #captainamerica #nerf https://t.co/Vfj3k8lLpV",
+    "created": "2016-06-08T12:33:28.000Z",
+    "link": "https://twitter.com/statuses/740522130731765760",
+    "author": {
+      "name": "毒島弁慶 a.k.a やさしい",
+      "handle": "benk_bot",
+      "id": 115980137,
+      "url": "https://twitter.com/benk_bot",
+      "picture": "https://pbs.twimg.com/profile_images/378800000735673194/fcf5e1106b373fe7880ffdbd03fc528b_normal.jpeg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "civilwar",
+            "indices": [
+              16,
+              25
+            ]
+          },
+          {
+            "text": "captainamerica",
+            "indices": [
+              26,
+              41
+            ]
+          },
+          {
+            "text": "nerf",
+            "indices": [
+              42,
+              47
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/Vfj3k8lLpV",
+            "expanded_url": "http://instagram.com/p/BGZLQAkxzlp/",
+            "display_url": "instagram.com/p/BGZLQAkxzlp/",
+            "indices": [
+              48,
+              71
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "575810996512651315c7459a"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "シビル・ウォーを再現しました  #civilwar #captainamerica #nerf https://t.co/Vfj3k8lLpV https://t.co/OvWZAnvmwM",
+    "created": "2016-06-08T12:32:49.000Z",
+    "link": "https://twitter.com/statuses/740521963655827457",
+    "author": {
+      "name": "毒島弁慶 a.k.a やさしい",
+      "handle": "benk_bot",
+      "id": 115980137,
+      "url": "https://twitter.com/benk_bot",
+      "picture": "https://pbs.twimg.com/profile_images/378800000735673194/fcf5e1106b373fe7880ffdbd03fc528b_normal.jpeg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "civilwar",
+            "indices": [
+              16,
+              25
+            ]
+          },
+          {
+            "text": "captainamerica",
+            "indices": [
+              26,
+              41
+            ]
+          },
+          {
+            "text": "nerf",
+            "indices": [
+              42,
+              47
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/Vfj3k8lLpV",
+            "expanded_url": "http://instagram.com/p/BGZLQAkxzlp/",
+            "display_url": "instagram.com/p/BGZLQAkxzlp/",
+            "indices": [
+              48,
+              71
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": [],
+        "media": [
+          {
+            "id": 740521936254439400,
+            "id_str": "740521936254439424",
+            "indices": [
+              72,
+              95
+            ],
+            "media_url": "http://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+            "url": "https://t.co/OvWZAnvmwM",
+            "display_url": "pic.twitter.com/OvWZAnvmwM",
+            "expanded_url": "http://twitter.com/benk_bot/status/740521963655827457/photo/1",
+            "type": "photo",
+            "sizes": {
+              "medium": {
+                "w": 900,
+                "h": 1200,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "small": {
+                "w": 510,
+                "h": 680,
+                "resize": "fit"
+              },
+              "large": {
+                "w": 1536,
+                "h": 2048,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "media": [
+        {
+          "id": 740521936254439400,
+          "id_str": "740521936254439424",
+          "indices": [
+            72,
+            95
+          ],
+          "media_url": "http://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+          "url": "https://t.co/OvWZAnvmwM",
+          "display_url": "pic.twitter.com/OvWZAnvmwM",
+          "expanded_url": "http://twitter.com/benk_bot/status/740521963655827457/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 900,
+              "h": 1200,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 510,
+              "h": 680,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1536,
+              "h": 2048,
+              "resize": "fit"
+            }
+          }
+        }
+      ],
+      "media_ext": [
+        {
+          "id": 740521936254439400,
+          "id_str": "740521936254439424",
+          "indices": [
+            72,
+            95
+          ],
+          "media_url": "http://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Ckbcxw7UkAA4_eO.jpg",
+          "url": "https://t.co/OvWZAnvmwM",
+          "display_url": "pic.twitter.com/OvWZAnvmwM",
+          "expanded_url": "http://twitter.com/benk_bot/status/740521963655827457/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 900,
+              "h": 1200,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 510,
+              "h": 680,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1536,
+              "h": 2048,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "id": "575810726512651315c74599"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "@iAlexPazos @AdriElCapullo #CivilWar",
+    "created": "2016-06-08T12:30:48.000Z",
+    "link": "https://twitter.com/statuses/740521457692839937",
+    "author": {
+      "name": "Michał",
+      "handle": "MichalKBKardys",
+      "id": 1292120508,
+      "url": "https://twitter.com/MichalKBKardys",
+      "picture": "https://pbs.twimg.com/profile_images/613328762982277121/7KJ2jDc-_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "CivilWar",
+            "indices": [
+              27,
+              36
+            ]
+          }
+        ],
+        "urls": [],
+        "user_mentions": [
+          {
+            "screen_name": "iAlexPazos",
+            "name": "Alex Pazos",
+            "id": 116079943,
+            "id_str": "116079943",
+            "indices": [
+              0,
+              11
+            ]
+          },
+          {
+            "screen_name": "AdriElCapullo",
+            "name": "XardainLordOfMemes",
+            "id": 561491646,
+            "id_str": "561491646",
+            "indices": [
+              12,
+              26
+            ]
+          }
+        ],
+        "symbols": []
+      }
+    },
+    "id": "57580ff86512651315c74597"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "Wait till Ant-man learns how to make black holes ❤ #CivilWar",
+    "created": "2016-06-08T12:29:58.000Z",
+    "link": "https://twitter.com/statuses/740521247939780608",
+    "author": {
+      "name": "Dandalandan",
+      "handle": "imsooooDan",
+      "id": 391852608,
+      "url": "https://twitter.com/imsooooDan",
+      "picture": "https://pbs.twimg.com/profile_images/713611223443578880/rlazAfaO_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "CivilWar",
+            "indices": [
+              51,
+              60
+            ]
+          }
+        ],
+        "urls": [],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "57580fc66512651315c74596"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "https://t.co/6mrEBozJ0I #Stony #Yujean #Fic #CaptainAmericaCivilWar  ฟิคสโทนี่ตอนที่3 แอบมีฟิชกับบรูซด้วยน่ะะ",
+    "created": "2016-06-08T12:29:03.000Z",
+    "link": "https://twitter.com/statuses/740521018666541056",
+    "author": {
+      "name": "B02@MC4 จีนเอง ฟฟฟ",
+      "handle": "YuJeanN",
+      "id": 598950761,
+      "url": "https://twitter.com/YuJeanN",
+      "picture": "https://pbs.twimg.com/profile_images/603816635867136000/BqDYehMP_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 1,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "Stony",
+            "indices": [
+              24,
+              30
+            ]
+          },
+          {
+            "text": "Yujean",
+            "indices": [
+              31,
+              38
+            ]
+          },
+          {
+            "text": "Fic",
+            "indices": [
+              39,
+              43
+            ]
+          },
+          {
+            "text": "CaptainAmericaCivilWar",
+            "indices": [
+              44,
+              67
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/6mrEBozJ0I",
+            "expanded_url": "http://wp.me/p4f9hB-47",
+            "display_url": "wp.me/p4f9hB-47",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "57580f906512651315c74595"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "#MTVAwardsStar Rihanna 1860 Civil War Era Sheet Music Custom Bound Victorian Music Classic Opera Gospel https://t.co/NEE7vwutkA #civilwar",
+    "created": "2016-06-08T12:26:54.000Z",
+    "link": "https://twitter.com/statuses/740520477546909697",
+    "author": {
+      "name": "ഽhonsonso ®",
+      "handle": "Jhonsonso",
+      "id": 80685198,
+      "url": "https://twitter.com/Jhonsonso",
+      "picture": "https://pbs.twimg.com/profile_images/735938282547257344/i9r2NORn_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "MTVAwardsStar",
+            "indices": [
+              0,
+              14
+            ]
+          },
+          {
+            "text": "civilwar",
+            "indices": [
+              128,
+              137
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/NEE7vwutkA",
+            "expanded_url": "http://ebay.to/25M1wXi",
+            "display_url": "ebay.to/25M1wXi",
+            "indices": [
+              104,
+              127
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "57580f0e6512651315c74594"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "One day I'm going to write a book about my family's history during the #CivilWar and Reconstruction. Dispel so many myths.",
+    "created": "2016-06-08T12:25:52.000Z",
+    "link": "https://twitter.com/statuses/740520218129227777",
+    "author": {
+      "name": "Trish (Queen Bossy)",
+      "handle": "ExPoleDancer",
+      "id": 40306643,
+      "url": "https://twitter.com/ExPoleDancer",
+      "picture": "https://pbs.twimg.com/profile_images/666954301890306052/8B2x8VKH_normal.jpg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "CivilWar",
+            "indices": [
+              71,
+              80
+            ]
+          }
+        ],
+        "urls": [],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "57580ed16512651315c74593"
+  },
+  {
+    "feedType": "twitter_hashtag",
+    "message": "#civilwar #captainamerica #nerf https://t.co/XyDccVgCio",
+    "created": "2016-06-08T12:23:57.000Z",
+    "link": "https://twitter.com/statuses/740519732676296704",
+    "author": {
+      "name": "毒島弁慶 a.k.a やさしい",
+      "handle": "benk_bot",
+      "id": 115980137,
+      "url": "https://twitter.com/benk_bot",
+      "picture": "https://pbs.twimg.com/profile_images/378800000735673194/fcf5e1106b373fe7880ffdbd03fc528b_normal.jpeg"
+    },
+    "metadata": {
+      "likes": 0,
+      "shares": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "civilwar",
+            "indices": [
+              0,
+              9
+            ]
+          },
+          {
+            "text": "captainamerica",
+            "indices": [
+              10,
+              25
+            ]
+          },
+          {
+            "text": "nerf",
+            "indices": [
+              26,
+              31
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/XyDccVgCio",
+            "expanded_url": "https://www.instagram.com/p/BGZLQAkxzlp/",
+            "display_url": "instagram.com/p/BGZLQAkxzlp/",
+            "indices": [
+              32,
+              55
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "symbols": []
+      }
+    },
+    "id": "57580e5d6512651315c74592"
+  }
+]
