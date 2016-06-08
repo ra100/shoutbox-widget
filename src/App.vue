@@ -39,14 +39,6 @@ var App = Vue.component('app', {
       page: this.page
     }
   },
-  computed() {
-    return {
-      new_count: function() {
-        console.log('kikotina')
-        return this.newmessages.length
-      }
-    }
-  },
   created() {
     this.init()
     socket.on('stream', this.processEvent)
