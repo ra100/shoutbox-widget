@@ -1,6 +1,7 @@
 <div id="shoutbox-widget">
-  <span>{{ id }}</span>
+  <span>Here be the header</span>
   <div class="messages">
-    <message v-for="message in messages" :data="message" track-by="id"/>
+    <sh-message v-for="message in messages" :data="message" track-by="id"/>
   </div>
+  <span>Here be pagination</span>
 </div>

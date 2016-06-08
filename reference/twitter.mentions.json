@@ -1,0 +1,39 @@
+{
+    "likes": 0,
+    "shares": 0,
+    "entities": {
+        "hashtags": [{
+            "text": "civilwar",
+            "indices": [91, 100]
+        }, {
+            "text": "archives",
+            "indices": [101, 110]
+        }],
+        "urls": [{
+            "url": "https://t.co/oTg7XFTaN3",
+            "expanded_url": "http://paper.li/CCArchives/1311602926?edition_id=4e7485d0-2cb9-11e6-84dc-0cc47a0d15fd",
+            "display_url": "paper.li/CCArchives/131…",
+            "indices": [24, 47]
+        }],
+        "user_mentions": [{
+            "screen_name": "ChiefCeige",
+            "name": "678-999-8212",
+            "id": 56221593,
+            "id_str": "56221593",
+            "indices": [58, 69]
+        }, {
+            "screen_name": "BBPetura",
+            "name": "BBPetura",
+            "id": 18914030,
+            "id_str": "18914030",
+            "indices": [70, 79]
+        }, {
+            "screen_name": "joygirl91",
+            "name": "JoyEllen Freeman",
+            "id": 276299487,
+            "id_str": "276299487",
+            "indices": [80, 90]
+        }],
+        "symbols": []
+    }
+}

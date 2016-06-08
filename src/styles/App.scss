@@ -1,3 +1,65 @@
 body {
   font-family: Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.message {
+  clear: left;
+  float: left;
+  font-size: 0.9em;
+  margin: 0 0 10px;
+  width: 100%;
+}
+
+.avatar {
+  clear: left;
+  float: left;
+  margin: 0 5px 0 0;
+  width: 32px;
+
+  img {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.author {
+  float: left;
+  margin: 0 0 10px;
+
+  .name {
+    clear: left;
+    float: left;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .handle {
+    clear: left;
+    float: left;
+    font-size: 0.8em;
+  }
+}
+
+.text-wrapper {
+  display: block;
+  float: left;
+}
+
+.text {
+  clear: left;
+  float: left;
+}
+
+.meta {
+  clear: left;
+  display: block;
+  float: left;
+
+  .likes,
+  .shares {
+    float: left;
+    margin-right: 5px;
+  }
 }

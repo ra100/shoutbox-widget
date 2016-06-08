@@ -1,0 +1,38 @@
+<div class="avatar">
+  <a href="{{author.url}}" target="_blank">
+    <img :src="author.picture" />
+  </a>
+</div>
+<div class="text-wrapper">
+  <div class="author">
+    <span class="name"><a href="{{author.url}}" target="_blank">{{author.name}}</a></span>
+    <span class="handle">@<a href="{{author.url}}" target="_blank">{{author.handle}}</a></span>
+  </div>
+  <div class="text">
+    <template v-for="(index, item) in text">
+      <template v-if="item.entity === null">
+        {{item.text}}
+      </template>
+      <template v-else>
+        <a v-if="item.entity.entity_type === 'hashtags'"
+          href="https://twitter.com/hashtag/{{item.entity.text}}"
+          class="twitter-hashtag" target="_blank">{{item.text}}</a>
+        <a v-if="item.entity.entity_type === 'user_mentions'"
+          href="https://twitter.com/{{item.entity.screen_name}}"
+          class="twitter-mention" target="_blank"
+          title="item.entity.name"
+          title="item.entity.name">{{item.text}}</a>
+        <a v-if="item.entity.entity_type === 'urls'"
+          href="{{item.entity.expanded_url}}"
+          class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
+        <a v-if="item.entity.entity_type === 'media'"
+          href="{{item.entity.expanded_url}}"
+          class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
+      </template>
+    </template>
+  </div>
+</div>
+<div class="meta">
+  <div class="shares">{{shares}}</div>
+  <div class="likes">{{likes}}</div>
+</div>

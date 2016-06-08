@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/App.scss"></style>
 <template lang="html" src="./templates/App.html"></template>
 <script>
-import Message from './components/Message.vue'
+import ShMessage from './components/ShMessage.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
@@ -27,7 +27,7 @@ var App = Vue.component('app', {
     page: 0
   },
   components: {
-    Message
+    ShMessage
   },
   data() {
     return {

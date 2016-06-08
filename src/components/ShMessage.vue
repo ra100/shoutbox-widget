@@ -1,5 +1,6 @@
-<template lang="html" src="./templates/Message.html"></template>
+<template lang="html" src="./templates/ShMessage.html"></template>
 <script>
+import ShMessageTwitter from './ShMessageTwitter.vue'
 export default {
   props: ['data'],
   data() {
@@ -12,9 +13,11 @@ export default {
         break
     }
     return {
-      author: m.author,
       type: type
     }
+  },
+  components: {
+    ShMessageTwitter
   }
 }
 </script>

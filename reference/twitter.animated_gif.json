@@ -1,0 +1,126 @@
+{
+    "likes": 0,
+    "shares": 0,
+    "entities": {
+        "hashtags": [{
+            "text": "SpiderMan",
+            "indices": [24, 34]
+        }, {
+            "text": "CivilWar",
+            "indices": [35, 44]
+        }, {
+            "text": "SpiderManHomecoming",
+            "indices": [45, 65]
+        }],
+        "urls": [],
+        "user_mentions": [],
+        "symbols": [],
+        "media": [{
+            "id": 740184106756104200,
+            "id_str": "740184106756104192",
+            "indices": [66, 89],
+            "media_url": "http://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+            "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+            "url": "https://t.co/eYdiYLIjjd",
+            "display_url": "pic.twitter.com/eYdiYLIjjd",
+            "expanded_url": "http://twitter.com/ModeManBlog/status/740184253724495873/photo/1",
+            "type": "photo",
+            "sizes": {
+                "small": {
+                    "w": 340,
+                    "h": 141,
+                    "resize": "fit"
+                },
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "medium": {
+                    "w": 500,
+                    "h": 208,
+                    "resize": "fit"
+                },
+                "large": {
+                    "w": 500,
+                    "h": 208,
+                    "resize": "fit"
+                }
+            }
+        }]
+    },
+    "media": [{
+        "id": 740184106756104200,
+        "id_str": "740184106756104192",
+        "indices": [66, 89],
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+        "url": "https://t.co/eYdiYLIjjd",
+        "display_url": "pic.twitter.com/eYdiYLIjjd",
+        "expanded_url": "http://twitter.com/ModeManBlog/status/740184253724495873/photo/1",
+        "type": "photo",
+        "sizes": {
+            "small": {
+                "w": 340,
+                "h": 141,
+                "resize": "fit"
+            },
+            "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+            },
+            "medium": {
+                "w": 500,
+                "h": 208,
+                "resize": "fit"
+            },
+            "large": {
+                "w": 500,
+                "h": 208,
+                "resize": "fit"
+            }
+        }
+    }],
+    "media_ext": [{
+        "id": 740184106756104200,
+        "id_str": "740184106756104192",
+        "indices": [66, 89],
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/CkWphf-WYAAWrjF.jpg",
+        "url": "https://t.co/eYdiYLIjjd",
+        "display_url": "pic.twitter.com/eYdiYLIjjd",
+        "expanded_url": "http://twitter.com/ModeManBlog/status/740184253724495873/photo/1",
+        "type": "animated_gif",
+        "sizes": {
+            "small": {
+                "w": 340,
+                "h": 141,
+                "resize": "fit"
+            },
+            "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+            },
+            "medium": {
+                "w": 500,
+                "h": 208,
+                "resize": "fit"
+            },
+            "large": {
+                "w": 500,
+                "h": 208,
+                "resize": "fit"
+            }
+        },
+        "video_info": {
+            "aspect_ratio": [125, 52],
+            "variants": [{
+                "bitrate": 0,
+                "content_type": "video/mp4",
+                "url": "https://pbs.twimg.com/tweet_video/CkWphf-WYAAWrjF.mp4"
+            }]
+        }
+    }]
+}

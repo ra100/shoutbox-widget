@@ -1,0 +1,141 @@
+{
+    "likes": 0,
+    "shares": 0,
+    "entities": {
+        "hashtags": [{
+            "text": "tuesdaymorning",
+            "indices": [24, 39]
+        }, {
+            "text": "survival",
+            "indices": [40, 49]
+        }, {
+            "text": "RAW",
+            "indices": [50, 54]
+        }, {
+            "text": "supernatural",
+            "indices": [55, 68]
+        }, {
+            "text": "civilwar",
+            "indices": [69, 78]
+        }, {
+            "text": "mustread",
+            "indices": [79, 88]
+        }, {
+            "text": "fivestar",
+            "indices": [89, 98]
+        }, {
+            "text": "kindle",
+            "indices": [99, 106]
+        }, {
+            "text": "alien",
+            "indices": [107, 113]
+        }],
+        "urls": [{
+            "url": "https://t.co/36jiqmBWUN",
+            "expanded_url": "http://www.jasonborrego.com/",
+            "display_url": "jasonborrego.com",
+            "indices": [0, 23]
+        }],
+        "user_mentions": [],
+        "symbols": [],
+        "media": [{
+            "id": 740185774549700600,
+            "id_str": "740185774549700608",
+            "indices": [114, 137],
+            "media_url": "http://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+            "url": "https://t.co/Y68riQfuxV",
+            "display_url": "pic.twitter.com/Y68riQfuxV",
+            "expanded_url": "http://twitter.com/JasonBorrego123/status/740185779561857024/photo/1",
+            "type": "photo",
+            "sizes": {
+                "large": {
+                    "w": 450,
+                    "h": 350,
+                    "resize": "fit"
+                },
+                "medium": {
+                    "w": 450,
+                    "h": 350,
+                    "resize": "fit"
+                },
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "small": {
+                    "w": 450,
+                    "h": 350,
+                    "resize": "fit"
+                }
+            }
+        }]
+    },
+    "media": [{
+        "id": 740185774549700600,
+        "id_str": "740185774549700608",
+        "indices": [114, 137],
+        "media_url": "http://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+        "media_url_https": "https://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+        "url": "https://t.co/Y68riQfuxV",
+        "display_url": "pic.twitter.com/Y68riQfuxV",
+        "expanded_url": "http://twitter.com/JasonBorrego123/status/740185779561857024/photo/1",
+        "type": "photo",
+        "sizes": {
+            "large": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            },
+            "medium": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            },
+            "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+            },
+            "small": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            }
+        }
+    }],
+    "media_ext": [{
+        "id": 740185774549700600,
+        "id_str": "740185774549700608",
+        "indices": [114, 137],
+        "media_url": "http://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+        "media_url_https": "https://pbs.twimg.com/media/CkWrCk_VEAAA-UB.jpg",
+        "url": "https://t.co/Y68riQfuxV",
+        "display_url": "pic.twitter.com/Y68riQfuxV",
+        "expanded_url": "http://twitter.com/JasonBorrego123/status/740185779561857024/photo/1",
+        "type": "photo",
+        "sizes": {
+            "large": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            },
+            "medium": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            },
+            "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+            },
+            "small": {
+                "w": 450,
+                "h": 350,
+                "resize": "fit"
+            }
+        }
+    }]
+}
