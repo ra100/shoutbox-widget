@@ -1,6 +1,7 @@
 <div id="shoutbox-widget">
   <span>Here be the header</span>
   <div class="messages">
+    <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">{{newmessages.length}}</div>
     <sh-message v-for="message in messages" :data="message" track-by="id"/>
   </div>
   <span>Here be pagination</span>
