@@ -5,7 +5,8 @@ import ShMessage from './components/ShMessage.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
-import _ from 'lodash'
+import _ from 'lodash/core'
+import dateFormat from 'dateformat'
 
 const PER_PAGE = 10
 
@@ -24,6 +25,10 @@ socket.on('connect', () => {
 function sortByDate(a, b) {
   return (new Date(a.created) < new Date(b.created))
 }
+
+Vue.filter('date', function(value) {
+  return dateFormat(new Date(value), 'd.m.yyyy H:MM:ss')
+})
 
 var App = Vue.component('app', {
   components: {
