@@ -110,7 +110,7 @@ export default {
       }
       switch (meta.media_ext[0].type) {
         case 'photo':
-          if (meta.media_ext.length > 0) {
+          if (meta.media_ext.length > 1) {
             return 'gallery'
           } else {
             return 'photo'
