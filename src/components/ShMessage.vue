@@ -1,6 +1,7 @@
 <template lang="html" src="./templates/ShMessage.html"></template>
 <script>
 import ShMessageTwitter from './ShMessageTwitter.vue'
+import ShMessageShout from './ShMessageShout.vue'
 export default {
   props: ['data'],
   data() {
@@ -11,13 +12,17 @@ export default {
       case 'twitter_user':
         type = 'twitter'
         break
+      case 'admin':
+        type = 'shout'
+        break
     }
     return {
       type: type
     }
   },
   components: {
-    ShMessageTwitter
+    ShMessageTwitter,
+    ShMessageShout
   }
 }
 </script>

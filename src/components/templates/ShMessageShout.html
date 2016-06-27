@@ -1,0 +1,17 @@
+<div class="avatar">
+  <img :src="author.picture" />
+</div>
+<div class="text-wrapper">
+  <div class="author">
+    <span class="name">{{author.name}}</span>
+  </div>
+  <div class="text">
+    {{text}}
+  </div>
+  <div class="media" v-if="mediatype === 'photo'">
+    <img :src="extended.thumb.path" :width="extended.thumb.width" :height="extended.thumb.height"/>
+  </div>
+</div>
+<div class="meta">
+  <div class="date">{{data.created | date}}</div>
+</div>

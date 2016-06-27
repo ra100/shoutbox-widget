@@ -1,3 +1,8 @@
 <div class="message {{type}}">
-  <sh-message-twitter v-if="type == 'twitter'" :data="data"/>
+  <template v-if="type == 'shout'">
+    <sh-message-shout :data="data"/>
+  </template>
+  <template v-if="type == 'twitter'">
+    <sh-message-twitter v-if="type == 'twitter'" :data="data"/>
+  </template>
 </div>

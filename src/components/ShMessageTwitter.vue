@@ -105,7 +105,7 @@ export default {
     },
     getTwitterMediaType() {
       let meta = this.data.metadata
-      if (typeof meta.media === 'undefined') {
+      if (typeof meta.media === 'undefined' || typeof meta.media_ext === 'undefined') {
         return 'none'
       }
       switch (meta.media_ext[0].type) {
