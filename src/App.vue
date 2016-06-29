@@ -2,6 +2,8 @@
 <template lang="html" src="./templates/App.html"></template>
 <script>
 import ShMessage from './components/ShMessage.vue'
+import ShLogin from './components/ShLogin.vue'
+import ShSubmit from './components/ShSubmit.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
@@ -38,7 +40,9 @@ Vue.filter('date', function(value) {
 
 var App = Vue.component('app', {
   components: {
-    ShMessage
+    ShMessage,
+    ShLogin,
+    ShSubmit
   },
   data() {
     return {
@@ -47,7 +51,8 @@ var App = Vue.component('app', {
       form: this.form,
       messages: this.messages,
       newmessages: this.newmessages,
-      page: this.page
+      page: this.page,
+      user: this.user
     }
   },
   created() {
@@ -64,6 +69,7 @@ var App = Vue.component('app', {
         .then(this.getMessages)
         .then(this.processMessages)
         .catch(console.error)
+      this.getUser()
     },
     getName() {
       this.name = document
@@ -148,6 +154,20 @@ var App = Vue.component('app', {
       m.sort(sortByDate)
       this.newmessages = []
       this.messages = _.slice(m, 0, PER_PAGE)
+    },
+    getUser() {
+      socket.get('/users/me', null, (data, resp) => {
+        if (resp.statusCode !== 200) {
+          this.user = undefined
+        } else {
+          this.user = data
+        }
+      })
+    }
+  },
+  events: {
+    'user-load': function() {
+      this.getUser()
     }
   }
 })
