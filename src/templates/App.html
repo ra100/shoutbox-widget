@@ -8,8 +8,8 @@
     </template>
   </div>
   <div class="messages">
-    <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">{{newmessages.length}}</div>
-    <sh-message v-for="message in messages" :data="message" track-by="id"/>
+    <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové zprávy ({{newmessages.length}})</div>
+    <sh-message v-for="message in messages" :data="message" track-by="id" transition="fade-in" stagger="50"/>
   </div>
   <span>Here be pagination</span>
 </div>
