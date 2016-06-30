@@ -9,12 +9,17 @@ import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
 import _ from 'lodash/array'
 import dateFormat from 'dateformat'
+import Favico from 'favico.js'
 
 const PER_PAGE = 10
 
 const io = sailsIOClient(socketIOClient)
 io.sails.url = 'https://shoutbox.rozhlas.cz'
 const socket = io.socket
+
+const favicon = new Favico({
+  animation: 'fade'
+})
 
 socket.on('connect', () => {
   socket.get('/csrfToken', (data) => {
@@ -140,6 +145,7 @@ var App = Vue.component('app', {
         n.sort(sortByDate)
         n = _.slice(n, 0, PER_PAGE)
       }
+      this.updateNewCount()
     },
     removeMessage(id) {
       this.messages = this.messages.filter(function(e) {
@@ -148,12 +154,17 @@ var App = Vue.component('app', {
       this.newmessages = this.newmessages.filter(function(e) {
         return (e.id !== id)
       })
+      this.updateNewCount()
     },
     mergeMessages() {
       let m = _.unionBy(this.messages, this.newmessages, 'id')
       m.sort(sortByDate)
       this.newmessages = []
       this.messages = _.slice(m, 0, PER_PAGE)
+      this.updateNewCount()
+    },
+    updateNewCount() {
+      favicon.badge(this.newmessages.length)
     },
     getUser() {
       socket.get('/users/me', null, (data, resp) => {
