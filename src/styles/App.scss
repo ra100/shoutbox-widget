@@ -11,6 +11,7 @@ body {
   width: 100%;
 
   .photo {
+    background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
@@ -70,4 +71,16 @@ body {
     float: left;
     margin-right: 5px;
   }
+}
+
+.fade-in-transition {
+  height: auto;
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+.fade-in-enter,
+.fade-in-leave {
+  height: 0;
+  opacity: 0;
 }

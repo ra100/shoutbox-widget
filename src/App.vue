@@ -17,14 +17,14 @@ const io = sailsIOClient(socketIOClient)
 io.sails.url = 'https://shoutbox.rozhlas.cz'
 const socket = io.socket
 
-const favicon = new Favico({
-  animation: 'fade'
-})
+const favicon = new Favico()
+let CSRF = ''
 
 socket.on('connect', () => {
   socket.get('/csrfToken', (data) => {
+    CSRF = data._csrf
     io.sails.headers = {
-      'x-csrf-token': data._csrf
+      'X-CSRF-Token': data._csrf
     }
   })
 })
@@ -177,6 +177,12 @@ var App = Vue.component('app', {
           this.user = data
         }
       })
+    },
+    getSocket() {
+      return socket
+    },
+    getCsrf() {
+      return CSRF
     }
   },
   events: {

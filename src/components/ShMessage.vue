@@ -13,6 +13,7 @@ export default {
         type = 'twitter'
         break
       case 'admin':
+      case 'form':
         type = 'shout'
         break
     }
