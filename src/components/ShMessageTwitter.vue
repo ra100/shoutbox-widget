@@ -35,14 +35,13 @@ export default {
   data() {
     let m = this.data
     let text = []
-    let mediatype = this.getTwitterMediaType()
     text = this.textSplit()
     return {
       author: m.author,
       text: text,
       likes: m.metadata.likes,
       shares: m.metadata.shares,
-      mediatype: mediatype,
+      mediatype: m.mediaType,
       extended: m.metadata.media_ext
     }
   },
@@ -102,24 +101,6 @@ export default {
         }
       }
       return null
-    },
-    getTwitterMediaType() {
-      let meta = this.data.metadata
-      if (typeof meta.media === 'undefined' || typeof meta.media_ext === 'undefined') {
-        return 'none'
-      }
-      switch (meta.media_ext[0].type) {
-        case 'photo':
-          if (meta.media_ext.length > 1) {
-            return 'gallery'
-          } else {
-            return 'photo'
-          }
-
-        case 'animated_gif':
-          return 'gif'
-
-      }
     }
   }
 }

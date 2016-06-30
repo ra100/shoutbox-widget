@@ -4,22 +4,11 @@ export default {
   props: ['data'],
   data() {
     let m = this.data
-    let mediatype = this.getShoutMediaType()
     return {
       author: m.author,
       text: m.message,
-      mediatype: mediatype,
+      mediatype: m.mediaType,
       extended: m.picture
-    }
-  },
-  methods: {
-    getShoutMediaType() {
-      let meta = this.data.picture
-      if (typeof meta === 'undefined') {
-        return 'none'
-      } else {
-        return 'photo'
-      }
     }
   }
 }

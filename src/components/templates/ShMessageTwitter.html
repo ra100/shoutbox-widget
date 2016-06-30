@@ -34,7 +34,7 @@
   <div class="media" v-if="mediatype !== 'none'">
     <template v-if="mediatype == 'photo'">
       <template v-for="photo in extended">
-        <img :src="photo.media_url" :class="photo.type" :width="photo.sizes.thumb.w"/>
+        <a :href="photo.media_url" target="_blank" class="photo" style="background-image: url('{{photo.media_url}}')"></a>
       </template>
     </template>
   </div>

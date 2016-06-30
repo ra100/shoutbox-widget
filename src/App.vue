@@ -119,6 +119,9 @@ var App = Vue.component('app', {
       switch (event.verb) {
         case 'addedTo':
           let message = event.added
+          if (typeof message === 'undefined') {
+            return
+          }
           if (!message.published) {
             this.removeMessage(message.id)
             return

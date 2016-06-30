@@ -9,7 +9,7 @@
     {{text}}
   </div>
   <div class="media" v-if="mediatype === 'photo'">
-    <img :src="extended.thumb.path" :width="extended.thumb.width" :height="extended.thumb.height"/>
+    <a :href="extended.large.path" targe="_blank" class="photo" style="background-image: '{{extended.thumb.path}}'"></>
   </div>
 </div>
 <div class="meta">

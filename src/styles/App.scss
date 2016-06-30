@@ -9,6 +9,14 @@ body {
   font-size: 0.9em;
   margin: 0 0 10px;
   width: 100%;
+
+  .photo {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: 70px;
+    width: 100px;
+  }
 }
 
 .avatar {
