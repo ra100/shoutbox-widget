@@ -2,12 +2,12 @@
   <img :src="user.picture">
 </div>
 </div class="name">
-  {{user.displayname}}
+{{user.displayname}}
 </div>
 <template v-if="!loading" transition="fade">
   <div class="form">
     <textarea name="message" v-model="message"></textarea>
-    <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange"/>
+    <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange" />
     <button v-if="message && message.length > 0" v-on:click="submit">Odeslat</button>
   </div>
 </template>
