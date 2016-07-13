@@ -1,15 +1,30 @@
-<div id="shoutbox-widget">
-  <div class="shoutbox-header">
-    <template v-if="user == undefined">
-      <sh-login/>
-    </template>
-    <template v-else>
-      <sh-submit :user="user"/>
-    </template>
+<div class="shoutbox-wrapper {{mode}}">
+  <div class="shoutbox-widget">
+    <div class="shoutbox-header">
+      <button v-on:click="setMode('wide')" v-if="mode !== 'wide'" class="button expand">
+        Expand
+      </button>
+      <button v-else v-on:click="setMode('normal')" class="button contract">
+        Contract
+      </button>
+      <template v-if="user == undefined">
+        <sh-login/>
+      </template>
+      <template v-else>
+        <sh-submit :user="user" />
+      </template>
+    </div>
+    <div class="messages">
+      <template v-if="page === 0">
+        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové zprávy ({{newmessages.length}})</div>
+      </template>
+      <template v-else>
+        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové zprávy ({{newmessages.length}})</div>
+      </template>
+      <sh-message v-for="message in messages" :data="message" track-by="id" transition="fade-in" stagger="50" />
+    </div>
+    <div class="pagination-wrapper">
+      <sh-pagination :page="page" :count="messages ? messages.length : 0" />
+    </div>
   </div>
-  <div class="messages">
-    <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové zprávy ({{newmessages.length}})</div>
-    <sh-message v-for="message in messages" :data="message" track-by="id" transition="fade-in" stagger="50"/>
-  </div>
-  <span>Here be pagination</span>
 </div>

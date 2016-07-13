@@ -1,6 +1,34 @@
+$shoutbox-bg: #fff;
+$wrapper-bg: #eee;
+
 body {
   font-family: Helvetica, sans-serif;
   font-size: 16px;
+}
+
+.shoutbox-wrapper {
+  display: block;
+  float: left;
+  position: relative;
+  transition: width 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
+  width: 300px;
+
+  .shoutbox-widget {
+    background: $shoutbox-bg;
+    display: table;
+    float: left;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  &.wide {
+    background: $wrapper-bg;
+    margin: -10px 0 -10px -460px;
+    padding: 10px;
+    width: 750px;
+    z-index: 5000;
+  }
 }
 
 .message {
@@ -83,4 +111,9 @@ body {
 .fade-in-leave {
   height: 0;
   opacity: 0;
+}
+
+.button.contract,
+.button.expand {
+  float: right;
 }

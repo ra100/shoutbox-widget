@@ -4,6 +4,7 @@
 import ShMessage from './components/ShMessage.vue'
 import ShLogin from './components/ShLogin.vue'
 import ShSubmit from './components/ShSubmit.vue'
+import ShPagination from './components/ShPagination.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
@@ -47,17 +48,19 @@ var App = Vue.component('app', {
   components: {
     ShMessage,
     ShLogin,
-    ShSubmit
+    ShSubmit,
+    ShPagination
   },
   data() {
     return {
       name: this.name,
       id: this.id,
       form: this.form,
-      messages: this.messages,
-      newmessages: this.newmessages,
-      page: this.page,
-      user: this.user
+      messages: this.messages || [],
+      newmessages: this.newmessages || [],
+      page: this.page || 0,
+      user: this.user,
+      mode: this.mode || 'normal'
     }
   },
   created() {
@@ -99,10 +102,11 @@ var App = Vue.component('app', {
       })
     },
     getMessages() {
+      let skip = this.page * PER_PAGE + this.newmessages.length
       return new Promise((resolve, reject) => {
         socket.get('/streams/messages', {
           id: this.id,
-          skip: this.page
+          skip: skip
         }, resolve)
       })
     },
@@ -110,6 +114,9 @@ var App = Vue.component('app', {
       return new Promise((resolve, reject) => {
         if (err) {
           return reject(err)
+        }
+        while (data.length < 9 && (this.messages.length + data.length) >= 9) {
+          data.push(_.last(this.messages))
         }
         this.messages = data
         resolve()
@@ -143,7 +150,7 @@ var App = Vue.component('app', {
         }
       }
       let n = this.newmessages
-      if (new Date(message.created) > new Date(m[m.length - 1].created)) {
+      if (new Date(message.created) > new Date(m[0].created)) {
         n.push(message)
         n.sort(sortByDate)
         n = _.slice(n, 0, PER_PAGE)
@@ -183,6 +190,30 @@ var App = Vue.component('app', {
     },
     getCsrf() {
       return CSRF
+    },
+    nextPage() {
+      this.page++
+      this.getMessages()
+        .then(this.processMessages)
+        .catch(console.error)
+    },
+    prevPage() {
+      if (this.page > 0) {
+        this.page--
+        this.getMessages()
+          .then(this.processMessages)
+          .catch(console.error)
+      }
+    },
+    jumpToStart() {
+      this.page = 0
+      this.newmessages = []
+      this.getMessages()
+        .then(this.processMessages)
+        .catch(console.error)
+    },
+    setMode(mode) {
+      this.mode = mode
     }
   },
   events: {

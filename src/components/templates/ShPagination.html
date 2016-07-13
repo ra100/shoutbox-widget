@@ -1,0 +1,12 @@
+<div class="pagination">
+
+  <template v-if="page === 0">
+    <button v-if="count === 10" v-on:click="nextPage">></button>
+  </template>
+  <template v-else>
+    <button v-on:click="jumpToStart"><<</button>
+    <button v-on:click="prevPage"><</button>
+    {{page}}
+    <button v-if="count === 10" v-on:click="nextPage">></button>
+  </template>
+</div>
