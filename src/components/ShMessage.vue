@@ -24,6 +24,11 @@ export default {
   components: {
     ShMessageTwitter,
     ShMessageShout
+  },
+  methods: {
+    getSocket() {
+      return this.$parent.getSocket()
+    }
   }
 }
 </script>

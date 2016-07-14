@@ -1,6 +1,8 @@
 <template lang="html" src="./templates/ShMessageTwitter.html"></template>
 <script>
+import ShTwitterVideo from './ShTwitterVideo.vue'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
+const youtubePattern = /youtube.com\//g
 
 function compareEntities(a, b) {
   if (a.index === b.index) {
@@ -36,14 +38,35 @@ export default {
     let m = this.data
     let text = []
     text = this.textSplit()
+    if (this.oembed === undefined) {
+      for (let e of text) {
+        if (e.entity && e.entity.expanded_url) {
+          if (e.entity.expanded_url.match(youtubePattern)) {
+            // this.mediatype = 'youtube'
+            let socket = this.$parent.getSocket()
+            socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
+              if (err.statusCode !== 200) {
+                return console.error(err)
+              }
+              this.mediatype = 'youtube'
+              this.oembed = data
+            })
+          }
+        }
+      }
+    }
     return {
       author: m.author,
-      text: text,
+      text: this.text || text,
       likes: m.metadata.likes,
       shares: m.metadata.shares,
-      mediatype: m.mediaType,
+      mediatype: this.mediatype || m.mediaType,
+      oembed: this.oembed || null,
       extended: m.metadata.media_ext
     }
+  },
+  components: {
+    ShTwitterVideo
   },
   methods: {
     // split text into chunks so we can join it in template with formatted hashtags,

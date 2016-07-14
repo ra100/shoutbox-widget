@@ -46,6 +46,17 @@ body {
     height: 70px;
     width: 100px;
   }
+
+  .video {
+    img {
+      cursor: pointer;
+      max-width: 100%;
+    }
+
+    video {
+      max-width: 100%;
+    }
+  }
 }
 
 .avatar {

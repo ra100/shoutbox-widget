@@ -1,0 +1,11 @@
+<div class="video">
+  <template v-if="play === true">
+    <video autoplay loop>
+      <source v-for="v of variants" :src="v.url" :type="v.content_type" v-on:click="pause">
+      Váš prohlížeč nepodporuje přehrávnání videa.
+    </video>
+  </template>
+  <template v-else>
+    <img :src="img" v-on:click="play"/>
+  </template>
+</div>

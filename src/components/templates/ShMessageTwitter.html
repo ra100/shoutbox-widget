@@ -32,10 +32,18 @@
     </template>
   </div>
   <div class="media" v-if="mediatype !== 'none'">
+    <template v-if="mediatype == 'video'">
+      <template v-for="video in extended">
+        <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url"/>
+      </template>
+    </template>
     <template v-if="mediatype == 'photo'">
       <template v-for="photo in extended">
         <a :href="photo.media_url" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + photo.media_url + ')'}"></a>
       </template>
+    </template>
+    <template v-if="mediatype == 'youtube'">
+      {{{oembed.html}}}
     </template>
   </div>
 </div>
