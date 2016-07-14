@@ -36,24 +36,9 @@ export default {
   props: ['data'],
   data() {
     let m = this.data
-    let text = []
-    text = this.textSplit()
+    let text = this.textSplit() || []
     if (this.oembed === undefined) {
-      for (let e of text) {
-        if (e.entity && e.entity.expanded_url) {
-          if (e.entity.expanded_url.match(youtubePattern)) {
-            // this.mediatype = 'youtube'
-            let socket = this.$parent.getSocket()
-            socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
-              if (err.statusCode !== 200) {
-                return console.error(err)
-              }
-              this.mediatype = 'youtube'
-              this.oembed = data
-            })
-          }
-        }
-      }
+      this.processOembed(text)
     }
     return {
       author: m.author,
@@ -124,6 +109,28 @@ export default {
         }
       }
       return null
+    },
+    processOembed(text) {
+      for (let e of text) {
+        if (e.entity && e.entity.expanded_url) {
+          // Match youtube and insert oembed
+          if (e.entity.expanded_url.match(youtubePattern)) {
+            let socket = this.$parent.getSocket()
+            socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
+              if (err.statusCode !== 200) {
+                return console.error(err)
+              }
+              this.mediatype = 'youtube'
+              let iframe = document.createElement('DIV')
+              iframe.innerHTML = data.html
+              iframe.firstChild.setAttribute('width', '100%')
+              iframe.firstChild.setAttribute('height', 'auto')
+              data.html = iframe.innerHTML
+              this.oembed = data
+            })
+          }
+        }
+      }
     }
   }
 }
