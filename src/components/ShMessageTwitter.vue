@@ -121,11 +121,6 @@ export default {
                 return console.error(err)
               }
               this.mediatype = 'youtube'
-              let iframe = document.createElement('DIV')
-              iframe.innerHTML = data.html
-              iframe.firstChild.setAttribute('width', '100%')
-              iframe.firstChild.setAttribute('height', 'auto')
-              data.html = iframe.innerHTML
               this.oembed = data
             })
           }
