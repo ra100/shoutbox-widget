@@ -43,7 +43,7 @@
       </template>
     </template>
     <template v-if="mediatype == 'youtube'">
-      <div class="iframe-container" style="padding-bottom: {{oembed.height/oembed.width * 100}}%;">
+      <div class="iframe-container" :style="oembed.style">
         {{{oembed.html}}}
       </div>
     </template>

@@ -121,6 +121,7 @@ export default {
                 return console.error(err)
               }
               this.mediatype = 'youtube'
+              data.style = 'padding-bottom: ' + (data.height / data.width * 100) + '%;'
               this.oembed = data
             })
           }
