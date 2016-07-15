@@ -13,7 +13,9 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    extensions: [
+      '', '.js', '.vue'
+    ],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
@@ -31,8 +33,7 @@ module.exports = {
         loader: 'eslint',
         include: projectRoot,
         exclude: /node_modules/
-      },
-      {
+      }, {
         test: /\.js$/,
         loader: 'eslint',
         include: projectRoot,
@@ -43,30 +44,25 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue'
-      },
-      {
+      }, {
         test: /\.js$/,
         loader: 'babel',
         include: projectRoot,
         exclude: /node_modules/
-      },
-      {
+      }, {
         test: /\.json$/,
         loader: 'json'
-      },
-      {
+      }, {
         test: /\.html$/,
         loader: 'vue-html'
-      },
-      {
+      }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
-      },
-      {
+      }, {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
         query: {
@@ -74,8 +70,16 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+    ],
+    postLoaders: [
+      {
+        test: /icon/,
+        loader: 'callback-loader',
+        include: projectRoot
+      }
     ]
   },
+  callbackLoader: require('vue-icons/icon-loader')(['material-link', 'material-repeat', 'material-star']),
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },

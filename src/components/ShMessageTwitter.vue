@@ -44,6 +44,7 @@ export default {
       author: m.author,
       text: this.text || text,
       likes: m.metadata.likes,
+      link: m.link || null,
       shares: m.metadata.shares,
       mediatype: this.mediatype || m.mediaType,
       oembed: this.oembed || null,
@@ -51,7 +52,8 @@ export default {
     }
   },
   components: {
-    ShTwitterVideo
+    ShTwitterVideo,
+    icon: require('vue-icons')
   },
   methods: {
     // split text into chunks so we can join it in template with formatted hashtags,

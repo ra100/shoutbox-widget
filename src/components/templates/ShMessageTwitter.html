@@ -51,6 +51,7 @@
 </div>
 <div class="meta">
   <div class="date">{{data.created | date}}</div>
-  <div class="shares">{{shares}}</div>
-  <div class="likes">{{likes}}</div>
+  <div v-if="shares > 0" class="shares">{{shares}} <icon name="material-repeat"></icon></div>
+  <div v-if="likes > 0" class="likes">{{likes}} <icon name="material-star"></icon></div>
+  <a class="link" href="{{link}}" target="_blank"><icon name="material-link"></icon></a>
 </div>
