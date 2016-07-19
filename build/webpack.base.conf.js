@@ -79,7 +79,7 @@ module.exports = {
       }
     ]
   },
-  callbackLoader: require('vue-icons/icon-loader')(['material-link', 'material-repeat', 'material-star']),
+  callbackLoader: require('vue-icons/icon-loader')(['material-link', 'material-repeat', 'material-star', 'material-reply']),
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },

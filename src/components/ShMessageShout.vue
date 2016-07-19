@@ -8,7 +8,8 @@ export default {
       author: m.author,
       text: m.message,
       mediatype: m.mediaType,
-      extended: m.picture
+      extended: m.picture,
+      replies: m.relatedMessage.length
     }
   }
 }

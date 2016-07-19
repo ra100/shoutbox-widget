@@ -133,7 +133,9 @@ var App = Vue.component('app', {
             this.removeMessage(message.id)
             return
           } else {
-            this.addMessage(message)
+            if (message.isResponse !== true) {
+              this.addMessage(message)
+            }
           }
           break
         case 'removedFrom':
