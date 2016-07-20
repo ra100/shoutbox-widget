@@ -7,11 +7,11 @@
       <button v-else v-on:click="setMode('normal')" class="button contract">
         Contract
       </button>
-      <template v-if="user == undefined">
-        <sh-login/>
+      <template v-if="user">
+        <sh-submit :user="user" />
       </template>
       <template v-else>
-        <sh-submit :user="user" />
+        <sh-login/>
       </template>
     </div>
     <div class="messages">

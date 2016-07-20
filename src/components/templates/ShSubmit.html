@@ -1,9 +1,21 @@
-<div class="avatar" v-if="user.picture && user.picture.length > 0">
-  <img :src="user.picture">
-</div>
-</div class="name">
-{{user.displayname}}
-</div>
+<template v-if="user !== true && user !== undefined">
+  <div class="avatar" v-if="user.picture && user.picture.length > 0">
+    <img :src="user.picture">
+  </div>
+  </div class="name">
+  {{user.displayname}}
+  </div>
+</template>
+<template v-else>
+  <div class="input-wrapper">
+    <label for="sh-name">Jméno</label>
+    <input type="text" v-model="name" id="sh-name"/>
+  </div>
+  <div class="input-wrapper">
+    <label for="sh-email">E-mail</label>
+    <input type="email" v-model="email" id="sh-email"/>
+  </div>
+</template>
 <template v-if="!loading" transition="fade">
   <div class="form">
     <textarea name="message" v-model="message"></textarea>
@@ -14,6 +26,7 @@
 <template v-else transition="fade">
   Processing...
 </template>
+<div class="error" v-if="error">{{error}}</div>
 <button class="logout" v-on:click="logout">
   X
 </button>

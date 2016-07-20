@@ -3,6 +3,7 @@
 export default {
   methods: {
     twitterLogin() {
+      this.form = false
       let uload = () => {
         this.$dispatch('user-load')
       }
@@ -13,6 +14,9 @@ export default {
           uload()
         }
       }, 1000)
+    },
+    emailLogin() {
+      this.$dispatch('user-form')
     }
   }
 }

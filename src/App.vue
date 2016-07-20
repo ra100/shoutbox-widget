@@ -221,6 +221,9 @@ var App = Vue.component('app', {
   events: {
     'user-load': function() {
       this.getUser()
+    },
+    'user-form': function() {
+      this.user = true
     }
   }
 })
