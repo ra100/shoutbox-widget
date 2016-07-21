@@ -193,6 +193,15 @@ var App = Vue.component('app', {
     getCsrf() {
       return CSRF
     },
+    renewCsrf(callback) {
+      socket.get('/csrfToken', (data) => {
+        CSRF = data._csrf
+        io.sails.headers = {
+          'X-CSRF-Token': data._csrf
+        }
+        callback(data._csrf)
+      })
+    },
     nextPage() {
       this.page++
       this.getMessages()
