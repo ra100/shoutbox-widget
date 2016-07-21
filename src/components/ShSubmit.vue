@@ -99,6 +99,7 @@ export default {
       let socket = this.$parent.getSocket()
       socket.get('/logout', () => {
         this.$parent._data.user = undefined
+        this.$parent.renewCsrf()
       })
     }
   }
