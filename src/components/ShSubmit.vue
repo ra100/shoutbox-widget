@@ -22,33 +22,27 @@ export default {
       this.error = false
       this.loading = true
       if (this.user === true) {
+        let csrf = this.$parent.getCsrf()
         request
-          .get('https://shoutbox.rozhlas.cz/csrfToken')
-          .end((err, res) => {
-            if (err) {
-              this.error = 'CSRF error'
-            }
-            let csrf = res.body._csrf
-            request
-             .post('https://shoutbox.rozhlas.cz/auth/emaillogin')
-             .set('X-CSRF-Token', csrf)
-             .send({
-               user: {
-                 email: this.email,
-                 name: this.name
-               },
-               _csrf: csrf
-             })
-             .end((err, res) => {
-               this.loading = false
-               if (!err && res.ok && res.body) {
-                 this.$parent._data.user = res.body
-                 this.postMessage()
-               } else {
-                 this.error = 'Chyba při přihlašování'
-               }
-             })
-          })
+         .post('https://shoutbox.rozhlas.cz/auth/emaillogin')
+         .set('X-CSRF-Token', csrf)
+         .withCredentials()
+         .send({
+           user: {
+             email: this.email,
+             name: this.name
+           },
+           _csrf: csrf
+         })
+         .end((err, res) => {
+           this.loading = false
+           if (!err && res.ok && res.body) {
+             this.$parent._data.user = res.body
+             this.postMessage()
+           } else {
+             this.error = 'Chyba při přihlašování'
+           }
+         })
         // let socket = this.$parent.getSocket()
         // socket.post('/auth/emaillogin', {
         //   user: {
