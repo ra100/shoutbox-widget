@@ -2,7 +2,7 @@
 <script>
 import ShTwitterVideo from './ShTwitterVideo.vue'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
-const youtubePattern = /youtube.com\//g
+const youtubePattern = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-_]*)/g
 
 function compareEntities(a, b) {
   if (a.index === b.index) {

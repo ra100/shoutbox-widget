@@ -19,7 +19,7 @@
     "sails.io.js": "^0.13.8",
     "socket.io-client": "^1.4.6",
     "stylus": "^0.54.5",
-    "superagent": "^2.1.0",
+    "superagent": "^2.2.0",
     "vue": "^1.0.21",
     "vue-validator": "^2.1.4"
   },

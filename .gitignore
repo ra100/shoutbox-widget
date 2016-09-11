@@ -7,3 +7,4 @@ test/unit/coverage
 test/e2e/reports
 .tags
 .tags1
+.remote-sync.json

@@ -1,32 +1,20 @@
-<form novalidate>
-  <validator name="validation">
-    <template v-if="user !== true && user !== undefined">
-      <div class="avatar" v-if="user.picture && user.picture.length > 0">
-        <img :src="user.picture">
-      </div>
-      </div class="name">
-      {{user.displayname}}
-      </div>
-    </template>
-    <template v-else>
-      <div class="input-wrapper">
-        <label for="sh-name">Jméno</label>
-        <input type="text" id="sh-name" v-validate:name="{required: true}">
-      </div>
-      <div class="input-wrapper">
-        <label for="sh-email">E-mail</label>
-        <input type="email" v-validate:email="{required: true}">
-      </div>
-    </template>
-    <template v-if="!loading" transition="fade">
-      <div class="form">
-        <textarea name="message" v-model="message"></textarea>
-        <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange" />
-        <button v-if="message && message.length > 0" v-on:click="submit">Odeslat</button>
-      </div>
-    </template>
-  </validator>
-</form>
+<template v-if="user !== true && user !== undefined">
+  <div class="avatar" v-if="user.picture && user.picture.length > 0">
+    <img :src="user.picture">
+  </div>
+  </div class="name">
+  {{user.displayname}}
+  </div>
+</template>
+<template v-if="!loading" transition="fade">
+  <div class="form">
+    <form novalidate>
+      <textarea name="message" v-model="message"></textarea>
+      <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange" />
+    </form>
+    <button v-if="message && message.length > 0" v-on:click="postMessage">Odeslat</button>
+  </div>
+</template>
 <template v-else transition="fade">
   Processing...
 </template>

@@ -199,7 +199,9 @@ var App = Vue.component('app', {
         io.sails.headers = {
           'X-CSRF-Token': data._csrf
         }
-        callback(data._csrf)
+        if (callback) {
+          callback(data._csrf)
+        }
       })
     },
     nextPage() {
