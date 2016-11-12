@@ -1,7 +1,5 @@
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
-import request from 'superagent'
-
 export default {
   props: ['user'],
   data() {
@@ -44,19 +42,6 @@ export default {
     onFileChange(event) {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
-    },
-    logout() {
-      let csrf = this.$parent.getCsrf()
-      request.get('https://shoutbox.rozhlas.cz/logout')
-        .set('X-CSRF-Token', csrf)
-        .set('X-Requested-With', 'XMLHttpRequest')
-        .withCredentials()
-        .end((err, res) => {
-          if (!err && res.ok && res.body) {
-            this.$parent._data.user = undefined
-            this.$parent.renewCsrf()
-          }
-        })
     }
   }
 }

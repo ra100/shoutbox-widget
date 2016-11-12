@@ -1,11 +1,3 @@
-<template v-if="user !== true && user !== undefined">
-  <div class="avatar" v-if="user.picture && user.picture.length > 0">
-    <img :src="user.picture">
-  </div>
-  </div class="name">
-  {{user.displayname}}
-  </div>
-</template>
 <template v-if="!loading" transition="fade">
   <div class="form">
     <form novalidate>
@@ -19,6 +11,3 @@
   Processing...
 </template>
 <div class="error" v-if="error">{{error}}</div>
-<button class="logout" v-if="user !== true && user !== undefined" v-on:click="logout">
-  X
-</button>

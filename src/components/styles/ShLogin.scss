@@ -1,0 +1,169 @@
+$options-bg: #ddd;
+$options-color: #555;
+$link-color: #2e6fb3;
+
+.float-panel {
+  top: 150px;
+}
+
+.az {
+  left: 115px;
+}
+
+.login-options {
+  background-color: $options-bg;
+  color: $options-color;
+  float: left;
+  font-size: 12px;
+  line-height: 32px;
+  margin-bottom: 2px;
+  padding: 20px;
+  position: absolute;
+  top: 85px;
+  width: 280px;
+}
+
+.login-option {
+  background: transparent;
+  background-position: center;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  float: right;
+  font-size: 1px;
+  height: 32px;
+  margin-left: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 32px;
+
+  &.email {
+    background-image: url('/static/ico_mail.png');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: url('/static/ico_mail_over.png');
+    }
+  }
+
+  &.fb {
+    background-image: url('/static/ico_fb.png');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: url('/static/ico_fb_over.png');
+    }
+  }
+
+  &.tw {
+    background-image: url('/static/ico_tw.png');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: url('/static/ico_tw_over.png');
+    }
+  }
+
+  &.ig {
+    background-image: url('/static/ico_inst.png');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: url('/static/ico_inst_over.png');
+    }
+  }
+
+  &.sc {
+    background-image: url('/static/ico_sc.png');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-image: url('/static/ico_sc_over.png');
+    }
+  }
+}
+
+.input-wrapper {
+  width: 100%;
+  float: left;
+}
+
+label {
+  color: $options-color;
+  float: left;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+input {
+  box-shadow: #ccc 0px 2px 7px 0px inset;
+  border: none;
+  clear: left;
+  color: $options-color;
+  float: left;
+  margin-bottom: 12px;
+  padding: 6px;
+  width: calc(100% - 12px);
+  font-size: 20px;
+
+
+  &.invalid {
+    box-shadow: rgb(208, 78, 78) 0px 2px 7px 0px inset;
+  }
+
+  &:active, &:focus {
+    outline: none;
+    box-shadow: rgb(24, 148, 255) 0px 2px 7px 0px inset;
+  }
+}
+
+.form-login,
+.form-register {
+  button {
+    background: $link-color;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 35px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+
+    &:disabled {
+      opacity: .5;
+    }
+  }
+}
+
+.links {
+  color: $link-color;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link {
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.separator {
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

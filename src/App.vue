@@ -4,6 +4,7 @@
 import ShMessage from './components/ShMessage.vue'
 import ShLogin from './components/ShLogin.vue'
 import ShSubmit from './components/ShSubmit.vue'
+import ShUser from './components/ShUser.vue'
 import ShPagination from './components/ShPagination.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
@@ -49,7 +50,8 @@ var App = Vue.component('app', {
     ShMessage,
     ShLogin,
     ShSubmit,
-    ShPagination
+    ShPagination,
+    ShUser
   },
   data() {
     return {
@@ -60,7 +62,10 @@ var App = Vue.component('app', {
       newmessages: this.newmessages || [],
       page: this.page || 0,
       user: this.user,
-      mode: this.mode || 'normal'
+      mode: this.mode || 'normal',
+      loginvisible: this.loginvisible || false,
+      submitvisible: this.submivisible || false,
+      uservisible: this.uservisible || false
     }
   },
   created() {
@@ -227,6 +232,53 @@ var App = Vue.component('app', {
     },
     setMode(mode) {
       this.mode = mode
+    },
+    loginShow() {
+      this.loginvisible = true
+      this.submitvisible = false
+    },
+    loginHide() {
+      this.loginvisible = false
+    },
+    loginToggle() {
+      this.loginvisible = !this.loginvisible
+      this.submitvisible = false
+    },
+    submitShow() {
+      if (this.user) {
+        this.submitvisible = true
+      } else {
+        this.loginvisible = true
+      }
+    },
+    submitHide() {
+      this.loginvisible = false
+      this.submitvisible = false
+    },
+    submitToggle() {
+      if (this.submitvisible) {
+        this.submitvisible = !this.submitvisible
+        this.loginvisible = false
+        return
+      }
+      if (!this.user) {
+        this.loginvisible = !this.loginvisible
+        return
+      } else {
+        this.submitvisible = true
+        this.loginvisible = false
+      }
+    },
+    luserShow() {
+      this.uservisible = true
+      this.submitvisible = false
+    },
+    userHide() {
+      this.uservisible = false
+    },
+    userToggle() {
+      this.uservisible = !this.uservisible
+      this.submitvisible = false
     }
   },
   events: {

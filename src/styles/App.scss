@@ -1,5 +1,10 @@
-$shoutbox-bg: #fff;
+$shoutbox-bg: #eee;
 $wrapper-bg: #eee;
+$header-title-bg: #000;
+$header-title-color: #fff;
+$login-header-bg: #cda100;
+$login-header-color: #fff;
+$panel-border: #aaa;
 
 body {
   font-family: Helvetica, sans-serif;
@@ -11,7 +16,7 @@ body {
   float: left;
   position: relative;
   transition: width 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
-  width: 300px;
+  width: 320px;
 
   .shoutbox-widget {
     background: $shoutbox-bg;
@@ -29,6 +34,94 @@ body {
     width: 750px;
     z-index: 5000;
   }
+}
+
+.shoutbox-title {
+  background-color: $header-title-bg;
+  color: $header-title-color;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  padding: 12px;
+
+  .button {
+    background-color: transparent;
+    background-image: url('/static/resize_on.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    color: transparent;
+    cursor: pointer;
+    float: right;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+
+    &.contract {
+      background-image: url('/static/resize_off.svg');
+    }
+  }
+}
+
+.login-header {
+  background-color: $login-header-bg;
+  color: $login-header-color;
+  font-size: 14px;
+  line-height: 31px;
+  margin-bottom: 2px;
+  padding: 2px;
+  position: relative;
+  float: left;
+  font-weight: bold;
+  width: calc(100% - 4px);
+
+  .name {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 5px;
+    text-decoration: underline;
+  }
+}
+
+.user-toggle {
+  cursor: pointer;
+  float: left;
+}
+
+.login-link {
+  cursor: pointer;
+  float: left;
+  margin-left: 10px;
+}
+
+.new-message-link {
+  cursor: pointer;
+  float: right;
+  margin-right: 10px;
+}
+
+.float-panel {
+  background-color: $shoutbox-bg;
+  border: 1px solid $panel-border;
+  padding: 20px;
+  position: absolute;
+  top: 85px;
+  width: 278px;
+}
+
+.az { //Alešov Zobáčik
+  background-color: $shoutbox-bg;
+  border-left: 1px solid $panel-border;
+  border-top: 1px solid $panel-border;
+  display: block;
+  height: 14px;
+  left: 55px;
+  position: absolute;
+  transform: rotate(45deg);
+  top: -8px;
+  width: 14px;
 }
 
 .message {

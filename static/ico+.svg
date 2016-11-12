@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+  <title>ico+</title>
+  <path d="M12.5,0A12.5,12.5,0,1,0,25,12.5h0A12.5,12.5,0,0,0,12.5,0Z" transform="translate(0 0)" fill="#2c6fb3"/>
+  <path d="M18.9,13.6H13.6v5.3a1.1,1.1,0,0,1-2.3,0V13.6H6.1a1.1,1.1,0,0,1,0-2.3h5.3V6.1a1.1,1.1,0,0,1,2.3,0v5.3h5.3A1.1,1.1,0,0,1,18.9,13.6Z" transform="translate(0 0)" fill="#fff"/>
+</svg>

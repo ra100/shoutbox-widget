@@ -1,17 +1,33 @@
 <div class="shoutbox-wrapper {{mode}}">
   <div class="shoutbox-widget">
     <div class="shoutbox-header">
-      <button v-on:click="setMode('wide')" v-if="mode !== 'wide'" class="button expand">
-        Expand
-      </button>
-      <button v-else v-on:click="setMode('normal')" class="button contract">
-        Contract
-      </button>
-      <template v-if="user">
+      <div class="shoutbox-title">
+        Shoutbox
+        <button v-on:click="setMode('wide')" v-if="mode !== 'wide'" class="button expand" title="Expand" />
+        <button v-else v-on:click="setMode('normal')" class="button contract" title="Contract" />
+      </div>
+      <div class="login-header">
+        <template v-if="user !== true && user !== undefined">
+          <div class="user-toggle" @click="userToggle">
+            <div class="avatar" v-if="user.picture && user.picture.length > 0">
+              <img :src="user.picture">
+            </div>
+            <div class="name">
+            {{user.displayname}}
+            </div>
+          </div>
+        </template>
+        <div class="login-link" v-if="!user" @click="loginToggle">Přihlásit se</div>
+        <div class="new-message-link" @click="submitToggle">Přidat vzkaz</div>
+      </div>
+      <template v-if="submitvisible && user">
         <sh-submit :user="user" />
       </template>
-      <template v-else>
+      <template v-if="loginvisible && !user">
         <sh-login/>
+      </template>
+      <template v-if="uservisible && user">
+        <sh-user :user="user" />
       </template>
     </div>
     <div class="messages">

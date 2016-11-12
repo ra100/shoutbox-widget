@@ -1,12 +1,16 @@
+<style lang="scss" src="./styles/ShLogin.scss"></style>
 <template lang="html" src="./templates/ShLogin.html"></template>
 <script>
 import request from 'superagent'
+import Vue from 'vue'
+import Validator from 'vue-validator'
+Vue.use(Validator)
 
 export default {
   data() {
     return {
       form: this.form || false,
-      loginPage: this.login || true,
+      page: this.page || 'login',
       error: this.error || '',
       email: this.email || '',
       password: this.password || '',
@@ -23,10 +27,13 @@ export default {
   },
   methods: {
     switchLogin() {
-      this.loginPage = true
+      this.page = 'login'
     },
     switchRegister() {
-      this.loginPage = false
+      this.page = 'register'
+    },
+    switchForgotten() {
+      this.page = 'forgotten'
     },
     twitterLogin() {
       this.form = false
@@ -87,6 +94,7 @@ export default {
       if (!this.email || !this.password) {
         return
       }
+      this.$resetValidator()
       this.error = false
       this.loading = true
       let csrf = this.$parent.getCsrf()
@@ -103,14 +111,19 @@ export default {
        })
        .end((err, res) => {
          this.loading = false
-         if (!err && res.ok && res.body) {
+         if (!err && res.ok && res.body && res.body.status !== 'error') {
            this.$parent._data.user = res.body
          } else {
            this.error = 'Chyba při přihlašování'
          }
        })
     },
-    register() {}
+    register() {
+      this.$resetValidator()
+    },
+    resetPassword() {
+      this.$resetValidator()
+    }
   }
 }
 </script>

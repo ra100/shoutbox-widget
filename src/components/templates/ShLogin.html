@@ -1,44 +1,67 @@
-<div class="login">
-  <button @click="facebookLogin">Facebook</button>
-  <button @click="twitterLogin">Twitter</button>
-  <button @click="instagramLogin">Instagram</button>
-  <button @click="soundcloudLogin">Soundcloud</button>
-  <button @click="emailLogin">E-mail</button>
+<div class="login-options">
+  <span class="login-choose">Vybrat službu</span>
+  <button @click="soundcloudLogin" class="login-option sc">Soundcloud</button>
+  <button @click="instagramLogin" class="login-option ig">Instagram</button>
+  <button @click="twitterLogin" class="login-option tw">Twitter</button>
+  <button @click="facebookLogin" class="login-option fb">Facebook</button>
+  <button @click="emailLogin" class="login-option email">E-mail</button>
 </div>
-<validator name="validator">
-  <div class="login-form" v-if='form'>
-    <h3 class="{loginPage ? 'active' : 'inactive'}" @click="switchLogin">Přihlášení</h3>
-    <h3 class="{!loginPage ? 'active' : 'inactive'}" @click="switchRegister">Registrace</h3>
-    <div class="form-login" v-if='loginPage'>
+<div class="float-panel email-login" v-if='form'>
+  <div class="az"></div>
+  <validator name="validation1">
+    <div class="form-login" v-if="page === 'login'">
       <div class="input-wrapper">
         <label for="sh-email">E-mail</label>
-        <input type="email" id="sh-email" v-model="email" v-validate="required: true" />
+        <input type="email" id="sh-email" v-model="email" initial="off" v-validate:sh-email="{required: true}" />
       </div>
       <div class="input-wrapper">
         <label for="sh-password">Heslo</label>
-        <input type="password" id="sh-password" v-model="password" v-validate="required: true" />
+        <input type="password" id="sh-password" v-model="password" initial="off" v-validate:sh-password="{required: true}" />
       </div>
-      <button v-on:click="login">Přihlásit se</button>
+      <div class="error" v-if="error">{{error}}</div>
+      <button @click="login" :disabled="!$validation1.valid">Přihlásit se</button>
+      <div class="links">
+        <span class="link" @click="switchRegister">Registrace</span>
+        <span class="separator link">|</span>
+        <span class="link" @click="switchForgotten">Zapomenuté heslo</span>
+      </div>
     </div>
-    <div class="form-register" v-else>
+    <div class="form-register" v-if="page === 'register'">
       <div class="input-wrapper">
         <label for="sh-name">Jméno</label>
-        <input type="text" id="sh-name" v-model="name" v-validate="required: true" />
+        <input type="text" id="sh-name" v-model="name" initial="off" v-validate:sh-name="{required: true}" />
       </div>
       <div class="input-wrapper">
         <label for="sh-email">E-mail</label>
-        <input type="email" id="sh-email" v-model="email" v-validate="required: true" />
+        <input type="email" id="sh-email" v-model="email" initial="off" v-validate:sh-email="{required: true}" />
       </div>
       <div class="input-wrapper">
         <label for="sh-password">Heslo</label>
-        <input type="password" id="sh-password" v-model="password" v-validate="required: true" />
+        <input type="password" id="sh-password" v-model="password" initial="off" v-validate:sh-password="{required: true}" />
       </div>
       <div class="input-wrapper">
         <label for="sh-password">Kontrola hesla</label>
-        <input type="password" id="sh-reentered-password" v-model="reenteredPassword" v-validate="required: true" />
+        <input type="password" id="sh-reentered-password" v-model="reenteredPassword" initial="off" v-validate:sh-reentered-password="{required: true}" />
       </div>
-      <div class="error" v-show="matchPassword">Heslo se nezhoduje</div>
-      <button v-on:click="register">Dokončit registraci</button>
+      <div class="error" v-show="matchPassword">Heslo se neshoduje</div>
+      <button @click="register" :disabled="!$validation1.valid">Zaregistrovat</button>
+      <div class="links">
+        <div class="link" @click="switchLogin">Přihlásit přes existující účet</div>
+      </div>
     </div>
-  </div>
-</validator>
+    <div class="form-login" v-if="page === 'forgotten'">
+      <div class="input-wrapper">
+        <label for="sh-email">Zadejte e-mail</label>
+        <input type="email" id="sh-email" v-model="email" initial="off" v-validate:sh-email="{required: true}" />
+      </div>
+      <div class="message">Na Váš e-mail bude zaslál odkaz na obnovení hesla.</div>
+      <div class="error" v-if="error">{{error}}</div>
+      <button @click="resetPassword" :disabled="!$validation1.valid">Resetovat heslo</button>
+      <div class="links">
+        <span class="link" @click="switchLogin">Přihlášení</span>
+        <span class="separator link">|</span>
+        <span class="link" @click="switchRegister">Registrace</span>
+      </div>
+    </div>
+  </validator>
+</div>
