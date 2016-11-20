@@ -12,6 +12,7 @@ import sailsIOClient from 'sails.io.js'
 import _ from 'lodash/array'
 import dateFormat from 'dateformat'
 import Favico from 'favico.js'
+import request from 'superagent'
 
 const PER_PAGE = 10
 
@@ -20,15 +21,13 @@ io.sails.url = 'https://shoutbox.rozhlas.cz'
 const socket = io.socket
 
 const favicon = new Favico()
-let CSRF = ''
+window.CSRF = ''
 
-socket.on('connect', () => {
-  socket.get('/csrfToken', (data) => {
-    CSRF = data._csrf
-    io.sails.headers = {
-      'X-CSRF-Token': data._csrf
-    }
-  })
+request.get(`${io.sails.url}/csrfToken`).then(res => {
+  window.CSRF = res.body._csrf
+  io.sails.headers = {
+    'X-CSRF-Token': res.body._csrf
+  }
 })
 
 function sortByDate(a, b) {
@@ -196,16 +195,16 @@ var App = Vue.component('app', {
       return socket
     },
     getCsrf() {
-      return CSRF
+      return window.CSRF
     },
     renewCsrf(callback) {
-      socket.get('/csrfToken', (data) => {
-        CSRF = data._csrf
+      request.get(`${io.sails.url}/csrfToken`).then(res => {
+        window.CSRF = res.body._csrf
         io.sails.headers = {
-          'X-CSRF-Token': data._csrf
+          'X-CSRF-Token': res.body._csrf
         }
         if (callback) {
-          callback(data._csrf)
+          callback(res.body._csrf)
         }
       })
     },
