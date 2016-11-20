@@ -94,7 +94,7 @@ export default {
       if (!this.email || !this.password) {
         return
       }
-      this.$resetValidator()
+      this.$resetValidation()
       this.error = false
       this.loading = true
       let csrf = this.$parent.getCsrf()
@@ -103,26 +103,55 @@ export default {
        .set('X-CSRF-Token', csrf)
        .withCredentials()
        .send({
-         user: {
-           email: this.email,
-           password: this.password
-         },
+         identifier: this.email,
+         password: this.password,
+         type: 'local',
          _csrf: csrf
        })
-       .end((err, res) => {
+       .then(res => {
          this.loading = false
-         if (!err && res.ok && res.body && res.body.status !== 'error') {
-           this.$parent._data.user = res.body
+         if (res.ok && res.body && res.body.status !== 'error') {
+           this.$dispatch('user-load')
          } else {
            this.error = 'Chyba při přihlašování'
          }
+       }).catch((err) => {
+         console.error(err)
+         this.error = 'Chyba při přihlašování'
        })
     },
     register() {
-      this.$resetValidator()
+      if (this.password !== this.reenteredPassword) {
+        this.error = 'Hesla se musí shodovat.'
+        return
+      }
+      this.$resetValidation()
+      this.loading = true
+      let csrf = this.$parent.getCsrf()
+      request
+       .post('https://shoutbox.rozhlas.cz/auth/local/register')
+       .set('X-CSRF-Token', csrf)
+       .withCredentials()
+       .send({
+         email: this.email,
+         username: this.name,
+         displayname: this.name,
+         password: this.password,
+         _csrf: csrf
+       }).then(res => {
+         this.loading = false
+         if (res.ok && res.body && res.body.status !== 'error') {
+           this.$dispatch('user-load')
+         } else {
+           this.error = res.body.message
+         }
+       }).catch(err => {
+         console.error(err)
+         this.error = 'Chyba při registraci'
+       })
     },
     resetPassword() {
-      this.$resetValidator()
+      this.$resetValidation()
     }
   }
 }
