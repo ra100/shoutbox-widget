@@ -133,16 +133,14 @@ a {
   padding: 10px;
 }
 
-.fade-in-enter-active,
-.fade-in-leave-active {
-  height: auto;
-  opacity: 1;
-  transition: all 1s ease;
+.fade-in-enter-active, .fade-in-leave-active {
+  transition: opacity 1s ease-in;
+  transform: translateZ(0);
 }
 
-.fade-in-enter {
-  height: 0;
+.fade-in-enter, .fade-in-leave-active {
   opacity: 0;
+  transform: translateZ(0);
 }
 
 .button.contract,

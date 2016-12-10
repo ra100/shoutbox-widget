@@ -13,6 +13,7 @@ import _ from 'lodash/array'
 import dateFormat from 'dateformat'
 import Favico from 'favico.js'
 import request from 'superagent'
+import Velocity from 'velocity-animate'
 
 const PER_PAGE = 10
 
@@ -286,6 +287,30 @@ const App = Vue.component('app', {
     },
     showUserForm() {
       this.user = true
+    },
+    beforeEnter: function (el) {
+      el.style.opacity = 0
+      el.style['max-height'] = 0
+    },
+    enter: function (el, done) {
+      var delay = el.dataset.index * 100
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1, 'max-height': '1000px' },
+          { complete: done }
+        )
+      }, delay)
+    },
+    leave: function (el, done) {
+      var delay = el.dataset.index * 100
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, 'max-height': 0 },
+          { complete: done }
+        )
+      }, delay)
     }
   }
 })
