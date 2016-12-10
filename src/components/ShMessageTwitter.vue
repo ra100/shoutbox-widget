@@ -34,7 +34,7 @@ function parseEntities(entities) {
 }
 
 export default {
-  props: ['data'],
+  props: ['data', 'socket'],
   data() {
     let m = this.data
     let text = this.textSplit() || []
@@ -119,8 +119,7 @@ export default {
         if (e.entity && e.entity.expanded_url) {
           // Match youtube and insert oembed
           if (e.entity.expanded_url.match(youtubePattern)) {
-            let socket = this.$parent.getSocket()
-            socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
+            this.socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
               if (err.statusCode !== 200) {
                 return console.error(err)
               }

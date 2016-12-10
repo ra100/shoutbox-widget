@@ -21,13 +21,13 @@
         <div class="new-message-link" @click="submitToggle">Přidat vzkaz</div>
       </div>
       <template v-if="submitvisible && user">
-        <sh-submit :user="user" />
+        <sh-submit :user="user" :socket="getSocket()"/>
       </template>
       <template v-if="loginvisible && !user">
-        <sh-login/>
+        <sh-login :socket="getSocket()"/>
       </template>
       <template v-if="uservisible && user">
-        <sh-user :user="user" />
+        <sh-user :user="user" :socket="getSocket()"/>
       </template>
     </div>
     <div class="messages">
@@ -38,7 +38,7 @@
         <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové zprávy ({{newmessages.length}})</div>
       </template>
       <transition-group name="fade-in">
-        <sh-message v-for="message in messages" :data="message" v-bind:key="message.id" stagger="50" />
+        <sh-message v-for="message in messages" :data="message" :socket="getSocket()" v-bind:key="message.id" stagger="50" />
       </transition-group>
     </div>
     <div class="pagination-wrapper">

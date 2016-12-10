@@ -9,6 +9,7 @@ Vue.use(VueValidator)
 const eventHub = new Vue()
 
 export default {
+  props: ['socket'],
   data() {
     return {
       form: this.form || false,
@@ -97,7 +98,7 @@ export default {
       this.$resetValidation()
       this.error = false
       this.loading = true
-      let csrf = this.$parent.getCsrf()
+      let csrf = window.CSRF
       request
        .post('https://shoutbox.rozhlas.cz/auth/local')
        .set('X-CSRF-Token', csrf)
@@ -127,7 +128,7 @@ export default {
       }
       this.$resetValidation()
       this.loading = true
-      let csrf = this.$parent.getCsrf()
+      let csrf = window.CSRF
       request
        .post('https://shoutbox.rozhlas.cz/auth/local/register')
        .set('X-CSRF-Token', csrf)

@@ -1,7 +1,7 @@
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
 export default {
-  props: ['user'],
+  props: ['user', 'socket'],
   data() {
     return {
       message: this.message,
@@ -13,11 +13,10 @@ export default {
   methods: {
     postMessage() {
       this.loading = true
-      let socket = this.$parent.getSocket()
       let payload = {
         message: this.message,
         stream: this.$parent._data.id,
-        _csrf: this.$parent.getCsrf()
+        _csrf: window.CSRF
       }
       if (typeof this.file !== 'undefined') {
         payload.image = {
@@ -25,7 +24,7 @@ export default {
           name: this.file.name
         }
       }
-      socket.post('/messages/submit', payload, (data, err) => {
+      this.socket.post('/messages/submit', payload, (data, err) => {
         this.loading = false
         if (data.message) {
           this.$parent.addMessage(data.message)

@@ -4,14 +4,14 @@
 import request from 'superagent'
 
 export default {
-  props: ['user'],
+  props: ['user', 'socket'],
   data() {
     return {
     }
   },
   methods: {
     logout() {
-      let csrf = this.$parent.getCsrf()
+      let csrf = window.CSRF
       request.get('https://shoutbox.rozhlas.cz/logout')
         .set('X-CSRF-Token', csrf)
         .set('X-Requested-With', 'XMLHttpRequest')

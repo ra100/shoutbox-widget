@@ -4,7 +4,7 @@
 import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
 export default {
-  props: ['data'],
+  props: ['data', 'socket'],
   data() {
     let m = this.data
     let type = m.feedType
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getSocket() {
-      return this.$parent.getSocket()
+      return this.socket
     }
   }
 }
