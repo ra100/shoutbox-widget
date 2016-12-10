@@ -44,7 +44,9 @@ Vue.filter('date', function(value) {
   return dateFormat(new Date(value), 'd.m.yyyy H:MM:ss')
 })
 
-var App = Vue.component('app', {
+const eventHub = new Vue()
+
+const App = Vue.component('app', {
   components: {
     ShMessage,
     ShLogin,
@@ -68,21 +70,24 @@ var App = Vue.component('app', {
     }
   },
   created() {
-    this.init()
     socket.on('stream', this.processEvent)
+    eventHub.$on('user-load', this.getUser)
+    eventHub.$on('user-form', this.showUserForm)
+    this.newmessages = []
+    this.page = 0
+    this.getName()
+    this.getStream()
+      .then(this.processStream)
+      .then(this.getMessages)
+      .then(this.processMessages)
+      .catch(console.error)
+    this.getUser()
+  },
+  beforeDestroy() {
+    eventHub.$off('user-load', this.getUser)
+    eventHub.$off('user-form', this.showUserForm)
   },
   methods: {
-    init() {
-      this.newmessages = []
-      this.page = 0
-      this.getName()
-      this.getStream()
-        .then(this.processStream)
-        .then(this.getMessages)
-        .then(this.processMessages)
-        .catch(console.error)
-      this.getUser()
-    },
     getName() {
       this.name = document
         .getElementById('shoutbox')
@@ -96,6 +101,7 @@ var App = Vue.component('app', {
       })
     },
     processStream(data, err) {
+      console.log(data)
       return new Promise((resolve, reject) => {
         if (err) {
           return reject()
@@ -268,7 +274,7 @@ var App = Vue.component('app', {
         this.loginvisible = false
       }
     },
-    luserShow() {
+    userShow() {
       this.uservisible = true
       this.submitvisible = false
     },
@@ -278,13 +284,8 @@ var App = Vue.component('app', {
     userToggle() {
       this.uservisible = !this.uservisible
       this.submitvisible = false
-    }
-  },
-  events: {
-    'user-load': function() {
-      this.getUser()
     },
-    'user-form': function() {
+    showUserForm() {
       this.user = true
     }
   }

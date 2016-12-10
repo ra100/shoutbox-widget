@@ -1,4 +1,4 @@
-<div class="message {{type}}">
+<div v-bind:class="'message ' + type">
   <template v-if="type == 'shout'">
     <sh-message-shout :data="data"/>
   </template>

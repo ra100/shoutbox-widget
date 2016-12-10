@@ -1,13 +1,19 @@
-<template v-if="!loading" transition="fade">
-  <div class="form">
-    <form novalidate>
-      <textarea name="message" v-model="message"></textarea>
-      <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange" />
-    </form>
-    <button v-if="message && message.length > 0" v-on:click="postMessage">Odeslat</button>
-  </div>
-</template>
-<template v-else transition="fade">
-  Processing...
-</template>
-<div class="error" v-if="error">{{error}}</div>
+<div class="submit-root">
+  <template v-if="!loading">
+    <transition name="fade">
+      <div class="form">
+        <form novalidate>
+          <textarea name="message" v-model="message"></textarea>
+          <input type="file" v-el="fileInput" ref="upload" name="upload" accept="image/*" v-on:change="onFileChange" />
+        </form>
+        <button v-if="message && message.length > 0" v-on:click="postMessage">Odeslat</button>
+      </div>
+    </transition>
+  </template>
+  <template v-else>
+    <transition name="fade">
+      Processing...
+    </transition>
+  </template>
+  <div class="error" v-if="error">{{error}}</div>
+</div>

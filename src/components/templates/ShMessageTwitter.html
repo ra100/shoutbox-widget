@@ -1,58 +1,57 @@
-<div class="avatar">
-  <a href="{{author.url}}" target="_blank">
-    <img :src="author.picture" />
-  </a>
-</div>
-<div class="text-wrapper">
-  <div class="author">
-    <span class="name"><a href="{{author.url}}" target="_blank">{{author.name}}</a></span>
-    <span class="handle">@<a href="{{author.url}}" target="_blank">{{author.handle}}</a></span>
+<div class="message-root">
+  <div class="avatar">
+    <a v-bind:href="author.url" target="_blank">
+      <img :src="author.picture" />
+    </a>
   </div>
-  <div class="text">
-    <template v-for="(index, item) in text">
-      <template v-if="item.entity === null">
-        {{item.text}}
+  <div class="text-wrapper">
+    <div class="author">
+      <span class="name"><a v-bind:href="author.url" target="_blank">{{author.name}}</a></span>
+      <span class="handle">@<a v-bind:href="author.url" target="_blank">{{author.handle}}</a></span>
+    </div>
+    <div class="text">
+      <template v-for="(item, index) in text">
+        <template v-if="item.entity === null">
+          {{item.text}}
+        </template>
+        <template v-else>
+          <a v-if="item.entity.entity_type === 'hashtags'"
+            v-bind:href="'https://twitter.com/hashtag/' + item.entity.text"
+            class="twitter-hashtag" target="_blank">{{item.text}}</a>
+          <a v-if="item.entity.entity_type === 'user_mentions'"
+            v-bind:href="'https://twitter.com/' + item.entity.screen_name"
+            class="twitter-mention" target="_blank"
+            title="item.entity.name">{{item.text}}</a>
+          <a v-if="item.entity.entity_type === 'urls'"
+            v-bind:href="item.entity.expanded_url"
+            class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
+          <a v-if="item.entity.entity_type === 'media'"
+            v-bind:href="item.entity.expanded_url"
+            class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
+        </template>
       </template>
-      <template v-else>
-        <a v-if="item.entity.entity_type === 'hashtags'"
-          href="https://twitter.com/hashtag/{{item.entity.text}}"
-          class="twitter-hashtag" target="_blank">{{item.text}}</a>
-        <a v-if="item.entity.entity_type === 'user_mentions'"
-          href="https://twitter.com/{{item.entity.screen_name}}"
-          class="twitter-mention" target="_blank"
-          title="item.entity.name"
-          title="item.entity.name">{{item.text}}</a>
-        <a v-if="item.entity.entity_type === 'urls'"
-          href="{{item.entity.expanded_url}}"
-          class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
-        <a v-if="item.entity.entity_type === 'media'"
-          href="{{item.entity.expanded_url}}"
-          class="twitter-entity" target="_blank">{{item.entity.display_url}}</a>
+    </div>
+    <div class="media" v-if="mediatype !== 'none'">
+      <template v-if="mediatype == 'video'">
+        <template v-for="video in extended">
+          <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url"/>
+        </template>
       </template>
-    </template>
+      <template v-if="mediatype == 'photo'">
+        <template v-for="photo in extended">
+          <a :href="photo.media_url" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + photo.media_url + ')'}"></a>
+        </template>
+      </template>
+      <template v-if="mediatype == 'youtube'">
+        <div class="iframe-container" :style="oembed.style" v-html="oembed.html" />
+      </template>
+    </div>
   </div>
-  <div class="media" v-if="mediatype !== 'none'">
-    <template v-if="mediatype == 'video'">
-      <template v-for="video in extended">
-        <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url"/>
-      </template>
-    </template>
-    <template v-if="mediatype == 'photo'">
-      <template v-for="photo in extended">
-        <a :href="photo.media_url" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + photo.media_url + ')'}"></a>
-      </template>
-    </template>
-    <template v-if="mediatype == 'youtube'">
-      <div class="iframe-container" :style="oembed.style">
-        {{{oembed.html}}}
-      </div>
-    </template>
+  <div class="meta">
+    <div class="date">{{data.created | date}}</div>
+    <div v-if="shares > 0" class="shares">{{shares}} <icon name="material-repeat"></icon></div>
+    <div v-if="likes > 0" class="likes">{{likes}} <icon name="material-star"></icon></div>
+    <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
+    <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
   </div>
-</div>
-<div class="meta">
-  <div class="date">{{data.created | date}}</div>
-  <div v-if="shares > 0" class="shares">{{shares}} <icon name="material-repeat"></icon></div>
-  <div v-if="likes > 0" class="likes">{{likes}} <icon name="material-star"></icon></div>
-  <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
-  <a class="link" href="{{link}}" target="_blank"><icon name="material-link"></icon></a>
 </div>

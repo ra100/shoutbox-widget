@@ -1,4 +1,4 @@
-<div class="shoutbox-wrapper {{mode}}">
+<div v-bind:class="'shoutbox-wrapper ' + mode">
   <div class="shoutbox-widget">
     <div class="shoutbox-header">
       <div class="shoutbox-title">
@@ -37,7 +37,9 @@
       <template v-else>
         <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové zprávy ({{newmessages.length}})</div>
       </template>
-      <sh-message v-for="message in messages" :data="message" track-by="id" transition="fade-in" stagger="50" />
+      <transition-group name="fade-in">
+        <sh-message v-for="message in messages" :data="message" v-bind:key="message.id" stagger="50" />
+      </transition-group>
     </div>
     <div class="pagination-wrapper">
       <sh-pagination :page="page" :count="messages ? messages.length : 0" />

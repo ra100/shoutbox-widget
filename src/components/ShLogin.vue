@@ -3,8 +3,10 @@
 <script>
 import request from 'superagent'
 import Vue from 'vue'
-import Validator from 'vue-validator'
-Vue.use(Validator)
+import VueValidator from 'vue-validator'
+Vue.use(VueValidator)
+
+const eventHub = new Vue()
 
 export default {
   data() {
@@ -18,11 +20,9 @@ export default {
       name: this.name || ''
     }
   },
-  computed() {
-    return {
-      matchPassword: function () {
-        return this.password === this.reenteredPassword
-      }
+  computed: {
+    matchPassword: function () {
+      return this.password === this.reenteredPassword
     }
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
     twitterLogin() {
       this.form = false
       let uload = () => {
-        this.$dispatch('user-load')
+        eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/twitter', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -54,7 +54,7 @@ export default {
     facebookLogin() {
       this.form = false
       let uload = () => {
-        this.$dispatch('user-load')
+        eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/facebook', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -67,7 +67,7 @@ export default {
     instagramLogin() {
       this.form = false
       let uload = () => {
-        this.$dispatch('user-load')
+        eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/instagram', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -80,7 +80,7 @@ export default {
     soundcloudLogin() {
       this.form = false
       let uload = () => {
-        this.$dispatch('user-load')
+        eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -111,7 +111,7 @@ export default {
        .then(res => {
          this.loading = false
          if (res.ok && res.body && res.body.status !== 'error') {
-           this.$dispatch('user-load')
+           eventHub.$emit('user-load')
          } else {
            this.error = 'Chyba při přihlašování'
          }
@@ -141,7 +141,7 @@ export default {
        }).then(res => {
          this.loading = false
          if (res.ok && res.body && res.body.status !== 'error') {
-           this.$dispatch('user-load')
+           eventHub.$emit('user-load')
          } else {
            this.error = res.body.message
          }
@@ -152,6 +152,9 @@ export default {
     },
     resetPassword() {
       this.$resetValidation()
+    },
+    handleValidate: function (e) {
+      e.target.$validity.validate()
     }
   }
 }

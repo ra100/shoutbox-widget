@@ -227,14 +227,14 @@ body {
   }
 }
 
-.fade-in-transition {
+.fade-in-enter-active,
+.fade-in-leave-active {
   height: auto;
   opacity: 1;
   transition: all 1s ease;
 }
 
-.fade-in-enter,
-.fade-in-leave {
+.fade-in-enter {
   height: 0;
   opacity: 0;
 }

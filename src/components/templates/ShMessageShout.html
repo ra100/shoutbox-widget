@@ -1,18 +1,20 @@
-<div class="avatar">
-  <img :src="author.picture" />
-</div>
-<div class="text-wrapper">
-  <div class="author">
-    <span class="name">{{author.name}}</span>
+<div class="message-root">
+  <div class="avatar">
+    <img :src="author.picture" />
   </div>
-  <div class="text">
-    {{text}}
+  <div class="text-wrapper">
+    <div class="author">
+      <span class="name">{{author.name}}</span>
+    </div>
+    <div class="text">
+      {{text}}
+    </div>
+    <div class="media" v-if="mediatype === 'photo'">
+      <a :href="extended.large.path" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + extended.thumb.path + ')'}"></a>
+    </div>
   </div>
-  <div class="media" v-if="mediatype === 'photo'">
-    <a :href="extended.large.path" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + extended.thumb.path + ')'}"></a>
+  <div class="meta">
+    <div class="date">{{data.created | date}}</div>
+    <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
   </div>
-</div>
-<div class="meta">
-  <div class="date">{{data.created | date}}</div>
-  <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
 </div>
