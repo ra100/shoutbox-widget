@@ -6,6 +6,9 @@
     </video>
   </template>
   <template v-else>
-    <img :src="img" v-on:click="play"/>
+    <img :src="img"/>
+    <div class="play-wrapper" @click="play">
+      <icon class="play" name="material-play_circle_outline"/>
+    </div>
   </template>
 </div>

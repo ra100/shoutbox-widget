@@ -116,6 +116,12 @@
   float: left;
 }
 
+.media {
+  float: left;
+  margin-top: 10px;
+  width: 100%;
+}
+
 .meta {
   border-top: 1px solid $shoutbox-bg;
   color: $author-handle-color;

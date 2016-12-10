@@ -83,7 +83,7 @@ module.exports = {
       {test: /vue-icons/, loader: 'callback-loader'}
     ]
   },
-  callbackLoader: require('vue-icons/icon-loader')(['material-link', 'material-repeat', 'material-star', 'material-reply']),
+  callbackLoader: require('vue-icons/icon-loader')(['material-link', 'material-repeat', 'material-star', 'material-reply', 'material-play_circle_outline']),
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },

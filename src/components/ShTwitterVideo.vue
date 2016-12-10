@@ -7,6 +7,9 @@ export default {
       play: this.play || false
     }
   },
+  components: {
+    icon: require('vue-icons')
+  },
   methods: {
     play() {
       this.play = true

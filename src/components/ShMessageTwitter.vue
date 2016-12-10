@@ -1,3 +1,4 @@
+<style lang="scss" src="./styles/ShTwitterVideo.scss"></style>
 <template lang="html" src="./templates/ShMessageTwitter.html"></template>
 <script>
 import ShTwitterVideo from './ShTwitterVideo.vue'

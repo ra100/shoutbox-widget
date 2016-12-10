@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.video {
+  float: left;
+  position: relative;
+}
+
+.play-wrapper {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  
+  &:hover {
+    .play {
+      color: $play-button-hover-color;
+    }
+  }
+}
+
+.play {
+  align-self: center;
+  color: $play-button-color;
+  font-size: 50px;
+  margin: auto;
+}
