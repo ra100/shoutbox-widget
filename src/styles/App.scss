@@ -1,14 +1,17 @@
-$shoutbox-bg: #eee;
-$wrapper-bg: #eee;
-$header-title-bg: #000;
-$header-title-color: #fff;
-$login-header-bg: #cda100;
-$login-header-color: #fff;
-$panel-border: #aaa;
+@import 'variables';
 
 body {
   font-family: Helvetica, sans-serif;
   font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .shoutbox-wrapper {
@@ -124,107 +127,10 @@ body {
   width: 14px;
 }
 
-.message {
-  clear: left;
+.messages {
   float: left;
-  font-size: 0.9em;
-  margin: 0 0 10px;
-  width: 100%;
-
-  .photo {
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: inline-block;
-    height: 70px;
-    width: 100px;
-  }
-
-  .video {
-    img {
-      cursor: pointer;
-      max-width: 100%;
-    }
-
-    video {
-      max-width: 100%;
-    }
-  }
-
-  .iframe-container {
-    clear: left;
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    position: relative;
-
-    iframe {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-  }
-}
-
-.avatar {
-  clear: left;
-  float: left;
-  margin: 0 5px 0 0;
-  width: 32px;
-
-  img {
-    float: left;
-    height: 32px;
-    width: 32px;
-  }
-}
-
-.author {
-  float: left;
-  margin: 0 0 10px;
-
-  .name {
-    clear: left;
-    float: left;
-    font-size: 1em;
-    font-weight: bold;
-  }
-
-  .handle {
-    clear: left;
-    float: left;
-    font-size: 0.8em;
-  }
-}
-
-.text-wrapper {
-  display: block;
-  float: left;
-}
-
-.text {
-  clear: left;
-  float: left;
-}
-
-.meta {
-  clear: left;
-  display: block;
-  float: left;
-
-  .likes,
-  .shares {
-    float: left;
-    margin-right: 5px;
-  }
-
-  .link {
-    float: left;
-    height: 1em;
-  }
+  width: calc(100% - 20px);
+  padding: 10px;
 }
 
 .fade-in-enter-active,

@@ -1,14 +1,16 @@
 <div class="message-root">
-  <div class="avatar">
-    <a v-bind:href="author.url" target="_blank">
-      <img :src="author.picture" />
-    </a>
+  <div class="author">
+    <div class="avatar">
+      <a v-bind:href="author.url" target="_blank">
+        <img :src="author.picture" />
+      </a>
+    </div>
+    <div class="author-name">
+      <span class="name"><a v-bind:href="author.url" target="_blank">{{author.name}}</a></span>
+      <span class="date"><a v-bind:href="link" target="_blank">{{data.created | date}}</a></span>
+    </div>
   </div>
   <div class="text-wrapper">
-    <div class="author">
-      <span class="name"><a v-bind:href="author.url" target="_blank">{{author.name}}</a></span>
-      <span class="handle">@<a v-bind:href="author.url" target="_blank">{{author.handle}}</a></span>
-    </div>
     <div class="text">
       <template v-for="(item, index) in text">
         <template v-if="item.entity === null">
@@ -48,10 +50,9 @@
     </div>
   </div>
   <div class="meta">
-    <div class="date">{{data.created | date}}</div>
-    <div v-if="shares > 0" class="shares">{{shares}} <icon name="material-repeat"></icon></div>
-    <div v-if="likes > 0" class="likes">{{likes}} <icon name="material-star"></icon></div>
-    <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
     <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="shares > 0" class="shares"><span>{{shares}}</span><icon name="material-repeat"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="likes > 0" class="likes"><span>{{likes}}</span><icon name="material-star"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="replies > 0" class="replies"></span>{{replies}}</span><icon name="material-reply"></icon></a>
   </div>
 </div>

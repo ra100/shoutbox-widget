@@ -1,0 +1,151 @@
+@import '../../styles/variables';
+
+.message-root {
+  float: left;
+  padding: 10px 10px 5px;
+}
+
+.message {
+  background: $message-bg;
+  clear: left;
+  float: left;
+  font-size: 0.9em;
+  margin: 0 0 3px;
+  width: 100%;
+
+  .photo {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: 70px;
+    width: 100px;
+  }
+
+  .video {
+    img {
+      cursor: pointer;
+      max-width: 100%;
+    }
+
+    video {
+      max-width: 100%;
+    }
+  }
+
+  .iframe-container {
+    clear: left;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    position: relative;
+
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+.avatar {
+  clear: left;
+  float: left;
+  margin: 0 10px 0 0;
+  width: 36px;
+
+  img {
+    float: left;
+    height: 36px;
+    width: 36px;
+  }
+}
+
+.author-name {
+  float: left;
+  max-width: calc(100% - 47px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.author {
+  float: left;
+  margin: 0 0 10px;
+  width: 100%;
+
+  .name {
+    clear: left;
+    color: $author-color;
+    float: left;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 3px;
+  }
+
+  .date {
+    clear: left;
+    color: $author-handle-color;
+    float: left;
+    font-size: 0.9em;
+    margin-top: 3px;
+  }
+}
+
+.text-wrapper {
+  color: $text-color;
+  display: block;
+  float: left;
+  font-size: 14px;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.text {
+  clear: left;
+  float: left;
+}
+
+.meta {
+  border-top: 1px solid $shoutbox-bg;
+  color: $author-handle-color;
+  clear: left;
+  display: block;
+  float: left;
+  margin: 5px -10px 0;
+  padding: 5px 10px 0;
+  width: 100%;
+
+  .likes,
+  .shares,
+  .link {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    height: 13px;
+    line-height: 13px;
+    margin-right: 10px;
+
+    span {
+      margin-right: 5px;
+      font-size: 13px;
+      height: 13px;
+      vertical-align: text-top;
+    }
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}

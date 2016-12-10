@@ -41,7 +41,7 @@ function sortByDate(a, b) {
 }
 
 Vue.filter('date', function(value) {
-  return dateFormat(new Date(value), 'd.m.yyyy H:MM:ss')
+  return dateFormat(new Date(value), 'd.m.yyyy H:MM')
 })
 
 const eventHub = new Vue()
@@ -101,7 +101,6 @@ const App = Vue.component('app', {
       })
     },
     processStream(data, err) {
-      console.log(data)
       return new Promise((resolve, reject) => {
         if (err) {
           return reject()

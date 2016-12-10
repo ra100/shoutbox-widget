@@ -1,3 +1,4 @@
+<style lang="scss" src="./styles/ShMessage.scss"></style>
 <template lang="html" src="./templates/ShMessage.html"></template>
 <script>
 import ShMessageTwitter from './ShMessageTwitter.vue'
