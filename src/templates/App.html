@@ -32,10 +32,10 @@
     </div>
     <div class="messages">
       <template v-if="page === 0">
-        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové zprávy ({{newmessages.length}})</div>
+        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
       </template>
       <template v-else>
-        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové zprávy ({{newmessages.length}})</div>
+        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové [{{newmessages.length}}]</div>
       </template>
       <transition-group
         appear

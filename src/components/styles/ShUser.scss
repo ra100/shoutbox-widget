@@ -16,3 +16,16 @@ $link-color: #2e6fb3;
 .float-panel {
   top: 85px;
 }
+
+.avatar {
+  clear: left;
+  float: left;
+  margin: 0 10px 0 0;
+  width: 32px;
+
+  img {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+}

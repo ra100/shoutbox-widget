@@ -147,3 +147,14 @@ a {
 .button.expand {
   float: right;
 }
+
+.new-messages {
+  background: $message-bg;
+  color: $link-color;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
+  padding: 10px;
+  text-align: center;
+  width: calc(100% - 20px);
+}
