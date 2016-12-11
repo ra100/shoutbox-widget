@@ -23,12 +23,10 @@ const socket = io.socket
 
 const favicon = new Favico()
 window.CSRF = ''
+window.sailsURL = io.sails.url
 
 request.get(`${io.sails.url}/csrfToken`).then(res => {
   window.CSRF = res.body._csrf
-  io.sails.headers = {
-    'X-CSRF-Token': res.body._csrf
-  }
 })
 
 function sortByDate(a, b) {
@@ -96,8 +94,15 @@ const App = Vue.component('app', {
     },
     getStream() {
       return new Promise((resolve, reject) => {
-        socket.get('/streams/public', {
-          name: this.name
+        socket.request({
+          method: 'get',
+          url: '/streams/public',
+          data: {
+            name: this.name
+          },
+          headers: {
+            'X-CSRF-Token': window.CSRF
+          }
         }, resolve)
       })
     },
@@ -114,9 +119,16 @@ const App = Vue.component('app', {
     getMessages() {
       let skip = this.page * PER_PAGE + this.newmessages.length
       return new Promise((resolve, reject) => {
-        socket.get('/streams/messages', {
-          id: this.id,
-          skip: skip
+        socket.request({
+          method: 'get',
+          url: '/streams/messages',
+          data: {
+            id: this.id,
+            skip: skip
+          },
+          headers: {
+            'X-CSRF-Token': window.CSRF
+          }
         }, resolve)
       })
     },
@@ -189,7 +201,13 @@ const App = Vue.component('app', {
       favicon.badge(this.newmessages.length)
     },
     getUser() {
-      socket.get('/users/me', null, (data, resp) => {
+      socket.request({
+        method: 'get',
+        url: '/users/me',
+        headers: {
+          'X-CSRF-Token': window.CSRF
+        }
+      }, (data, resp) => {
         if (resp.statusCode !== 200) {
           this.user = undefined
         } else {
@@ -205,10 +223,8 @@ const App = Vue.component('app', {
     },
     renewCsrf(callback) {
       request.get(`${io.sails.url}/csrfToken`).then(res => {
+        console.log(res.body)
         window.CSRF = res.body._csrf
-        io.sails.headers = {
-          'X-CSRF-Token': res.body._csrf
-        }
         if (callback) {
           callback(res.body._csrf)
         }

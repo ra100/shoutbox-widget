@@ -22,8 +22,11 @@ export default {
     }
   },
   computed: {
-    matchPassword: function () {
+    matchPassword: () => {
       return this.password === this.reenteredPassword
+    },
+    passwordLength: () => {
+      return this.password.length >= 8
     }
   },
   methods: {

@@ -122,7 +122,14 @@ export default {
         if (e.entity && e.entity.expanded_url) {
           // Match youtube and insert oembed
           if (e.entity.expanded_url.match(youtubePattern)) {
-            this.socket.get('/oembed/youtube', {url: e.entity.expanded_url}, (data, err) => {
+            this.socket.request({
+              method: 'get',
+              url: '/oembed/youtube',
+              data: { url: e.entity.expanded_url },
+              headers: {
+                'X-CSRF-Token': window.CSRF
+              }
+            }, (data, err) => {
               if (err.statusCode !== 200) {
                 return console.error(err)
               }

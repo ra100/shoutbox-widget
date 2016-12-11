@@ -1,5 +1,7 @@
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
+import request from 'superagent'
+let retry = 0
 export default {
   props: ['user', 'socket'],
   data() {
@@ -24,14 +26,31 @@ export default {
           name: this.file.name
         }
       }
-      this.socket.post('/messages/submit', payload, (data, err) => {
-        this.loading = false
-        if (data.message) {
-          this.$parent.addMessage(data.message)
-          this.$parent.mergeMessages()
-          this.resetInput()
-        }
-      })
+      request
+        .post(window.sailsURL + '/messages/submit')
+        .send(payload)
+        .set('X-CSRF-Token', window.CSRF)
+        .end((err, data) => {
+          this.loading = false
+          if (err || !data.ok) {
+            if (data.text === 'CSRF mismatch' && retry < 3) {
+              retry++
+              this.$parent.renewCsrf(this.postMessage)
+              return
+            } else {
+              retry = 0
+              console.error(err)
+              this.error = 'Chyba odeslání'
+              return
+            }
+          }
+          retry = 0
+          if (data.body.message) {
+            this.$parent.addMessage(data.message)
+            this.$parent.mergeMessages()
+            this.resetInput()
+          }
+        })
     },
     resetInput() {
       this.error = false

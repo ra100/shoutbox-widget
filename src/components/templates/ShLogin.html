@@ -7,7 +7,7 @@
     <button @click="facebookLogin" class="login-option fb">Facebook</button>
     <button @click="emailLogin" class="login-option email">E-mail</button>
   </div>
-  <div class="float-panel email-login" v-if='form'>
+  <div class="float-panel email-login" v-show='form'>
     <div class="az"></div>
     <validation name="validation1">
       <div class="form-login" v-if="page === 'login'">
@@ -46,7 +46,7 @@
         </div>
         <div class="input-wrapper">
           <label for="sh-password">Heslo</label>
-          <validity field="sh-password" :validators="{required: true, minlength: 8}">
+          <validity field="sh-password" :validators="{required: true}">
             <input type="password" id="sh-password" v-model="password" initial="off" @input="handleValidate" @focusout="handleValidate"/>
           </validity>
         </div>
@@ -57,7 +57,7 @@
           </validity>
         </div>
         <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
-        <div class="error" v-show="$validation.validation1 && $validation.validation1['sh-password'].minlength">Heslo musí být aspoň 8 znaků dlouhé</div>
+        <div class="error" v-show="!passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>
         <div class="error" v-if="error">{{error}}</div>
         <button @click="register" :disabled="!$validation.validation1 || !$validation.validation1.touched || !$validation.validation1.valid">Zaregistrovat</button>
         <div class="links">
