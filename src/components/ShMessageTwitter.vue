@@ -52,7 +52,7 @@ export default {
       mediatype: this.mediatype || m.mediaType,
       oembed: this.oembed || null,
       extended: m.metadata.media_ext,
-      replies: m.relatedMessage.length
+      replies: m.relatedMessage ? m.relatedMessage.length : 0
     }
   },
   components: {
