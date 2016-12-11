@@ -39,9 +39,14 @@
           <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url"/>
         </template>
       </template>
-      <template v-if="mediatype == 'photo'">
+      <template v-if="mediatype == 'gallery'">
         <template v-for="photo in extended">
           <sh-image :thumb="photo.media_url" :img="photo.media_url" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
+        </template>
+      </template>
+      <template v-if="mediatype == 'photo'">
+        <template v-for="photo in extended">
+          <sh-image class="photo-single" :thumb="photo.media_url" :img="photo.media_url" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
         </template>
       </template>
       <template v-if="mediatype == 'youtube'">

@@ -1,5 +1,5 @@
 <span>
-  <span v-if="!show" class="photo" @click="maximize" :style="{'background-image': 'url(' + img + ')', 'height': ((height / width) * 140) + 'px'}">
+  <span v-if="!show" class="photo" @click="maximize" :style="{'background-image': 'url(' + img + ')', 'padding-bottom': ((height / width) * 100) + '%'}">
   </span>
   <div v-else class="lightbox-wrapper" @click="minimize" @blur="minimize">
     <img :src="img"/>

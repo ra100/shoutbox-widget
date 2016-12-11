@@ -122,7 +122,7 @@ const App = Vue.component('app', {
     },
     processMessages(data, err) {
       return new Promise((resolve, reject) => {
-        if (err) {
+        if (err || !data) {
           return reject(err)
         }
         while (data.length < 9 && (this.messages.length + data.length) >= 9) {

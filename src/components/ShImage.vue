@@ -29,7 +29,6 @@ export default {
     },
     minimize() {
       document.onkeydown = null
-      console.log('Minimiiiize')
       this.show = false
     }
   }
