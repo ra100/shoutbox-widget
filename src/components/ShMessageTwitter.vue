@@ -2,6 +2,8 @@
 <template lang="html" src="./templates/ShMessageTwitter.html"></template>
 <script>
 import ShTwitterVideo from './ShTwitterVideo.vue'
+import ShImage from './ShImage.vue'
+import icon from 'vue-icons'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
 const youtubePattern = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-_]*)/g
 
@@ -55,7 +57,8 @@ export default {
   },
   components: {
     ShTwitterVideo,
-    icon: require('vue-icons')
+    ShImage,
+    icon
   },
   methods: {
     // split text into chunks so we can join it in template with formatted hashtags,

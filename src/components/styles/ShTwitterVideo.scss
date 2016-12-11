@@ -12,17 +12,23 @@
   position: absolute;
   top: 0;
   width: 100%;
-  
+
   &:hover {
     .play {
+      background: rgba(250, 250, 250, .7);
       color: $play-button-hover-color;
+      transition: background-color .3s ease-in, color .3s ease-in;
     }
   }
 }
 
 .play {
   align-self: center;
+  background: rgba(50, 50, 50, .7);
+  border-radius: 50%;
   color: $play-button-color;
+  height: 75px;
   font-size: 75px;
   margin: auto;
+  transition: background-color .3s ease-in, color .3s ease-in;
 }

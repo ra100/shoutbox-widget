@@ -1,0 +1,24 @@
+.photo {
+  cursor: pointer;
+}
+
+.lightbox-wrapper {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 20px);
+  left: 0;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 20px);
+
+  img {
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+  }
+}

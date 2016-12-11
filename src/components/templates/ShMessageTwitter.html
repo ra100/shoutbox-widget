@@ -41,7 +41,7 @@
       </template>
       <template v-if="mediatype == 'photo'">
         <template v-for="photo in extended">
-          <a :href="photo.media_url" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + photo.media_url + ')'}"></a>
+          <sh-image :thumb="photo.media_url" :img="photo.media_url" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
         </template>
       </template>
       <template v-if="mediatype == 'youtube'">
