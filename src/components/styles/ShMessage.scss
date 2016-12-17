@@ -75,6 +75,8 @@
 }
 
 .author {
+  background-position: top right;
+  background-repeat: no-repeat;
   float: left;
   margin: 0 0 10px;
   width: 100%;
@@ -95,6 +97,14 @@
     font-size: 0.9em;
     margin-top: 3px;
   }
+}
+
+.twitter .author {
+  background-image: url('/static/src_tw.png');
+}
+
+.shout .author {
+  background-image: url('/static/src_R_uni.png')
 }
 
 .text-wrapper {

@@ -1,11 +1,14 @@
 <div class="message-root">
-  <div class="avatar">
-    <img :src="author.picture" />
+  <div class="author">
+    <div class="avatar">
+      <img :src="author.picture" />
+    </div>
+    <div class="author-name">
+      <span class="name"><a v-bind:href="author.url" target="_blank">{{author.name}}</a></span>
+      <span class="date">{{data.created | date}}</span>
+    </div>
   </div>
   <div class="text-wrapper">
-    <div class="author">
-      <span class="name">{{author.name}}</span>
-    </div>
     <div class="text">
       {{text}}
     </div>
@@ -13,8 +16,7 @@
       <a :href="extended.large.path" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + extended.thumb.path + ')'}"></a>
     </div>
   </div>
-  <div class="meta">
-    <div class="date">{{data.created | date}}</div>
+  <div class="meta" v-if="replies > 0">
     <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
   </div>
 </div>

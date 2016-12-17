@@ -36,17 +36,17 @@
     <div class="media" v-if="mediatype !== 'none'">
       <template v-if="mediatype == 'video'">
         <template v-for="video in extended">
-          <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url"/>
+          <sh-twitter-video :variants="video.video_info.variants" :img="video.media_url_https"/>
         </template>
       </template>
       <template v-if="mediatype == 'gallery'">
         <template v-for="photo in extended">
-          <sh-image :thumb="photo.media_url" :img="photo.media_url" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
+          <sh-image :thumb="photo.media_url_https" :img="photo.media_url_https" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
         </template>
       </template>
       <template v-if="mediatype == 'photo'">
         <template v-for="photo in extended">
-          <sh-image class="photo-single" :thumb="photo.media_url" :img="photo.media_url" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
+          <sh-image class="photo-single" :thumb="photo.media_url_https" :img="photo.media_url_https" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
         </template>
       </template>
       <template v-if="mediatype == 'youtube'">

@@ -3,10 +3,9 @@
 <script>
 import request from 'superagent'
 import Vue from 'vue'
-import VueValidator from 'vue-validator'
-Vue.use(VueValidator)
+import VeeValidate from 'vee-validate'
 
-const eventHub = new Vue()
+Vue.use(VeeValidate)
 
 export default {
   props: ['socket'],
@@ -18,37 +17,36 @@ export default {
       email: this.email || '',
       password: this.password || '',
       reenteredPassword: this.reenteredPassword || '',
-      name: this.name || ''
-    }
-  },
-  computed: {
-    matchPassword: () => {
-      return this.password === this.reenteredPassword
-    },
-    passwordLength: () => {
-      return this.password.length >= 8
+      name: this.name || '',
+      errors: this.$validator.errorBag,
+      matchPassword: () => {
+        return this.password === this.reenteredPassword
+      },
+      passwordLength: () => {
+        return this.password.length >= 8
+      }
     }
   },
   methods: {
     switchLogin() {
+      this.$validator.errorBag.clear()
       this.page = 'login'
     },
     switchRegister() {
+      this.$validator.errorBag.clear()
       this.page = 'register'
     },
     switchForgotten() {
+      this.$validator.errorBag.clear()
       this.page = 'forgotten'
     },
     twitterLogin() {
       this.form = false
-      let uload = () => {
-        eventHub.$emit('user-load')
-      }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/twitter', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
-          uload()
+          window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
@@ -58,7 +56,7 @@ export default {
     facebookLogin() {
       this.form = false
       let uload = () => {
-        eventHub.$emit('user-load')
+        window.eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/facebook', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -71,7 +69,7 @@ export default {
     instagramLogin() {
       this.form = false
       let uload = () => {
-        eventHub.$emit('user-load')
+        window.eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/instagram', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -84,7 +82,7 @@ export default {
     soundcloudLogin() {
       this.form = false
       let uload = () => {
-        eventHub.$emit('user-load')
+        window.eventHub.$emit('user-load')
       }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
@@ -95,10 +93,13 @@ export default {
       }, 1000)
     },
     login() {
+      this.$validator.validateAll()
+      if (this.errors.any()) {
+        return
+      }
       if (!this.email || !this.password) {
         return
       }
-      this.$resetValidation()
       this.error = false
       this.loading = true
       let csrf = window.CSRF
@@ -115,7 +116,7 @@ export default {
        .then(res => {
          this.loading = false
          if (res.ok && res.body && res.body.status !== 'error') {
-           eventHub.$emit('user-load')
+           window.eventHub.$emit('user-load')
          } else {
            this.error = 'Chyba při přihlašování'
          }
@@ -129,7 +130,6 @@ export default {
         this.error = 'Hesla se musí shodovat.'
         return
       }
-      this.$resetValidation()
       this.loading = true
       let csrf = window.CSRF
       request
@@ -145,7 +145,7 @@ export default {
        }).then(res => {
          this.loading = false
          if (res.ok && res.body && res.body.status !== 'error') {
-           eventHub.$emit('user-load')
+           window.eventHub.$emit('user-load')
          } else {
            this.error = res.body.message
          }
@@ -154,9 +154,7 @@ export default {
          this.error = 'Chyba při registraci'
        })
     },
-    resetPassword() {
-      this.$resetValidation()
-    },
+    resetPassword() {},
     handleValidate: function (e) {
       e.target.$validity.validate()
     }

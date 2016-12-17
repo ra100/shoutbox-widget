@@ -1,5 +1,7 @@
 <template lang="html" src="./templates/ShTwitterVideo.html"></template>
 <script>
+import icon from 'vue-icons'
+
 export default {
   props: ['variants', 'img'],
   data() {
@@ -8,7 +10,7 @@ export default {
     }
   },
   components: {
-    icon: require('vue-icons')
+    icon
   },
   methods: {
     play() {

@@ -6,7 +6,7 @@
           <textarea name="message" v-model="message"></textarea>
           <input type="file" ref="upload" name="upload" accept="image/*" @change="onFileChange" />
         </form>
-        <button v-if="message && message.length > 0" v-on:click="postMessage">Odeslat</button>
+        <div v-if="message && message.length > 0" v-on:click="postMessage">Odeslat</div>
       </div>
     </transition>
   </template>

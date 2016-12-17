@@ -43,7 +43,7 @@ Vue.filter('date', function(value) {
   return dateFormat(new Date(value), 'd.m.yyyy H:MM')
 })
 
-const eventHub = new Vue()
+window.eventHub = new Vue()
 
 const App = Vue.component('app', {
   components: {
@@ -70,8 +70,8 @@ const App = Vue.component('app', {
   },
   created() {
     socket.on('stream', this.processEvent)
-    eventHub.$on('user-load', this.getUser)
-    eventHub.$on('user-form', this.showUserForm)
+    window.eventHub.$on('user-load', this.getUser)
+    window.eventHub.$on('user-form', this.showUserForm)
     this.newmessages = []
     this.page = 0
     this.getName()
@@ -83,8 +83,8 @@ const App = Vue.component('app', {
     this.getUser()
   },
   beforeDestroy() {
-    eventHub.$off('user-load', this.getUser)
-    eventHub.$off('user-form', this.showUserForm)
+    window.eventHub.$off('user-load', this.getUser)
+    window.eventHub.$off('user-form', this.showUserForm)
   },
   methods: {
     getName() {
@@ -223,7 +223,6 @@ const App = Vue.component('app', {
     },
     renewCsrf(callback) {
       request.get(`${io.sails.url}/csrfToken`).then(res => {
-        console.log(res.body)
         window.CSRF = res.body._csrf
         if (callback) {
           callback(res.body._csrf)

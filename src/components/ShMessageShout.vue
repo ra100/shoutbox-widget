@@ -1,7 +1,12 @@
 <template lang="html" src="./templates/ShMessageShout.html"></template>
 <script>
+import icon from 'vue-icons'
+
 export default {
   props: ['data'],
+  components: {
+    icon
+  },
   data() {
     let m = this.data
     let r = m.relatedMessage

@@ -128,11 +128,12 @@ input {
 
 .form-login,
 .form-register {
-  button {
+  .button {
     background: $link-color;
     border: none;
     color: #fff;
     cursor: pointer;
+    display: inline-block;
     font-size: 14px;
     line-height: 35px;
     margin-top: 18px;

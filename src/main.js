@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueValidator from 'vue-validator'
+import VeeValidate from 'vee-validate'
 
 /* eslint-disable no-new */
-Vue.use(VueValidator)
+Vue.use(VeeValidate)
 new Vue({
   el: '#shoutbox-widget',
   template: '<App/>',
