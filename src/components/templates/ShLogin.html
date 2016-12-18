@@ -17,7 +17,7 @@
           </div>
           <div class="input-wrapper">
             <label for="password">Heslo</label>
-            <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:6" :class="{'invalid': errors.has('password')}"/>
+            <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid': errors.has('password')}"/>
           </div>
           <div class="error" v-if="error">{{error}}</div>
         </form>
@@ -39,11 +39,11 @@
         </div>
         <div class="input-wrapper">
           <label for="password">Heslo</label>
-          <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:6" :class="{'invalid': errors.has('password')}"/>
+          <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid': errors.has('password')}"/>
         </div>
         <div class="input-wrapper">
           <label for="password">Kontrola hesla</label>
-          <input type="password" id="reentered-password" v-model="reenteredPassword" name="reenteredPassword" v-validate data-vv-rules="required|min:7" :class="{'invalid': errors.has('reenteredPassword')}"/>
+          <input type="password" id="reentered-password" v-model="reenteredPassword" name="reenteredPassword" v-validate data-vv-rules="required|min:8" :class="{'invalid': errors.has('reenteredPassword')}"/>
         </div>
         <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
         <div class="error" v-show="!passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>

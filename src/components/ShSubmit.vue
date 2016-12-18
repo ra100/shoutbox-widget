@@ -31,7 +31,6 @@ export default {
       let payload = {
         message: this.message,
         stream: this.$parent._data.id
-        // _csrf: window.CSRF
       }
       if (typeof this.file !== 'undefined') {
         payload.image = {
