@@ -279,6 +279,7 @@ const App = Vue.component('app', {
       if (this.submitvisible) {
         this.submitvisible = !this.submitvisible
         this.loginvisible = false
+        this.uservisible = false
         return
       }
       if (!this.user) {
@@ -287,6 +288,7 @@ const App = Vue.component('app', {
       } else {
         this.submitvisible = true
         this.loginvisible = false
+        this.uservisible = false
       }
     },
     userShow() {
