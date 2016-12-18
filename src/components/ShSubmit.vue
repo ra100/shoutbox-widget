@@ -60,6 +60,7 @@ export default {
           if (data.body.message) {
             this.$parent.addMessage(data.body.message)
             this.$parent.mergeMessages()
+            this.$parent.submitHide()
             this.resetInput()
           }
         })
