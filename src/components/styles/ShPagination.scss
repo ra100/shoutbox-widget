@@ -1,0 +1,47 @@
+$button-border: #aaa;
+$button-bg: #fff;
+$text-color: #333;
+
+.pagination-wrapper {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.pagination {
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  padding: 0 10px 10px;
+
+  button {
+    background-color: $button-bg;
+    border: 1px solid $button-border;
+    color: $text-color;
+    cursor: pointer;
+    flex: 1;
+    font-size: 16px;
+    line-height: 20px;
+    margin: auto;
+    max-width: 20px;
+    padding: 0;
+
+    &.first {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: $button-border;
+      border-color: $button-bg;
+      color: $button-bg;
+    }
+  }
+
+  span {
+    color: $text-color;
+    flex: 1;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+  }
+}
