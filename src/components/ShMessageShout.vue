@@ -1,10 +1,12 @@
 <template lang="html" src="./templates/ShMessageShout.html"></template>
 <script>
+import ShImage from './ShImage'
 import icon from 'vue-icons'
 
 export default {
-  props: ['data'],
+  props: ['data', 'feedType'],
   components: {
+    ShImage,
     icon
   },
   data() {

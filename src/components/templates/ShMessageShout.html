@@ -1,4 +1,4 @@
-<div class="message-root">
+<div :class="{'message-root': true, 'admin': feedType == 'admin'}">
   <div class="author">
     <div class="avatar">
       <img :src="author.picture" />
@@ -13,7 +13,7 @@
       {{text}}
     </div>
     <div class="media" v-if="mediatype === 'photo'">
-      <a :href="extended.large.path" target="_blank" class="photo" v-bind:style="{'background-image': 'url(' + extended.thumb.path + ')'}"></a>
+      <sh-image class="photo-single" :thumb="extended.medium.path" :img="extended.original.path" :width="extended.large.width" :height="extended.large.height"/>
     </div>
   </div>
   <div class="meta" v-if="replies > 0">

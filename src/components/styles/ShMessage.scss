@@ -104,7 +104,11 @@
 }
 
 .shout .author {
-  background-image: url('/static/src_R_uni.png')
+  background-image: url('/static/src_R_uni.png');
+}
+
+.shout .admin .author {
+  background-image: url('/static/src_R_wave.png');
 }
 
 .text-wrapper {

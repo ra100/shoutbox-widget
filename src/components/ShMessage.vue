@@ -3,23 +3,21 @@
 <script>
 import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
+
+const feedType = type => ({
+  twitter_hashtag: 'twitter',
+  twitter_user: 'twitter',
+  admin: 'shout',
+  form: 'shout'
+}[type])
+
 export default {
   props: ['data', 'socket'],
   data() {
     let m = this.data
     let type = m.feedType
-    switch (type) {
-      case 'twitter_hashtag':
-      case 'twitter_user':
-        type = 'twitter'
-        break
-      case 'admin':
-      case 'form':
-        type = 'shout'
-        break
-    }
     return {
-      type: type
+      type: feedType(type)
     }
   },
   components: {
