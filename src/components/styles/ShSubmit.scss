@@ -1,0 +1,87 @@
+$link-color: #2e6fb3;
+$options-bg: #ddd;
+$options-color: #555;
+$remove-color: rgb(204, 81, 73);
+
+.field-image-input {
+  display: none;
+}
+
+.field-image-button {
+  color: $options-color;
+  cursor: pointer;
+  font-size: 22px;
+  float: left;
+
+  &:hover {
+    color: $link-color;
+  }
+}
+
+.field-image-remove {
+  color: $remove-color;
+  cursor: pointer;
+  font-size: 22px;
+  float: left;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.field-image-image {
+  float: left;
+  display: block;
+  margin-left: 10px;
+  max-height: 50px;
+  max-width: 50px;
+}
+
+.image-name {
+  float: left;
+  line-height: 28px;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.submit-message {
+  .az {
+    left: auto;
+    right: 43px;
+  }
+
+  .button {
+    background: $link-color;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+
+    &:disabled {
+      opacity: .5;
+    }
+  }
+
+  textarea {
+    box-shadow: #ccc 0px 2px 7px 0px inset;
+    border: none;
+    clear: left;
+    color: $options-color;
+    float: left;
+    margin-bottom: 12px;
+    max-width: calc(100% - 12px);
+    padding: 6px;
+    width: calc(100% - 12px);
+    font-size: 14px;
+
+    &:active, &:focus {
+      outline: none;
+      box-shadow: rgb(24, 148, 255) 0px 2px 7px 0px inset;
+    }
+  }
+}

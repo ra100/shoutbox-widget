@@ -14,6 +14,14 @@ a {
   }
 }
 
+.error {
+  width: 100%;
+  display: block;
+  float: left;
+  padding: 10px 0 0;
+  color: $error-color;
+}
+
 .shoutbox-wrapper {
   display: block;
   float: left;
