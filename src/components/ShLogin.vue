@@ -118,11 +118,15 @@ export default {
          if (res.ok && res.body && res.body.status !== 'error') {
            window.eventHub.$emit('user-load')
          } else {
-           this.error = 'Chyba při přihlašování'
+           if (res.body.error === 'Error.Passport.Already.Authenticated') {
+             window.eventHub.$emit('user-load')
+             return
+           }
+           this.error = res.body.error || 'Chyba při přihlašování'
          }
-       }).catch((err) => {
-         console.error(err)
-         this.error = 'Chyba při přihlašování'
+       }).catch(err => {
+         console.error(err.response)
+         this.error = (err.response.body && err.response.body.error) ? err.response.body.error : 'Chyba při přihlašování'
        })
     },
     register() {
