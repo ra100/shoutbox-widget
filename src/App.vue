@@ -14,6 +14,7 @@ import dateFormat from 'dateformat'
 import Favico from 'favico.js'
 import request from 'superagent'
 import Velocity from 'velocity-animate'
+import linkify from 'vue-linkify'
 
 const PER_PAGE = 10
 
@@ -42,6 +43,8 @@ function sortByDate(a, b) {
 Vue.filter('date', function(value) {
   return dateFormat(new Date(value), 'd.m.yyyy H:MM')
 })
+
+Vue.directive('linkified', linkify)
 
 window.eventHub = new Vue()
 

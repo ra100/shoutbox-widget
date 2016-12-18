@@ -1,6 +1,6 @@
 <div v-bind:class="'message ' + type">
   <template v-if="type == 'shout'">
-    <sh-message-shout :data="data" :feed-type="data.feedType"/>
+    <sh-message-shout :data="data" :feed-type="data.feedType" :socket="socket"/>
   </template>
   <template v-if="type == 'twitter'">
     <sh-message-twitter v-if="type == 'twitter'" :data="data" :socket="socket"/>
