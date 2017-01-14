@@ -132,6 +132,8 @@
 .text {
   clear: left;
   float: left;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .media {
