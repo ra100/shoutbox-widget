@@ -2,7 +2,7 @@
 <script>
 import ShImage from './ShImage'
 import icon from 'vue-icons'
-const youtubePattern = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-_]*)/g
+import {youtubePattern, processEmbedData} from './utils'
 
 export default {
   props: ['data', 'feedType', 'socket'],
@@ -40,9 +40,9 @@ export default {
           if (err.statusCode !== 200) {
             return console.error(err)
           }
-          this.mediatype = 'youtube'
-          data.style = 'padding-bottom: ' + (data.height / data.width * 100) + '%;'
-          this.oembed = data
+          const embed = processEmbedData(data)
+          this.mediatype = embed.mediatype
+          this.oembed = embed.oembed
         })
         // Remove link from text
         return text.replace(url, '').trim()
