@@ -3,10 +3,12 @@
 <script>
 import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
+import ShMessageFacebook from './ShMessageFacebook.vue'
 
 const feedType = type => ({
   twitter_hashtag: 'twitter',
   twitter_user: 'twitter',
+  facebook_page: 'facebook',
   admin: 'shout',
   form: 'shout'
 }[type])
@@ -22,7 +24,8 @@ export default {
   },
   components: {
     ShMessageTwitter,
-    ShMessageShout
+    ShMessageShout,
+    ShMessageFacebook
   },
   methods: {
     getSocket() {

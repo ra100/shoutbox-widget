@@ -6,7 +6,7 @@
   <template v-else>
     <button v-on:click="jumpToStart" class="first">&laquo;</button>
     <button v-on:click="prevPage">&lsaquo;</button>
-    <span>{{page}}</span>
+    <span>{{page + 1}}</span>
     <button v-if="count === 10" v-on:click="nextPage">&rsaquo;</button>
   </template>
 </div>

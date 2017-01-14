@@ -140,6 +140,7 @@ const App = Vue.component('app', {
         if (err || !data) {
           return reject(err)
         }
+        // @TODO fix last page
         while (data.length < 9 && (this.messages.length + data.length) >= 9) {
           data.push(_.last(this.messages))
         }

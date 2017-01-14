@@ -1,0 +1,11 @@
+<div>
+  <template v-if="play === true">
+    <div class="iframe-container" :style="'padding-bottom: ' + (video.height  / video.width * 100) + '%;'" v-html="video.embed_html"/>
+  </template>
+  <div class="video" v-else>
+    <img :src="video.picture"/>
+    <div class="play-wrapper" @click="play">
+      <icon class="play" name="material-play_circle_outline"/>
+    </div>
+  </div>
+</div>

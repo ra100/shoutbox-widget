@@ -105,22 +105,6 @@ export default {
     icon
   },
   methods: {
-    // getEntity(index) {
-    //   let entities = this.data.metadata.entities
-    //   if (typeof entities === 'undefined') {
-    //     return null
-    //   }
-    //   for (let t in entityTypes) {
-    //     for (let i in entities[entityTypes[t]]) {
-    //       if (entities[entityTypes[t]][i].indices[0] === index) {
-    //         let ent = entities[entityTypes[t]][i]
-    //         ent.entity_type = entityTypes[t]
-    //         return ent
-    //       }
-    //     }
-    //   }
-    //   return null
-    // },
     processOembed(text) {
       text.forEach(e => {
         if (e.entity && e.entity.expanded_url) {

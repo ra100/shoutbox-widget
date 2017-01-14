@@ -5,4 +5,7 @@
   <template v-if="type == 'twitter'">
     <sh-message-twitter v-if="type == 'twitter'" :data="data" :socket="socket"/>
   </template>
+  <template v-if="type == 'facebook'">
+    <sh-message-facebook v-if="type == 'facebook'" :data="data" :socket="socket"/>
+  </template>
 </div>

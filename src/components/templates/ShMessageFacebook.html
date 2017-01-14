@@ -1,0 +1,46 @@
+<div :class="{'message-root': true, 'admin': feedType == 'admin'}">
+  <div class="author">
+    <div class="avatar">
+      <img :src="author.picture" />
+    </div>
+    <div class="author-name">
+      <span class="name"><a v-bind:href="author.url" target="_blank">{{author.name}}</a></span>
+      <span class="date">{{data.created | date}}</span>
+    </div>
+  </div>
+  <div class="text-wrapper">
+    <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
+    <div class="media" v-if="media && media.length > 0 && media[0].type !== 'video_inline'">
+      <template v-for="m in media">
+        <a class="media-title" v-if="m.title && m.type !== 'photo'" target="_blank" :href="m.url">{{m.title}}</a>
+        <sh-image v-if="m.type === 'photo' && m.media.image"
+          class="photo-single"
+          :thumb="m.media.image.src"
+          :img="m.media.image.src"
+          :width="m.media.image.width"
+          :height="m.media.image.height"/>
+        <template v-if="m.subattachments">
+          <template v-for="(item, index) in m.subattachments.data">
+            <sh-image v-if="item.media && item.media.image && index <= 4"
+              :thumb="item.media.image.src"
+              :img="item.media.image.src"
+              :width="item.media.image.width"
+              :height="item.media.image.height"/>
+          </template>
+        </template>
+      </template>
+    </div>
+    <template v-if="mediatype === 'youtube'">
+      <div class="media iframe-container" :style="oembed.style" v-html="oembed.html" />
+    </template>
+    <template v-if="video && video.format">
+      <sh-facebook-video :video="video.format[3]"/>
+    </template>
+  </div>
+  <div class="meta">
+    <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="comments > 0" class="shares"><span>{{comments}}</span><icon name="material-comment"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="likes > 0" class="likes"><span>{{likes}}</span><icon name="material-thumbs_up_down"></icon></a>
+    <a v-bind:href="link" target="_blank" v-if="replies > 0" class="replies"></span>{{replies}}</span><icon name="material-reply"></icon></a>
+  </div>
+</div>
