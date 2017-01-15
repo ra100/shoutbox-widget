@@ -13,9 +13,7 @@
     <div class="media" v-if="mediatype === 'photo'">
       <sh-image class="photo-single" :thumb="extended.medium.path" :img="extended.original.path" :width="extended.large.width" :height="extended.large.height"/>
     </div>
-    <template v-if="mediatype === 'youtube'">
-      <div class="media iframe-container" :style="oembed.style" v-html="oembed.html" />
-    </template>
+    <sh-embed v-if="mediatype == 'embed'" :data="oembed">
   </div>
   <div class="meta" v-if="replies > 0">
     <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>

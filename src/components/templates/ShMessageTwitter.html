@@ -49,9 +49,7 @@
           <sh-image class="photo-single" :thumb="photo.media_url_https" :img="photo.media_url_https" :width="photo.sizes.large.w" :height="photo.sizes.large.h"/>
         </template>
       </template>
-      <template v-if="mediatype == 'youtube'">
-        <div class="media iframe-container" :style="oembed.style" v-html="oembed.html" />
-      </template>
+      <sh-embed v-if="mediatype == 'embed'" :data="oembed">
     </div>
   </div>
   <div class="meta">

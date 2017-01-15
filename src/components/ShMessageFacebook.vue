@@ -2,25 +2,25 @@
 <script>
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
+import ShEmbed from './ShEmbed.vue'
 import icon from 'vue-icons'
-import {youtubePattern, processEmbedData} from './utils'
+import {urlPattern, processEmbedUrl} from './utils'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
     ShFacebookVideo,
+    ShEmbed,
     icon
   },
   data() {
     const m = this.data
     const r = m.relatedMessage
     const rc = (r) ? r.length : 0
-    const message = this.processOembed(m.message)
-    console.log(m)
     return {
       author: m.author,
-      text: message,
+      text: this.text || m.message,
       mediatype: m.mediaType,
       extended: m.picture,
       link: m.link,
@@ -32,30 +32,25 @@ export default {
       oembed: null
     }
   },
+  created() {
+    this.processOembed(this.data.message)
+  },
   methods: {
     processOembed(text) {
-      // Match youtube and insert oembed
-      if (text.match(youtubePattern)) {
-        const url = text.match(youtubePattern)[0]
-        this.socket.request({
-          method: 'get',
-          url: '/oembed/youtube',
-          data: { url: url },
-          headers: {
-            'X-CSRF-Token': window.CSRF
+      // Match url and insert oembed
+      if (text.match(urlPattern)) {
+        const url = text.match(urlPattern)[0]
+        processEmbedUrl(url, this.socket).then(embed => {
+          if (embed.provider_name !== 'NotAvailable') {
+            this.mediatype = embed.mediatype
+            this.oembed = embed.oembed
+            // Remove link from text
+            this.text = text.replace(url, '').trim()
           }
-        }, (data, err) => {
-          if (err.statusCode !== 200) {
-            return console.error(err)
-          }
-          const embed = processEmbedData(data)
-          this.mediatype = embed.mediatype
-          this.oembed = embed.oembed
+        }).catch(() => {
+          // console.error(err)
         })
-        // Remove link from text
-        return text.replace(url, '').trim()
       }
-      return text
     }
   }
 }

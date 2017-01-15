@@ -3,8 +3,9 @@
 <script>
 import ShTwitterVideo from './ShTwitterVideo.vue'
 import ShImage from './ShImage.vue'
+import ShEmbed from './ShEmbed.vue'
 import icon from 'vue-icons'
-import {youtubePattern, processEmbedData} from './utils'
+import {urlPattern, processEmbedUrl} from './utils'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
 
 const compareEntities = (a, b) => {
@@ -102,28 +103,23 @@ export default {
   components: {
     ShTwitterVideo,
     ShImage,
+    ShEmbed,
     icon
   },
   methods: {
     processOembed(text) {
       text.forEach(e => {
-        if (e.entity && e.entity.expanded_url) {
+        if (e.entity && e.entity.expanded_url && !e.entity.expanded_url.includes('twitter')) {
           // Match youtube and insert oembed
-          if (e.entity.expanded_url.match(youtubePattern)) {
-            this.socket.request({
-              method: 'get',
-              url: '/oembed/youtube',
-              data: { url: e.entity.expanded_url },
-              headers: {
-                'X-CSRF-Token': window.CSRF
-              }
-            }, (data, err) => {
-              if (err.statusCode !== 200) {
-                return console.error(err)
-              }
-              const embed = processEmbedData(data)
+          if (e.entity.expanded_url.match(urlPattern)) {
+            const url = e.entity.expanded_url
+            processEmbedUrl(url, this.socket).then(embed => {
               this.mediatype = embed.mediatype
               this.oembed = embed.oembed
+              // Remove link from text
+              return text.replace(url, '').trim()
+            }).catch(err => {
+              console.error(err)
             })
           }
         }

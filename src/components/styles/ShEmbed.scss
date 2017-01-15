@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+
+.embed {
+  .media-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+  }
+
+  .embed-right {
+    display: block;
+    margin-left: 20px;
+    width: calc(100% - 120px);
+  }
+
+  .media-title {
+    color: $text-color;
+    font-weight: bold;
+    margin-bottom: 5px;
+    line-height: 1em;
+    max-height: 2em;
+    overflow: hidden;
+  }
+
+  .media-description {
+    font-size: 12px;
+    color: $author-handle-color;
+    line-height: 1em;
+    max-height: 4em;
+    overflow: hidden;
+  }
+
+  a.media-caption, .media-caption {
+    color: $text-color;
+    font-size: 12px;
+    float: left;
+    clear: left;
+  }
+
+  a.media-host {
+    color: $author-handle-color;
+    clear: left;
+    float: left;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}

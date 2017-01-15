@@ -30,9 +30,7 @@
         </template>
       </template>
     </div>
-    <template v-if="mediatype === 'youtube'">
-      <div class="media iframe-container" :style="oembed.style" v-html="oembed.html" />
-    </template>
+    <sh-embed v-if="mediatype == 'embed'" :data="oembed">
     <template v-if="video && video.format">
       <sh-facebook-video :video="video.format[3]"/>
     </template>
