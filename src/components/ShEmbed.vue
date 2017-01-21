@@ -9,6 +9,7 @@ const getType = provider => {
     Instagram: 'photo',
     MetaInspector: 'inspector',
     NotAvailable: 'unavailable',
+    Twitter: 'twitter',
     Facebook: 'facebook'
   }
 
@@ -18,12 +19,25 @@ const getType = provider => {
   return providers[provider]
 }
 
+const filter = (provider, html) => {
+  const filters = {
+    // remove <script tag>
+    twitter: html => html.match(/(<p.*<\/p>)/g)[0]
+  }
+  if (!filters[provider]) {
+    return html
+  }
+  return filters[provider](html)
+}
+
 export default {
   props: ['data'],
   data() {
     const provider = this.data.provider_name
+    const type = getType(provider)
     return {
-      type: getType(provider)
+      type,
+      filtered: filter(type, this.data.html)
     }
   },
   components: {

@@ -20,6 +20,7 @@ const PER_PAGE = 10
 
 const io = sailsIOClient(socketIOClient)
 io.sails.url = 'https://shoutbox.rozhlas.cz'
+io.sails.autoConnect = true
 const socket = io.socket
 
 const favicon = new Favico()

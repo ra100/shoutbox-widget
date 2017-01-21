@@ -131,6 +131,22 @@
       text-decoration: underline;
     }
   }
+
+  blockquote {
+    margin: 0 0 0 5px;
+    float: left;
+    max-width: calc(100% - 35px);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .quote {
+    color: $author-handle-color;
+    float: left;
+    font-size: 24px;
+  }
 }
 
 .text {
