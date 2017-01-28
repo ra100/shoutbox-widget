@@ -3,6 +3,7 @@
 <script>
 import icon from 'vue-icons'
 import ShImage from './ShImage'
+import ShFacebookVideo from './ShFacebookVideo'
 
 const getType = provider => {
   const providers = {
@@ -42,6 +43,7 @@ export default {
   },
   components: {
     ShImage,
+    ShFacebookVideo,
     icon
   }
 }

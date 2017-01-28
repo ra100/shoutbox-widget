@@ -5,6 +5,7 @@ import icon from 'vue-icons'
 export default {
   props: ['video'],
   data() {
+    console.log(this.video)
     return {
       play: this.play || false
     }

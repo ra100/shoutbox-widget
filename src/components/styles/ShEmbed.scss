@@ -1,6 +1,8 @@
 @import '../../styles/variables';
 
 .embed {
+  clear: left;
+
   .media-image {
     background-position: center;
     background-repeat: no-repeat;
