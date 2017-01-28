@@ -8,8 +8,8 @@
   </div>
   <div v-if="type === 'html'" class="media iframe-container" :style="data.style" v-html="data.html" />
   <div v-if="type === 'inspector'" class="media">
-    <span v-if="data.image" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
-    <div class="embed-right">
+    <span v-if="data.image && !data.host.includes('giphy')" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
+    <div v-if="!data.host.includes('giphy')" class="embed-right">
       <a class="media-title" :href="data.url" target="_blank">
         {{data.title}}
       </a>
@@ -17,6 +17,7 @@
         {{data.description}}
       </div>
     </div>
+    <img v-if="data.host.includes('giphy')" :src="data.image"/>
     <a class="media-host" :href="data.rooturl" target="_blank">
       Zdroj: {{data.host}}
     </a>
