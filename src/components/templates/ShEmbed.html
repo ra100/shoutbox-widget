@@ -1,7 +1,7 @@
 <div class="embed">
   <div v-if="type === 'photo'">
-    <sh-image class="photo-single" :thumb="data.thumbnail_url" :img="data.thumbnail_url" :width="data.thumbnail_width" :height="data.thumbnail_height" />
     <span class="media-caption" :href="data.url">{{data.title}}</span>
+    <sh-image class="photo-single" :thumb="data.thumbnail_url" :img="data.thumbnail_url" :width="data.thumbnail_width" :height="data.thumbnail_height" />
     <a class="media-host" :href="data.author_url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
@@ -21,9 +21,24 @@
       Zdroj: {{data.host}}
     </a>
   </div>
-  <div v-if="type === 'facebook' && data.images">
-    <sh-image class="photo-single" :thumb="data.images[3].source" :img="data.images[0].source" :width="data.images[0].width" :height="data.images[0].height" />
+  <div v-if="type === 'facebook' && data.type === 'photo'">
+    <sh-image class="photo-single" :thumb="data.image" :img="data.image" :width="data.width" :height="data.height" />
     <a class="media-caption" :href="data.url">{{data.title}}</a>
+    <a class="media-host" :href="data.author_url" target="_blank">
+      Zdroj: {{data.author_name}} ({{data.provider_name}})
+    </a>
+  </div>
+  <div v-if="type === 'facebook' && data.type === 'link'" class="media">
+    <a class="media-caption" :href="data.url">{{data.title}}</a>
+    <span v-if="data.image" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
+    <div class="embed-right">
+      <a class="media-title" :href="data.link_url" target="_blank">
+        {{data.link_title}}
+      </a>
+      <div class="media-description">
+        {{data.link_description}}
+      </div>
+    </div>
     <a class="media-host" :href="data.author_url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
@@ -37,7 +52,8 @@
   </div>
   <div v-if="type === 'facebook' && data.html">
     <a class="media-caption" :href="data.url">{{data.title}}</a>
-    <sh-facebook-video :video="{height: data.height, width: data.width, embed_html: data.html, picture: data.image}"/>
+    <div v-if="data.type === 'youtube'" class="media iframe-container" :style="data.style" v-html="data.html" />
+    <sh-facebook-video v-if="data.type === 'video'" :video="{height: data.height, width: data.width, embed_html: data.html, picture: data.image}"/>
     <a class="media-host" :href="data.author_url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
