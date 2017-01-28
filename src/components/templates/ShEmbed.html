@@ -17,8 +17,8 @@
         {{data.description}}
       </div>
     </div>
-    <img v-if="data.host.includes('giphy')" :src="data.image"/>
-    <a class="media-host" :href="data.rooturl" target="_blank">
+    <img v-if="data.host.includes('giphy')" class="giphy" :src="data.image"/>
+    <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.host}}
     </a>
   </div>
