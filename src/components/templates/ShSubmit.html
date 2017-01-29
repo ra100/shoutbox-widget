@@ -19,7 +19,7 @@
             </div>
           </form>
           <div class="error" v-if="error">{{error}}</div>
-          <button v-if="message && message.length > 0 && errors.count() == 0" v-on:click="postMessage" class="button">Odeslat</button>
+          <button v-if="message && message.trim().length > 0 && errors.count() == 0" v-on:click="postMessage" class="button">Odeslat</button>
         </div>
       </transition>
     </template>
