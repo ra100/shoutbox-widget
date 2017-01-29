@@ -5,6 +5,10 @@
   float: left;
   margin-top: 10px;
 
+  .media, .video {
+    margin-top: 0px;
+  }
+
   .media-image {
     background-position: center;
     background-repeat: no-repeat;
