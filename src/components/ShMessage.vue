@@ -14,6 +14,7 @@ const feedType = type => ({
 }[type])
 
 export default {
+  name: 'sh-message',
   props: ['data', 'socket'],
   data() {
     let m = this.data
