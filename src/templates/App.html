@@ -31,12 +31,7 @@
       </template>
     </div>
     <div class="messages">
-      <template v-if="page === 0">
-        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
-      </template>
-      <template v-else>
-        <div class="new-messages" v-if="newmessages.length > 0" v-on:click="jumpToStart">Zobrazit nové [{{newmessages.length}}]</div>
-      </template>
+      <div class="new-messages" v-if="newmessages.length > 0" @click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
       <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" :user="user" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>
       <template>
         <sh-pagination :page="page"/>

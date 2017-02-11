@@ -181,7 +181,7 @@ const App = Vue.component('app', {
         return m
       })
       let n = this.newmessages
-      if (new Date(message.created) > new Date(this.messages.created)) {
+      if (new Date(message.created) > new Date(this.messages[0].created)) {
         n.push(message)
         n.sort(sortByDate)
         n = _.slice(n, 0, PER_PAGE)
