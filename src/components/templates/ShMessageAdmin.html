@@ -1,21 +1,22 @@
-<div class="message-admin" v-if="user && user.admin">
-  <div class="published button" v-if="data.published" @click="unpublish()">
-    <icon name="material-block"></icon>
-  </div>
-  <div class="not-published button" v-else @click="publish()">
-    <icon name="material-check"></icon>
-  </div>
+<div class="message-admin-root">
+  <div class="message-admin" v-if="user && user.admin">
+    <div class="published button" v-if="data.published" @click="unpublish()">
+      <icon name="material-block"></icon>
+    </div>
+    <div class="not-published button" v-else @click="publish()">
+      <icon name="material-check"></icon>
+    </div>
 
-  <div class="reviewed button" v-if="data.reviewed" @click="unreview()">
-    <icon name="material-visibility_off"></icon>
-  </div>
-  <div class="not-reviewed button" v-else @click="review()">
-    <icon name="material-visibility"></icon>
-  </div>
+    <div class="reviewed button" v-if="data.reviewed" @click="unreview()">
+      <icon name="material-visibility_off"></icon>
+    </div>
+    <div class="not-reviewed button" v-else @click="review()">
+      <icon name="material-visibility"></icon>
+    </div>
 
-  <div class="add-reply button" v-if="!data.isResponse" @click="toggleReply">
-    <icon name="material-add"></icon> <icon name="material-reply"></icon>
+    <div class="add-reply button" v-if="!data.isResponse" @click="toggleReply">
+      <icon name="material-add"></icon> <icon name="material-reply"></icon>
+    </div>
   </div>
-
   <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
 </div>
