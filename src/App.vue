@@ -13,7 +13,6 @@ import _ from 'lodash/array'
 import dateFormat from 'dateformat'
 import Favico from 'favico.js'
 import request from 'superagent'
-import Velocity from 'velocity-animate'
 import linkify from 'vue-linkify'
 
 const PER_PAGE = 10
@@ -124,7 +123,7 @@ const App = Vue.component('app', {
     getMessages() {
       let skip = this.page * PER_PAGE + this.newmessages.length
       let url = '/streams/messages'
-      if (this.user && this.user.admin) {
+      if (this.user && this.user.editor) {
         url = '/streams/adminMessages'
       }
       return new Promise((resolve, reject) => {
@@ -158,7 +157,7 @@ const App = Vue.component('app', {
           if (typeof message === 'undefined') {
             return
           }
-          if (!message.published && !this.user.admin) {
+          if (!message.published && !this.user.editor) {
             this.removeMessage(message.id, message.isResponse, message.parentMessage)
             return
           } else {
@@ -245,8 +244,7 @@ const App = Vue.component('app', {
         if (resp.statusCode !== 200) {
           this.user = undefined
         } else {
-          this.user = data
-          this.user.admin = false
+          this.user = {...data, editor: false}
           this.getPermissions()
         }
       })
@@ -262,7 +260,7 @@ const App = Vue.component('app', {
         if (resp.statusCode === 200) {
           this.user = {
             ...this.user,
-            admin: true
+            editor: true
           }
           this.getMessages()
             .then(data => {
@@ -272,9 +270,9 @@ const App = Vue.component('app', {
             .then(this.processMessages)
             .catch(console.error)
         } else {
-          this.user.admin = {
+          this.user = {
             ...this.user,
-            admin: false
+            editor: false
           }
         }
       })
@@ -304,21 +302,6 @@ const App = Vue.component('app', {
         })
         .catch(console.error)
         .then(callback)
-    },
-    prevPage() {
-      if (this.page > 0) {
-        this.page--
-        this.getMessages()
-          .then(this.processMessages)
-          .catch(console.error)
-      }
-    },
-    jumpToStart() {
-      this.page = 0
-      this.newmessages = []
-      this.getMessages()
-        .then(this.processMessages)
-        .catch(console.error)
     },
     setMode(mode) {
       this.mode = mode
@@ -383,30 +366,6 @@ const App = Vue.component('app', {
       }
       this.mergeMessages()
       this.submitHide()
-    },
-    beforeEnter: function (el) {
-      el.style.opacity = 0
-      el.style['max-height'] = 0
-    },
-    enter: function (el, done) {
-      var delay = el.dataset.index * 100
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 1, 'max-height': '1000px' },
-          { complete: done }
-        )
-      }, delay)
-    },
-    leave: function (el, done) {
-      var delay = el.dataset.index * 100
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 0, 'max-height': 0 },
-          { complete: done }
-        )
-      }, delay)
     }
   }
 })
