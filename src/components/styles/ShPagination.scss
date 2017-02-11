@@ -7,39 +7,15 @@
 }
 
 .pagination {
-  align-items: center;
-  flex-direction: row;
-  display: flex;
-  padding: 0 10px 10px;
+  display: block;
 
   button {
-    background-color: $pagination-button-bg;
-    border: 1px solid $pagination-button-border;
-    color: $pagination-text-color;
+    border: 0;
     cursor: pointer;
-    flex: 1;
     font-size: 16px;
     line-height: 20px;
     margin: auto;
-    max-width: 20px;
-    padding: 0;
-
-    &.first {
-      margin-right: 10px;
-    }
-
-    &:hover {
-      background-color: $pagination-button-border;
-      border-color: $pagination-button-bg;
-      color: $pagination-button-bg;
-    }
-  }
-
-  span {
-    color: $pagination-text-color;
-    flex: 1;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
+    padding: 5px 0;
+    width: 100%;
   }
 }

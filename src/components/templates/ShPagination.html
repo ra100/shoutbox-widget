@@ -1,12 +1,4 @@
 <div class="pagination">
-
-  <template v-if="page === 0">
-    <button v-if="count === 10" v-on:click="nextPage">&rsaquo;</button>
-  </template>
-  <template v-else>
-    <button v-on:click="jumpToStart" class="first">&laquo;</button>
-    <button v-on:click="prevPage">&lsaquo;</button>
-    <span>{{page + 1}}</span>
-    <button v-if="count === 10" v-on:click="nextPage">&rsaquo;</button>
-  </template>
+  <button @click="nextPage" v-if="!loading">Načíst víc</button>
+  <div class="loading" v-else>Načítávám...</div>
 </div>

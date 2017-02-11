@@ -69,7 +69,8 @@ const App = Vue.component('app', {
       mode: this.mode || 'normal',
       loginvisible: this.loginvisible || false,
       submitvisible: this.submivisible || false,
-      uservisible: this.uservisible || false
+      uservisible: this.uservisible || false,
+      showMore: this.showMore || true
     }
   },
   created() {
@@ -145,12 +146,9 @@ const App = Vue.component('app', {
         if (err || !data) {
           return reject(err)
         }
-        // @TODO fix last page
-        while (data.length < 9 && (this.messages.length + data.length) >= 9) {
-          data.push(_.last(this.messages))
-        }
-        this.messages = data
-        resolve()
+        const l = data.length
+        this.messages = [...this.messages, ...data]
+        resolve(l)
       })
     },
     processEvent(event) {
@@ -291,11 +289,17 @@ const App = Vue.component('app', {
         }
       })
     },
-    nextPage() {
+    nextPage(callback) {
       this.page++
       this.getMessages()
         .then(this.processMessages)
+        .then(l => {
+          if (l === 0) {
+            this.showMore = false
+          }
+        })
         .catch(console.error)
+        .then(callback)
     },
     prevPage() {
       if (this.page > 0) {

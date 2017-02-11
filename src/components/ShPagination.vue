@@ -2,16 +2,18 @@
 <template lang="html" src="./templates/ShPagination.html"></template>
 <script>
 export default {
-  props: ['page', 'count'],
+  props: ['page'],
+  data() {
+    return {
+      loading: this.loading || false
+    }
+  },
   methods: {
     nextPage() {
-      this.$parent.nextPage()
-    },
-    prevPage() {
-      this.$parent.prevPage()
-    },
-    jumpToStart() {
-      this.$parent.jumpToStart()
+      this.loading = true
+      this.$parent.nextPage(() => {
+        this.loading = false
+      })
     }
   }
 }
