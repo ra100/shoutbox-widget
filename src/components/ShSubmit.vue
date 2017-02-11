@@ -39,7 +39,7 @@ export default {
           name: this.file.name
         }
       }
-      if (this.user && this.user.admin) {
+      if (this.user && this.user.editor) {
         url = window.sailsURL + '/messages'
         payload.reviewed = true
         payload.published = true
