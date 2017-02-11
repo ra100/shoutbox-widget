@@ -1,4 +1,4 @@
-<div class="submit-root">
+<div :class="{'submit-root': true, 'submit-reply': parentId !== undefined}">
   <div class="float-panel submit-message">
     <div class="az"></div>
     <template v-if="!loading">

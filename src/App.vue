@@ -84,7 +84,7 @@ const App = Vue.component('app', {
       .then(this.getMessages)
       .then(this.processMessages)
       .catch(console.error)
-    this.getUser()
+      .then(this.getUser)
   },
   beforeDestroy() {
     window.eventHub.$off('user-load', this.getUser)
@@ -122,10 +122,14 @@ const App = Vue.component('app', {
     },
     getMessages() {
       let skip = this.page * PER_PAGE + this.newmessages.length
+      let url = '/streams/messages'
+      if (this.user && this.user.admin) {
+        url = '/streams/adminMessages'
+      }
       return new Promise((resolve, reject) => {
         socket.request({
           method: 'get',
-          url: '/streams/messages',
+          url,
           data: {
             id: this.id,
             skip: skip
@@ -156,44 +160,71 @@ const App = Vue.component('app', {
           if (typeof message === 'undefined') {
             return
           }
-          if (!message.published) {
-            this.removeMessage(message.id)
+          if (!message.published && !this.user.admin) {
+            this.removeMessage(message.id, message.isResponse, message.parentMessage)
             return
           } else {
-            if (message.isResponse !== true) {
+            if (!message.isResponse) {
               this.addMessage(message)
+            } else {
+              this.addReply(message)
             }
           }
-          break
-        case 'removedFrom':
-          this.removeMessage(event.removedId)
           break
       }
     },
     addMessage(message) {
-      let m = this.messages
-      for (let i in m) {
-        if (m[i].id === message.id) {
-          m[i] = message
-          return
+      const m = this.messages.map(m => {
+        if (m.id === message.id) {
+          return {
+            ...message,
+            relatedMessage: m.relatedMessage
+          }
         }
-      }
+        return m
+      })
       let n = this.newmessages
-      if (new Date(message.created) > new Date(m[0].created)) {
+      if (new Date(message.created) > new Date(this.messages.created)) {
         n.push(message)
         n.sort(sortByDate)
         n = _.slice(n, 0, PER_PAGE)
       }
+      this.newmessages = n
+      this.messages = m
       this.updateNewCount()
     },
-    removeMessage(id) {
-      this.messages = this.messages.filter(function(e) {
-        return (e.id !== id)
+    removeMessage(id, response, parent) {
+      if (!response) {
+        this.messages = this.messages.filter(e => e.id !== id)
+        this.newmessages = this.newmessages.filter(e => e.id !== id)
+        return this.updateNewCount()
+      }
+      this.messages.forEach(m => {
+        if (m.id === parent && m.relatedMessage) {
+          m.relatedMessage = m.relatedMessage.filter(e => e.id !== id)
+        }
       })
-      this.newmessages = this.newmessages.filter(function(e) {
-        return (e.id !== id)
+    },
+    addReply(message) {
+      this.messages.forEach(m => {
+        if (m.id === message.parentMessage) {
+          if (m.relatedMessage) {
+            let rmFound = false
+            m.relatedMessage = m.relatedMessage.map(rm => {
+              if (rm.id === message.id) {
+                rmFound = true
+                return message
+              }
+              return rm
+            })
+            if (!rmFound) {
+              m.relatedMessage.push(message)
+            }
+          } else {
+            m.relatedMessage = [message]
+          }
+        }
       })
-      this.updateNewCount()
     },
     mergeMessages() {
       let m = _.unionBy(this.messages, this.newmessages, 'id')
@@ -217,6 +248,32 @@ const App = Vue.component('app', {
           this.user = undefined
         } else {
           this.user = data
+          this.user.admin = false
+          this.getPermissions()
+        }
+      })
+    },
+    getPermissions() {
+      socket.request({
+        method: 'get',
+        url: `/streams/${this.id}`,
+        headers: {
+          'X-CSRF-Token': window.CSRF
+        }
+      }, (data, resp) => {
+        if (resp.statusCode === 200) {
+          this.user = {
+            ...this.user,
+            admin: true
+          }
+          this.getMessages()
+            .then(this.processMessages)
+            .catch(console.error)
+        } else {
+          this.user.admin = {
+            ...this.user,
+            admin: false
+          }
         }
       })
     },
@@ -309,6 +366,15 @@ const App = Vue.component('app', {
     },
     showUserForm() {
       this.user = true
+    },
+    afterSubmit(message) {
+      if (message.isReply) {
+        this.addReply(message)
+      } else {
+        this.addMessage(message)
+      }
+      this.mergeMessages()
+      this.submitHide()
     },
     beforeEnter: function (el) {
       el.style.opacity = 0

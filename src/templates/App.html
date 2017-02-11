@@ -21,7 +21,7 @@
         <div class="new-message-link" @click="submitToggle">Přidat vzkaz</div>
       </div>
       <template v-if="submitvisible && user">
-        <sh-submit :user="user" :socket="getSocket()"/>
+        <sh-submit :user="user" :socket="getSocket()" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf"/>
       </template>
       <template v-if="loginvisible && !user">
         <sh-login :socket="getSocket()"/>
@@ -43,7 +43,7 @@
         v-on:before-enter="beforeEnter"
         v-on:enter="enter"
         v-on:leave="leave">
-        <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" v-bind:data-index="index" v-bind:key="message.id"/>
+        <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" :user="user" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>
       </transition>
     </div>
     <div class="pagination-wrapper">

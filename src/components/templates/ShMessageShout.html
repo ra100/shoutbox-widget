@@ -1,4 +1,4 @@
-<div :class="{'message-root': true, 'admin': feedType == 'admin'}">
+<div :class="{'message-root': true, 'admin': feedType == 'admin', 'not-published': !data.published}">
   <div class="author">
     <div class="avatar">
       <img :src="author.picture" />
@@ -16,6 +16,6 @@
     <sh-embed v-if="mediatype == 'embed'" :data="oembed">
   </div>
   <div class="meta" v-if="replies > 0">
-    <div v-if="replies > 0" class="replies">{{replies}} <icon name="material-reply"></icon></div>
+    <div v-if="replies > 0" class="replies"><span>{{replies}}</span><icon name="material-reply"></icon></div>
   </div>
 </div>

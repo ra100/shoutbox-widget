@@ -1,6 +1,4 @@
-$button-border: #aaa;
-$button-bg: #fff;
-$text-color: #333;
+@import '../../styles/variables';
 
 .pagination-wrapper {
   display: block;
@@ -15,9 +13,9 @@ $text-color: #333;
   padding: 0 10px 10px;
 
   button {
-    background-color: $button-bg;
-    border: 1px solid $button-border;
-    color: $text-color;
+    background-color: $pagination-button-bg;
+    border: 1px solid $pagination-button-border;
+    color: $pagination-text-color;
     cursor: pointer;
     flex: 1;
     font-size: 16px;
@@ -31,14 +29,14 @@ $text-color: #333;
     }
 
     &:hover {
-      background-color: $button-border;
-      border-color: $button-bg;
-      color: $button-bg;
+      background-color: $pagination-button-border;
+      border-color: $pagination-button-bg;
+      color: $pagination-button-bg;
     }
   }
 
   span {
-    color: $text-color;
+    color: $pagination-text-color;
     flex: 1;
     font-size: 14px;
     line-height: 20px;

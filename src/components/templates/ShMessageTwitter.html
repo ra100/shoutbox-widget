@@ -1,4 +1,4 @@
-<div class="message-root">
+<div :class="{'message-root': true, 'not-published': !data.published}">
   <div class="author">
     <div class="avatar">
       <a v-bind:href="author.url" target="_blank">
@@ -56,6 +56,6 @@
     <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
     <a v-bind:href="link" target="_blank" v-if="shares > 0" class="shares"><span>{{shares}}</span><icon name="material-repeat"></icon></a>
     <a v-bind:href="link" target="_blank" v-if="likes > 0" class="likes"><span>{{likes}}</span><icon name="material-star"></icon></a>
-    <a v-bind:href="link" target="_blank" v-if="replies > 0" class="replies"></span>{{replies}}</span><icon name="material-reply"></icon></a>
+    <div v-if="replies > 0" class="replies"><span>{{replies}}</span><icon name="material-reply"></icon></div>
   </div>
 </div>

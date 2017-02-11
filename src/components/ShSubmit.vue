@@ -11,7 +11,7 @@ Vue.use(VeeValidate)
 let retry = 0
 
 export default {
-  props: ['user', 'socket'],
+  props: ['user', 'socket', 'parentId', 'stream', 'afterSubmit', 'renewCsrf'],
   components: {
     icon
   },
@@ -28,9 +28,10 @@ export default {
   methods: {
     postMessage() {
       this.loading = true
+      let url = window.sailsURL + '/messages/submit'
       let payload = {
         message: this.message,
-        stream: this.$parent._data.id
+        stream: this.stream
       }
       if (typeof this.file !== 'undefined') {
         payload.image = {
@@ -38,8 +39,18 @@ export default {
           name: this.file.name
         }
       }
+      if (this.user && this.user.admin) {
+        url = window.sailsURL + '/messages'
+        payload.reviewed = true
+        payload.published = true
+        payload.author = this.user.id
+      }
+      if (this.parentId) {
+        payload.parentMessage = this.parentId
+        payload.isResponse = true
+      }
       request
-        .post(window.sailsURL + '/messages/submit')
+        .post(url)
         .withCredentials()
         .set('X-CSRF-Token', window.CSRF)
         .send(payload)
@@ -48,7 +59,7 @@ export default {
           if (err || !data.ok) {
             if (data.text === 'CSRF mismatch' && retry < 3) {
               retry++
-              this.$parent.renewCsrf(this.postMessage)
+              this.renewCsrf(this.postMessage)
               return
             } else {
               retry = 0
@@ -58,9 +69,7 @@ export default {
           }
           retry = 0
           if (data.body.message) {
-            this.$parent.addMessage(data.body.message)
-            this.$parent.mergeMessages()
-            this.$parent.submitHide()
+            this.afterSubmit(data.body.message)
             this.resetInput()
           }
         })

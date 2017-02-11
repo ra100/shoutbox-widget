@@ -45,6 +45,8 @@ $remove-color: rgb(204, 81, 73);
 }
 
 .submit-message {
+  right: 0px;
+
   .az {
     left: auto;
     right: 43px;
@@ -83,5 +85,16 @@ $remove-color: rgb(204, 81, 73);
       outline: none;
       box-shadow: rgb(24, 148, 255) 0px 2px 7px 0px inset;
     }
+  }
+}
+
+.submit-reply {
+  .float-panel {
+    top: auto;
+    margin-top: 35px;
+  }
+
+  .az {
+    right: 25px;
   }
 }

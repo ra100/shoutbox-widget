@@ -4,6 +4,7 @@
 import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
 import ShMessageFacebook from './ShMessageFacebook.vue'
+import ShMessageAdmin from './ShMessageAdmin.vue'
 
 const feedType = type => ({
   twitter_hashtag: 'twitter',
@@ -15,7 +16,7 @@ const feedType = type => ({
 
 export default {
   name: 'sh-message',
-  props: ['data', 'socket'],
+  props: ['data', 'socket', 'user', 'stream', 'afterSubmit', 'renewCsrf'],
   data() {
     let m = this.data
     let type = m.feedType
@@ -26,7 +27,8 @@ export default {
   components: {
     ShMessageTwitter,
     ShMessageShout,
-    ShMessageFacebook
+    ShMessageFacebook,
+    ShMessageAdmin
   },
   methods: {
     getSocket() {

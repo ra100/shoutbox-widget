@@ -4,6 +4,10 @@
   float: left;
   padding: 10px 10px 5px;
   width: calc(100% - 20px);
+
+  &.not-published {
+    background: $wrapper-bg;
+  }
 }
 
 .message {
@@ -195,7 +199,8 @@
 
   .likes,
   .shares,
-  .link {
+  .link,
+  .replies {
     align-items: center;
     display: flex;
     flex-direction: row;
