@@ -265,6 +265,10 @@ const App = Vue.component('app', {
             admin: true
           }
           this.getMessages()
+            .then(data => {
+              this.messages = []
+              return data
+            })
             .then(this.processMessages)
             .catch(console.error)
         } else {
