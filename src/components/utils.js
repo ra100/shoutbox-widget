@@ -17,7 +17,6 @@ export const processEmbedUrl = (url, socket) => {
         'X-CSRF-Token': window.CSRF
       }
     }, (data, err) => {
-      console.log(url, data)
       if (err.statusCode !== 200) {
         return reject(err)
       }

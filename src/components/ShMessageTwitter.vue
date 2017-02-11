@@ -116,8 +116,6 @@ export default {
             processEmbedUrl(url, this.socket).then(embed => {
               this.mediatype = embed.mediatype
               this.oembed = embed.oembed
-              // Remove link from text
-              return text.replace(url, '').trim()
             }).catch(err => {
               console.error(err)
             })

@@ -45,7 +45,7 @@ export default {
             this.mediatype = embed.mediatype
             this.oembed = embed.oembed
             // Remove link from text
-            this.text = text.replace(url, '').trim()
+            this.text = text && text.replace(url, '').trim()
           }
         }).catch(() => {
           // console.error(err)
