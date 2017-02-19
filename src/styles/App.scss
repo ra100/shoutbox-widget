@@ -103,6 +103,11 @@ a {
     font-size: 12px;
     margin-left: 5px;
     text-decoration: underline;
+    transition: opacity 500ms;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -121,6 +126,11 @@ a {
   cursor: pointer;
   float: right;
   margin-right: 10px;
+  transition: opacity 500ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .float-panel {
