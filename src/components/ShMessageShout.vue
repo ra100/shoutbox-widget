@@ -14,16 +14,16 @@ export default {
   },
   data() {
     const m = this.data
-    const r = m.relatedMessage
-    const rc = (r) ? r.length : 0
     return {
       author: m.author,
       text: this.text || m.message,
       mediatype: m.mediaType,
       extended: m.picture,
-      replies: rc,
       oembed: null
     }
+  },
+  computed: {
+    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 }
   },
   created() {
     this.processOembed(this.data.message)

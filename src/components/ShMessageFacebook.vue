@@ -16,11 +16,8 @@ export default {
   },
   data() {
     const m = this.data
-    const r = m.relatedMessage
-    const rc = (r) ? r.length : 0
     return {
       author: m.author,
-      text: this.text || m.message,
       mediatype: m.mediaType,
       extended: m.picture,
       link: m.link,
@@ -28,9 +25,12 @@ export default {
       comments: m.metadata.comments,
       media: m.metadata.media,
       video: m.metadata.video,
-      replies: rc,
       oembed: null
     }
+  },
+  computed: {
+    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 },
+    text: function() { return this.text || this.data.message }
   },
   created() {
     this.processOembed(this.data.message)

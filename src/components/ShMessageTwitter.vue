@@ -96,9 +96,11 @@ export default {
       shares: m.metadata.shares,
       mediatype: this.mediatype || m.mediaType,
       oembed: this.oembed || null,
-      extended: m.metadata.media_ext,
-      replies: m.relatedMessage ? m.relatedMessage.length : 0
+      extended: m.metadata.media_ext
     }
+  },
+  computed: {
+    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 }
   },
   components: {
     ShTwitterVideo,

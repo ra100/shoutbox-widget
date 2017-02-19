@@ -203,11 +203,12 @@ const App = Vue.component('app', {
       })
     },
     addReply(message) {
-      this.messages.forEach(m => {
+      this.messages = this.messages.map(m => {
         if (m.id === message.parentMessage) {
-          if (m.relatedMessage) {
+          const newParentMessage = {...m}
+          if (newParentMessage.relatedMessage) {
             let rmFound = false
-            m.relatedMessage = m.relatedMessage.map(rm => {
+            newParentMessage.relatedMessage = newParentMessage.relatedMessage.map(rm => {
               if (rm.id === message.id) {
                 rmFound = true
                 return message
@@ -215,12 +216,15 @@ const App = Vue.component('app', {
               return rm
             })
             if (!rmFound) {
-              m.relatedMessage.push(message)
+              newParentMessage.relatedMessage.push(message)
             }
           } else {
-            m.relatedMessage = [message]
+            newParentMessage.relatedMessage = [message]
           }
+          newParentMessage.replies = newParentMessage.relatedMessage.length
+          return newParentMessage
         }
+        return m
       })
     },
     mergeMessages() {
