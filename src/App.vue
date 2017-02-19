@@ -146,7 +146,16 @@ const App = Vue.component('app', {
           return reject(err)
         }
         const l = data.length
-        this.messages = [...this.messages, ...data]
+        const newData = data.map(m => {
+          if ((this.user && this.user.editor) || !m.relatedMessage) {
+            return m
+          }
+          console.log(m)
+          return {
+            ...m,
+            relatedMessage: m.relatedMessage.filter(relm => relm.published)}
+        })
+        this.messages = [...this.messages, ...newData]
         resolve(l)
       })
     },
