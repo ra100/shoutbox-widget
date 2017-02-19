@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/ShSubmit.scss"></style>
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
-import request from 'superagent'
+// import request from 'superagent'
 import icon from 'vue-icons'
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
@@ -28,10 +28,11 @@ export default {
   methods: {
     postMessage() {
       this.loading = true
-      let url = window.sailsURL + '/messages/submit'
+      let url = '/messages/submit'
       let payload = {
         message: this.message,
-        stream: this.stream
+        stream: this.stream,
+        _csrf: window.CSRF
       }
       if (typeof this.file !== 'undefined') {
         payload.image = {
@@ -40,7 +41,7 @@ export default {
         }
       }
       if (this.user && this.user.editor) {
-        url = window.sailsURL + '/messages'
+        url = '/messages'
         payload.reviewed = true
         payload.published = true
         payload.author = this.user.id
@@ -49,30 +50,25 @@ export default {
         payload.parentMessage = this.parentId
         payload.isResponse = true
       }
-      request
-        .post(url)
-        .withCredentials()
-        .set('X-CSRF-Token', window.CSRF)
-        .send(payload)
-        .end((err, data) => {
-          this.loading = false
-          if (err || !data.ok) {
-            if (data.text === 'CSRF mismatch' && retry < 3) {
-              retry++
-              this.renewCsrf(this.postMessage)
-              return
-            } else {
-              retry = 0
-              this.error = 'Chyba odeslání'
-              return
-            }
+      this.socket.post(url, payload, (data, jwres) => {
+        this.loading = false
+        if (jwres.statusCode !== 200) {
+          if (data.text === 'CSRF mismatch' && retry < 3) {
+            retry++
+            this.renewCsrf(this.postMessage)
+            return
+          } else {
+            retry = 0
+            this.error = 'Chyba odeslání'
+            return
           }
-          retry = 0
-          if (data.body.message) {
-            this.afterSubmit(data.body.message)
-            this.resetInput()
-          }
-        })
+        }
+        retry = 0
+        if (data.message) {
+          this.afterSubmit(data.message)
+          this.resetInput()
+        }
+      })
     },
     selectFile() {
       this.$refs.upload.click()

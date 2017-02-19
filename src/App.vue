@@ -359,7 +359,7 @@ const App = Vue.component('app', {
       this.user = true
     },
     afterSubmit(message) {
-      if (message.isReply) {
+      if (message.isResponse) {
         this.addReply(message)
       } else {
         this.addMessage(message)
