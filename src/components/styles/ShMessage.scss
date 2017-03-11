@@ -203,7 +203,7 @@
   display: block;
   float: left;
   margin: 5px 0px 0;
-  padding: 5px 10px 0;
+  padding: 5px 10px;
   width: calc(100% - 20px);
 
   .likes,
@@ -214,7 +214,7 @@
     display: flex;
     flex-direction: row;
     float: left;
-    height: 13px;
+    height: 20px;
     line-height: 13px;
     margin-right: 10px;
 
