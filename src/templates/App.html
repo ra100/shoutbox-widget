@@ -1,4 +1,5 @@
 <div v-bind:class="'shoutbox-wrapper ' + mode">
+  <div class="shoutbox-underlay" v-if="mode === 'wide'"></div>
   <div class="shoutbox-widget">
     <div class="shoutbox-header">
       <div class="shoutbox-title">

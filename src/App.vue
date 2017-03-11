@@ -11,7 +11,6 @@ import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
 import _ from 'lodash/array'
 import dateFormat from 'dateformat'
-import Favico from 'favico.js'
 import request from 'superagent'
 import linkify from 'vue-linkify'
 
@@ -20,9 +19,9 @@ const PER_PAGE = 10
 const io = sailsIOClient(socketIOClient)
 io.sails.url = 'https://shoutbox.rozhlas.cz'
 io.sails.autoConnect = true
+io.sails.reconnection = true
 const socket = io.socket
 
-const favicon = new Favico()
 window.CSRF = ''
 window.sailsURL = io.sails.url
 
@@ -166,7 +165,7 @@ const App = Vue.component('app', {
           if (typeof message === 'undefined') {
             return
           }
-          if (!message.published && !this.user.editor) {
+          if (!message.published && (!this.user || !this.user.editor)) {
             this.removeMessage(message.id, message.isResponse, message.parentMessage)
             return
           } else {
@@ -244,7 +243,7 @@ const App = Vue.component('app', {
       this.updateNewCount()
     },
     updateNewCount() {
-      favicon.badge(this.newmessages.length)
+      // @TODO REMOVE
     },
     getUser() {
       socket.request({

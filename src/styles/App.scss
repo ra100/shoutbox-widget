@@ -40,8 +40,8 @@ a {
 
   &.wide {
     background: $wrapper-bg;
-    margin: -10px 0 -10px -460px;
-    padding: 10px;
+    margin: 0px 0 0px -430px;
+    max-width: calc(100% - 20px);
     width: 750px;
     z-index: 5000;
 
@@ -56,6 +56,27 @@ a {
     }
   }
 }
+
+
+.left .shoutbox-wrapper.wide {
+  margin: 0 0 0 -460px;
+}
+
+.right .shoutbox-wrapper.wide {
+  margin: 0;
+}
+
+.shoutbox-underlay {
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
 
 .shoutbox-title {
   background-color: $header-title-bg;
@@ -162,7 +183,7 @@ a {
   padding: 10px 0px 10px 10px;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: calc(100vh - 125px);
+  max-height: calc(100vh - 105px);
 }
 
 .fade-in-enter-active, .fade-in-leave-active {
