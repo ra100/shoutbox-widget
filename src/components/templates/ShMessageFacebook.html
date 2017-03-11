@@ -35,10 +35,4 @@
       <sh-facebook-video :video="video.format[3]"/>
     </template>
   </div>
-  <div class="meta">
-    <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
-    <a v-bind:href="link" target="_blank" v-if="comments > 0" class="shares"><span>{{comments}}</span><icon name="material-comment"></icon></a>
-    <a v-bind:href="link" target="_blank" v-if="likes > 0" class="likes"><span>{{likes}}</span><icon name="material-thumbs_up_down"></icon></a>
-    <div v-if="replies > 0" class="replies"><span>{{replies}}</span><icon name="material-reply"></icon></div>
-  </div>
 </div>

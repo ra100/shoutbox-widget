@@ -5,6 +5,7 @@ import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
 import ShMessageFacebook from './ShMessageFacebook.vue'
 import ShMessageAdmin from './ShMessageAdmin.vue'
+import ShSubmit from './ShSubmit.vue'
 
 const feedType = type => ({
   twitter_hashtag: 'twitter',
@@ -21,18 +22,41 @@ export default {
     let m = this.data
     let type = m.feedType
     return {
-      type: feedType(type)
+      type: feedType(type),
+      showReplies: this.showReplies || false,
+      showReply: this.showReply || false
+    }
+  },
+  computed: {
+    replies: function() {
+      return this.showReplies
+      ? this.data.relatedMessage || []
+      : (this.data.relatedMessage && this.data.relatedMessage.slice(0, 2)) || []
+    },
+    replyCount: function() {
+      return this.data.relatedMessage ? this.data.relatedMessage.length : 0
     }
   },
   components: {
     ShMessageTwitter,
     ShMessageShout,
     ShMessageFacebook,
-    ShMessageAdmin
+    ShMessageAdmin,
+    ShSubmit
   },
   methods: {
     getSocket() {
       return this.socket
+    },
+    showMoreReplies() {
+      this.showReplies = true
+    },
+    toggleReply() {
+      this.showReply = !this.showReply
+    },
+    sumbit(message) {
+      this.afterSubmit(message)
+      this.showReply = false
     }
   }
 }

@@ -22,9 +22,6 @@ export default {
       oembed: null
     }
   },
-  computed: {
-    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 }
-  },
   created() {
     this.processOembed(this.data.message)
   },

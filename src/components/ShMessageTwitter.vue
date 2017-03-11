@@ -99,9 +99,6 @@ export default {
       extended: m.metadata.media_ext
     }
   },
-  computed: {
-    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 }
-  },
   components: {
     ShTwitterVideo,
     ShImage,

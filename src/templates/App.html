@@ -9,17 +9,17 @@
       </div>
       <div class="login-header">
         <template v-if="user !== true && user !== undefined">
-          <div class="user-toggle" @click="userToggle">
+          <div :class="{'user-toggle': true}" @click="userToggle">
             <div class="avatar" v-if="user.picture && user.picture.length > 0">
               <img :src="user.picture">
             </div>
-            <div class="name">
+            <div :class="{'name': true, 'active': uservisible}">
             {{user.displayname}}
             </div>
           </div>
         </template>
-        <div class="login-link" v-if="!user" @click="loginToggle">Přihlásit se</div>
-        <div class="new-message-link" @click="submitToggle">Přidat vzkaz</div>
+        <div :class="{'login-link': true, 'active': loginvisible}" v-if="!user" @click="loginToggle">Přihlásit se</div>
+        <div :class="{'new-message-link': true, 'active': submitvisible}" @click="submitToggle">Přidat vzkaz</div>
       </div>
       <template v-if="submitvisible && user">
         <sh-submit :user="user" :socket="getSocket()" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf"/>

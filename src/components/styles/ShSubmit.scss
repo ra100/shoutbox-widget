@@ -83,8 +83,7 @@ $remove-color: rgb(204, 81, 73);
     font-size: 14px;
 
     &:active, &:focus {
-      outline: none;
-      box-shadow: rgb(24, 148, 255) 0px 2px 7px 0px inset;
+      outline: 1px solid rgb(24, 148, 255);
     }
   }
 }
@@ -102,5 +101,17 @@ $remove-color: rgb(204, 81, 73);
 
   .az {
     right: 25px;
+  }
+}
+
+.meta .submit-reply {
+  .float-panel {
+    left: 10px;
+    top: 5px;
+  }
+
+  .az {
+    left: 10px;
+    right: auto;
   }
 }

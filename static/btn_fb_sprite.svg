@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <style>
+      .a {
+        fill: #3b5998;
+      }
+
+      .b {
+        fill: #fff;
+      }
+
+      .c {
+        fill: #73737f;
+      }
+
+      .d {
+        fill: #d6d6de;
+      }
+    </style>
+  </defs>
+  <title>btn_fb_sprite</title>
+  <rect class="a" width="500" height="500"/>
+  <path class="b" d="M336.2,203.4h32V156.2H330.6v.2c-45.5,1.6-54.8,27.2-55.6,54.1h-.1V234h-31v46.2h31V404.1h46.7V280.2h38.2l7.4-46.2H321.6V219.7C321.6,210.7,327.6,203.4,336.2,203.4Z" transform="translate(-55 -30)"/>
+  <rect class="c" x="500" width="500" height="500"/>
+  <path class="d" d="M836.2,203.4h32V156.2H830.6v.2c-45.5,1.6-54.8,27.2-55.6,54.1h-.1V234h-31v46.2h31V404.1h46.7V280.2h38.2l7.4-46.2H821.6V219.7C821.6,210.7,827.6,203.4,836.2,203.4Z" transform="translate(-55 -30)"/>
+</svg>

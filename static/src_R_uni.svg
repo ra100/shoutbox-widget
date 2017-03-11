@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202.3 249.7">
+  <defs>
+    <style>
+      .a {
+        fill: #d6d6de;
+      }
+    </style>
+  </defs>
+  <title>src_R_uni</title>
+  <path class="a" d="M140,33.2H52V77H229.6C216.8,47.1,183,33.2,140,33.2m83.6,112.4H52V101.9H235.1c.1,1.7.1,3.4.1,5.2-.2,16.2-4,28.8-11.6,38.4M52,170.5v43.5H212l-26.8-43.5ZM52,239H227.3l27,43.9H52V239Z" transform="translate(-52 -33.2)"/>
+</svg>

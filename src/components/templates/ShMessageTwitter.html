@@ -52,10 +52,4 @@
       <sh-embed v-if="mediatype == 'embed'" :data="oembed">
     </div>
   </div>
-  <div class="meta">
-    <a class="link" v-bind:href="link" target="_blank"><icon name="material-link"></icon></a>
-    <a v-bind:href="link" target="_blank" v-if="shares > 0" class="shares"><span>{{shares}}</span><icon name="material-repeat"></icon></a>
-    <a v-bind:href="link" target="_blank" v-if="likes > 0" class="likes"><span>{{likes}}</span><icon name="material-star"></icon></a>
-    <div v-if="replies > 0" class="replies"><span>{{replies}}</span><icon name="material-reply"></icon></div>
-  </div>
 </div>

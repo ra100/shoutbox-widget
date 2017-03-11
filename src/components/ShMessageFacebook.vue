@@ -29,7 +29,6 @@ export default {
     }
   },
   computed: {
-    replies: function() { return this.data.relatedMessage ? this.data.relatedMessage.length : 0 },
     text: function() { return this.text || this.data.message }
   },
   created() {

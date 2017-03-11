@@ -15,9 +15,5 @@
         <icon name="material-visibility"></icon>
       </div>
     </template>
-    <div class="add-reply button" v-if="!data.isResponse" @click="toggleReply">
-      <icon name="material-add"></icon> <icon name="material-reply"></icon>
-    </div>
   </div>
-  <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
 </div>

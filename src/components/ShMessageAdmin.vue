@@ -9,7 +9,7 @@ export default {
     ShSubmit,
     icon
   },
-  props: ['data', 'socket', 'user', 'stream', 'afterSubmit', 'renewCsrf'],
+  props: ['data', 'socket', 'user', 'stream', 'renewCsrf'],
   data() {
     return {
       showReply: this.showReply || false
@@ -18,13 +18,6 @@ export default {
   methods: {
     getSocket() {
       return this.socket
-    },
-    toggleReply() {
-      this.showReply = !this.showReply
-    },
-    sumbit(message) {
-      this.afterSubmit(message)
-      this.showReply = false
     },
     review() {
       this.socket.put(`/messages/${this.data.id}`, {

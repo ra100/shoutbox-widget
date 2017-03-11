@@ -149,7 +149,6 @@ const App = Vue.component('app', {
           if ((this.user && this.user.editor) || !m.relatedMessage) {
             return m
           }
-          console.log(m)
           return {
             ...m,
             relatedMessage: m.relatedMessage.filter(relm => relm.published)}

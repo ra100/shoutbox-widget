@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <style>
+      .a {
+        fill: #519fd7;
+      }
+
+      .b {
+        fill: #fff;
+      }
+
+      .c {
+        fill: #73737f;
+      }
+
+      .d {
+        fill: #efeff2;
+      }
+    </style>
+  </defs>
+  <title>btn_+_sprite</title>
+  <path class="a" d="M287,35C148.9,35,37,146.9,37,285S148.9,535,287,535,537,423.1,537,285h0C537,146.9,425.1,35,287,35Z" transform="translate(-37 -35)"/>
+  <path class="b" d="M415,307H309V413a23,23,0,0,1-46,0V307H159a23,23,0,1,1,0-46H265V157a23,23,0,1,1,46,0h0V263H417a22,22,0,1,1-2,44Z" transform="translate(-37 -35)"/>
+  <path class="c" d="M787,35C648.9,35,537,146.9,537,285S648.9,535,787,535s250-111.9,250-250h0C1037,146.9,925.1,35,787,35Z" transform="translate(-37 -35)"/>
+  <path class="d" d="M915,307H809V413a23,23,0,0,1-46,0V307H659a23,23,0,1,1,0-46H765V157a23,23,0,0,1,46,0h0V263H917a22,22,0,1,1-2,44Z" transform="translate(-37 -35)"/>
+</svg>
