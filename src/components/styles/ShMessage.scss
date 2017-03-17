@@ -15,7 +15,7 @@
   position: relative;
   width: 100%;
 
-  &.rejected {
+  &.rejected, &.not-published {
     background-image: url('/static/ico_hidden.svg');
     background-size: 22px;
     background-repeat: no-repeat;

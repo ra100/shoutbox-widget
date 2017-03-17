@@ -2,7 +2,7 @@
   'message': true,
   [type]: true,
   [messageState]: true}">
-  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type"/>
+  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type" v-if="user.editor"/>
   <template v-if="type == 'shout'">
     <sh-message-shout :data="data" :feed-type="data.feedType" :socket="socket"/>
   </template>

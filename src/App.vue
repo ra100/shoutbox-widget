@@ -60,6 +60,7 @@ const App = Vue.component('app', {
       name: this.name,
       id: this.id,
       form: this.form,
+      moderated: this.moderated,
       messages: this.messages || [],
       newmessages: this.newmessages || [],
       page: this.page || 0,
@@ -68,7 +69,8 @@ const App = Vue.component('app', {
       loginvisible: this.loginvisible || false,
       submitvisible: this.submivisible || false,
       uservisible: this.uservisible || false,
-      showMore: this.showMore || true
+      showMore: this.showMore || true,
+      alert: this.alert || false
     }
   },
   created() {
@@ -116,6 +118,7 @@ const App = Vue.component('app', {
         }
         this.id = data.id
         this.form = data.form
+        this.moderated = data.moderated
         resolve()
       })
     },
@@ -158,7 +161,6 @@ const App = Vue.component('app', {
       })
     },
     processEvent(event) {
-      console.log(event)
       switch (event.verb) {
         case 'addedTo':
           let message = event.added
@@ -376,7 +378,15 @@ const App = Vue.component('app', {
     showUserForm() {
       this.user = true
     },
+    showAlert() {
+      this.alert = true
+      setTimeout(() => this.hideAlert(), 10000)
+    },
+    hideAlert() {
+      this.alert = false
+    },
     afterSubmit(message) {
+      message.published = !this.moderated
       if (message.isResponse) {
         this.addReply(message)
       } else {
@@ -384,6 +394,7 @@ const App = Vue.component('app', {
       }
       this.mergeMessages()
       this.submitHide()
+      this.showAlert()
     }
   }
 })

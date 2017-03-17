@@ -226,3 +226,26 @@ a {
   text-align: center;
   width: calc(100% - 20px);
 }
+
+.alert-popup {
+  background: $message-bg;
+  color: $action-approve;
+  cursor: pointer;
+  float: left;
+  margin: 10px 10px 0;
+  max-height: 5em;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  width: calc(100% - 40px);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: max-height .5s, padding .5s;
+}
+
+.fade-enter, .fade-leave-to, .fade-leave-active {
+  max-height: 0;
+  padding: 0 10px;
+}

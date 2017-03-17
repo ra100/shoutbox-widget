@@ -31,6 +31,12 @@
         <sh-user :user="user" :socket="getSocket()"/>
       </template>
     </div>
+    <transition name="fade">
+      <div class="alert-popup" v-if="alert && !user.editor" @click="hideAlert">
+        <div v-if="moderated">Vzkaz byl přidán a nyní čeká na schválení.</div>
+        <div class="unmoderated" v-else>Vzkaz byl přidán!</div>
+      </div>
+    </transition>
     <div class="messages">
       <div class="new-messages" v-if="newmessages.length > 0" @click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
       <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" :user="user" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>

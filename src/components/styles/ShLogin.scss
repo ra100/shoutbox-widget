@@ -37,6 +37,7 @@ $link-color: #2e6fb3;
   position: absolute;
   top: 80px;
   width: calc(100% - 40px);
+  z-index: 5;
 }
 
 .login-option {
