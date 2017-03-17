@@ -15,7 +15,7 @@
   position: relative;
   width: 100%;
 
-  &.rejected, &.not-published {
+  &.rejected {
     background-image: url('/static/ico_hidden.svg');
     background-size: 22px;
     background-repeat: no-repeat;
@@ -24,6 +24,23 @@
 
     .message-root {
       opacity: .6;
+    }
+  }
+
+  &.not-published {
+    .message-root {
+      opacity: .6;
+    }
+  }
+
+  &.editor.not-published {
+    .message-root {
+      width: calc(100% - 24px);
+      border: 2px solid $action-reject;
+    }
+
+    .message-admin-root {
+      top: 66px;
     }
   }
 
@@ -83,6 +100,12 @@
       width: 100%;
     }
   }
+}
+
+.waiting {
+  background: $wrapper-bg url('/static/ico_warn.png') no-repeat left center;
+  font-size: 13px;
+  padding: 10px 10px 8px 25px;
 }
 
 .author .avatar {

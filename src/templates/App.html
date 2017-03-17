@@ -32,7 +32,7 @@
       </template>
     </div>
     <transition name="fade">
-      <div class="alert-popup" v-if="alert && !user.editor" @click="hideAlert">
+      <div class="alert-popup" v-if="alert && (!user || !user.editor)" @click="hideAlert">
         <div v-if="moderated">Vzkaz byl přidán a nyní čeká na schválení.</div>
         <div class="unmoderated" v-else>Vzkaz byl přidán!</div>
       </div>

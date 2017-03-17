@@ -1,8 +1,10 @@
 <div :class="{
   'message': true,
   [type]: true,
-  [messageState]: true}">
-  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type" v-if="user.editor"/>
+  [messageState]: true,
+  'editor': user && user.editor}">
+  <div class="waiting" v-if="messageState === 'not-published' && user && user.editor">Čeká na schválení</div>
+  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type" v-if="user && user.editor"/>
   <template v-if="type == 'shout'">
     <sh-message-shout :data="data" :feed-type="data.feedType" :socket="socket"/>
   </template>
