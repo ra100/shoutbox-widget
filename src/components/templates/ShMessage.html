@@ -14,7 +14,7 @@
   <template v-if="type == 'facebook'">
     <sh-message-facebook v-if="type == 'facebook'" :data="data" :socket="socket"/>
   </template>
-  <div class="meta" v-if="!data.isResponse || (user && user.editor)">
+  <div class="meta" v-if="!data.isResponse">
     <div class="replies"><div class="icon reply"  v-if="!data.isResponse" @click="toggleReply"></div><span v-if="replyCount > 0" >{{replyCount}}</span></div>
     <a class="link" v-if="data.link" v-bind:href="data.link" target="_blank"><div class="icon link"></div></a>
     <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
