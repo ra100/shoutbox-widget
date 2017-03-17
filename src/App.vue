@@ -158,6 +158,7 @@ const App = Vue.component('app', {
       })
     },
     processEvent(event) {
+      console.log(event)
       switch (event.verb) {
         case 'addedTo':
           let message = event.added
@@ -173,6 +174,12 @@ const App = Vue.component('app', {
             } else {
               this.addReply(message)
             }
+          }
+          break
+        case 'messaged':
+          if (event.data.action === 'destroyed') {
+            this.removeMessage(event.data.id)
+            return
           }
           break
       }
