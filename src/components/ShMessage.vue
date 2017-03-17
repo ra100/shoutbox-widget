@@ -35,6 +35,18 @@ export default {
     },
     replyCount: function() {
       return this.data.relatedMessage ? this.data.relatedMessage.length : 0
+    },
+    messageState: function() {
+      if (this.data.published) {
+        if (this.data.reviewed) {
+          return 'approved'
+        }
+        return 'published'
+      }
+      if (this.data.reviewed) {
+        return 'rejected'
+      }
+      return 'not-published'
     }
   },
   components: {

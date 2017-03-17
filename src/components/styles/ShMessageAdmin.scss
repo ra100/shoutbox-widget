@@ -1,20 +1,83 @@
 @import '../../styles/variables';
 
+.message-admin-root {
+  position: absolute;
+  right: 10px;
+  top: 32px;
+  z-index: 2;
+}
+
 .message-admin {
   color: $text-color;
-  float: right;
-  font-size: 13px;
+  font-size: 12px;
+
+  .admin-button {
+    color: $link-color;
+    cursor: pointer;
+
+    .chevron {
+      font-size: 13px;
+    }
+
+    &:hover {
+      color: $text-color;
+      transition: 300ms color;
+    }
+  }
+
+  .actions-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
   .button {
     cursor: pointer;
+    display: block;
+    font-size: 13px;
     float: left;
-    padding: 2px;
-    margin: 1px;
-    border: 1px solid $panel-border;
+    flex: 1;
+    padding: 0 10px;
+
+
+    &.action-approve {
+      color: $action-approve;
+    }
+
+    &.action-reject {
+      color: $action-reject;
+    }
+
+    &.action-delete {
+      color: $action-delete;
+    }
+
+    &.action-hide {
+      color: $action-hide;
+    }
+
+    &.action-show {
+      color: $action-show;
+    }
 
     &:hover {
-      background: $text-color;
-      color: $panel-border;
+      color: $text-color;
+      transition: 300ms color;
     }
+  }
+
+  .float-panel {
+    background-color: $header-title-bg;
+    box-shadow: $panel-border 0 0 15px 0;
+    padding: 15px 10px;
+    right: -10px;
+    top: 27px;
+    width: auto;
+  }
+
+  .az {
+    background-color: $header-title-bg;
+    left: auto;
+    right: 15px;
   }
 }

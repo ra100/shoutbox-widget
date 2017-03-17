@@ -1,4 +1,8 @@
-<div v-bind:class="'message ' + type">
+<div :class="{
+  'message': true,
+  [type]: true,
+  [messageState]: true}">
+  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type"/>
   <template v-if="type == 'shout'">
     <sh-message-shout :data="data" :feed-type="data.feedType" :socket="socket"/>
   </template>
@@ -11,7 +15,6 @@
   <div class="meta" v-if="!data.isResponse || (user && user.editor)">
     <div class="replies"><div class="icon reply"  v-if="!data.isResponse" @click="toggleReply"></div><span v-if="replyCount > 0" >{{replyCount}}</span></div>
     <a class="link" v-if="data.link" v-bind:href="data.link" target="_blank"><div class="icon link"></div></a>
-    <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf"/>
     <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
   </div>
   <div class="reply-messages" v-if="data.relatedMessage && data.relatedMessage.length > 0">

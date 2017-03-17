@@ -4,14 +4,6 @@
   float: left;
   padding: 10px 10px 5px;
   width: calc(100% - 20px);
-
-  &.not-published {
-    background-image: url('/static/ico_hidden.svg');
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position-y: 10px;
-    background-position-x: calc(100% - 34px);
-  }
 }
 
 .message {
@@ -20,7 +12,20 @@
   float: left;
   font-size: 0.9em;
   margin: 0 0 3px;
+  position: relative;
   width: 100%;
+
+  &.rejected {
+    background-image: url('/static/ico_hidden.svg');
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position-y: 27px;
+    background-position-x: calc(100% - 47px);
+
+    .message-root {
+      opacity: .6;
+    }
+  }
 
   .reply-messages {
     background: $wrapper-bg;

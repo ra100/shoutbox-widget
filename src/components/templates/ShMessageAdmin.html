@@ -1,19 +1,26 @@
 <div class="message-admin-root">
   <div class="message-admin" v-if="user">
-    <template v-if="user.editor">
-      <div class="published button" v-if="data.published" @click="unpublish()">
-        <icon name="material-block"></icon>
+    <span class="admin-button" @click="toggleFloat">
+      <span class="chevron">&lsaquo;</span> Edit</span>
+    <div class="float-panel float-admin" v-if="toggle">
+      <div class="az"></div>
+      <div class="actions-wrapper">
+        <div class="not-reviewed button action-approve" v-if="!data.reviewed && data.published" @click="review()">
+          Schválit
+        </div>
+        <div class="published button action-hide" v-if="data.published" @click="unpublish()">
+          Skrýt
+        </div>
+        <div class="not-published button action-show" v-if="!data.published && data.reviewed" @click="publish()">
+          Zobrazit
+        </div>
+        <div class="reviewed button action-reject" v-if="!data.published && !data.reviewed" @click="unreview()">
+          Zakázat
+        </div>
+        <div class="reviewed button action-delete" v-if="type === 'shout'" @click="remove()">
+          Smazat
+        </div>
       </div>
-      <div class="not-published button" v-else @click="publish()">
-        <icon name="material-check"></icon>
-      </div>
-
-      <div class="reviewed button" v-if="data.reviewed" @click="unreview()">
-        <icon name="material-visibility_off"></icon>
-      </div>
-      <div class="not-reviewed button" v-else @click="review()">
-        <icon name="material-visibility"></icon>
-      </div>
-    </template>
+    </div>
   </div>
 </div>
