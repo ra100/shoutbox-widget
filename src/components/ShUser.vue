@@ -23,6 +23,7 @@ export default {
             this.$parent._data.uservisible = false
             this.$parent._data.submitvisible = false
             this.$parent.renewCsrf()
+            window.eventHub.$emit('user-load')
           }
         })
     }

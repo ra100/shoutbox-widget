@@ -55,40 +55,31 @@ export default {
     },
     facebookLogin() {
       this.form = false
-      let uload = () => {
-        window.eventHub.$emit('user-load')
-      }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/facebook', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
-          uload()
+          window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
     instagramLogin() {
       this.form = false
-      let uload = () => {
-        window.eventHub.$emit('user-load')
-      }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/instagram', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
-          uload()
+          window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
     soundcloudLogin() {
       this.form = false
-      let uload = () => {
-        window.eventHub.$emit('user-load')
-      }
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
       let oauthInterval = window.setInterval(function() {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
-          uload()
+          window.eventHub.$emit('user-load')
         }
       }, 1000)
     },

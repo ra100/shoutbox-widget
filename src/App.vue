@@ -77,21 +77,24 @@ const App = Vue.component('app', {
     socket.on('stream', this.processEvent)
     window.eventHub.$on('user-load', this.getUser)
     window.eventHub.$on('user-form', this.showUserForm)
-    this.newmessages = []
-    this.page = 0
-    this.getName()
-    this.getStream()
-      .then(this.processStream)
-      .then(this.getMessages)
-      .then(this.processMessages)
-      .catch(console.error)
-      .then(this.getUser)
+    this.reload().then(this.getUser)
   },
   beforeDestroy() {
     window.eventHub.$off('user-load', this.getUser)
     window.eventHub.$off('user-form', this.showUserForm)
   },
   methods: {
+    reload() {
+      this.newmessages = []
+      this.messages = []
+      this.page = 0
+      this.getName()
+      return this.getStream()
+        .then(this.processStream)
+        .then(this.getMessages)
+        .then(this.processMessages)
+        .catch(console.error)
+    },
     getName() {
       this.name = document
         .getElementById('shoutbox')
@@ -267,6 +270,7 @@ const App = Vue.component('app', {
           this.user = {...data, editor: false}
           this.getPermissions()
         }
+        this.reload()
       })
     },
     getPermissions() {
