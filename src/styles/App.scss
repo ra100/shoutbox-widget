@@ -245,7 +245,7 @@ a {
   transition: max-height .5s, padding .5s;
 }
 
-.fade-enter, .fade-leave-to, .fade-leave-active {
+.fade-enter, .fade-leave-to {
   max-height: 0;
   padding: 0 10px;
 }

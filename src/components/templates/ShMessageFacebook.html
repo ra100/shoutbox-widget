@@ -30,7 +30,7 @@
         </template>
       </template>
     </div>
-    <sh-embed v-if="mediatype == 'embed'" :data="oembed">
+    <sh-embed v-if="mediatype == 'embed'" :data="oembed"/>
     <template v-if="video && video.format">
       <sh-facebook-video :video="video.format[3]"/>
     </template>

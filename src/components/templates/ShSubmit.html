@@ -15,7 +15,7 @@
                 <icon name="material-remove_circle_outline"></icon>
               </div>
               <img v-if="image" :src="image" class="field-image-image"/>
-              <div v-if="errors.has('upload')" class="error">Soubor musí být obrázek</dv>
+              <div v-if="errors.has('upload')" class="error">Soubor musí být obrázek</div>
             </div>
           </form>
           <div class="error" v-if="error">{{error}}</div>

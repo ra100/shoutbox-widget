@@ -18,7 +18,7 @@ export const processEmbedUrl = (url, socket) => {
       }
     }, (data, err) => {
       if (err.statusCode !== 200) {
-        return reject(err)
+        return reject(new Error(err))
       }
       const oembed = {...data}
       oembed.style = 'padding-bottom: ' + (oembed.height / oembed.width * 100) + '%;'

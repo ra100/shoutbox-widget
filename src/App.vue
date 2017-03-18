@@ -117,7 +117,7 @@ const App = Vue.component('app', {
     processStream(data, err) {
       return new Promise((resolve, reject) => {
         if (err) {
-          return reject()
+          return reject(new Error(err))
         }
         this.id = data.id
         this.form = data.form
@@ -148,7 +148,7 @@ const App = Vue.component('app', {
     processMessages(data, err) {
       return new Promise((resolve, reject) => {
         if (err || !data) {
-          return reject(err)
+          return reject(new Error(err))
         }
         const l = data.length
         const newData = data.map(m => {
@@ -172,7 +172,6 @@ const App = Vue.component('app', {
           }
           if (!message.published && (!this.user || !this.user.editor)) {
             this.removeMessage(message.id, message.isResponse, message.parentMessage)
-            return
           } else {
             if (!message.isResponse) {
               this.addMessage(message)
@@ -184,7 +183,6 @@ const App = Vue.component('app', {
         case 'messaged':
           if (event.data.action === 'destroyed') {
             this.removeMessage(event.data.id)
-            return
           }
           break
       }
@@ -362,11 +360,10 @@ const App = Vue.component('app', {
       if (!this.user) {
         this.loginvisible = !this.loginvisible
         return
-      } else {
-        this.submitvisible = true
-        this.loginvisible = false
-        this.uservisible = false
       }
+      this.submitvisible = true
+      this.loginvisible = false
+      this.uservisible = false
     },
     userShow() {
       this.uservisible = true
