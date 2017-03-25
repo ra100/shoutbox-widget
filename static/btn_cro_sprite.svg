@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <defs>
+    <style>
+      .a {
+        fill: #fff;
+      }
+
+      .b {
+        fill: #d6d6de;
+      }
+
+      .c {
+        fill: #73737f;
+      }
+    </style>
+  </defs>
+  <title>btn_cro_sprite</title>
+  <g>
+    <rect class="a" width="500" height="500"/>
+    <path class="b" d="M341.1,249.2H274.1v33.3H409.4c-9.8-22.8-35.5-33.3-68.3-33.3" transform="translate(-95 -95)"/>
+    <path class="b" d="M404.8,334.8H274.1V301.5H413.6c.1,1.3.1,2.6.1,4a46.4,46.4,0,0,1-8.8,29.3" transform="translate(-95 -95)"/>
+    <polygon class="b" points="179.1 258.8 179.1 292 300.9 292 280.5 258.8 179 258.8 179.1 258.8"/>
+    <polygon class="b" points="179.1 311 312.6 311 333.2 344.4 179 344.4 179 311 179.1 311"/>
+  </g>
+  <g>
+    <rect class="c" x="500" width="500" height="500"/>
+    <path class="b" d="M841.1,249.2H774.1v33.3H909.4c-9.8-22.8-35.5-33.3-68.3-33.3" transform="translate(-95 -95)"/>
+    <path class="b" d="M904.8,334.8H774.1V301.5H913.6c.1,1.3.1,2.6.1,4a46.4,46.4,0,0,1-8.8,29.3" transform="translate(-95 -95)"/>
+    <polygon class="b" points="679.1 258.8 679.1 292 800.9 292 780.5 258.8 679 258.8 679.1 258.8"/>
+    <polygon class="b" points="679.1 311 812.6 311 833.2 344.4 679 344.4 679 311 679.1 311"/>
+  </g>
+</svg>

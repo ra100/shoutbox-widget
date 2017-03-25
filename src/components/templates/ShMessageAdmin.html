@@ -11,10 +11,10 @@
         <div class="published button action-hide" v-if="data.published" @click="unpublish()">
           Skrýt
         </div>
-        <div class="not-published button action-show" v-if="!data.published && data.reviewed" @click="publish()">
+        <div class="not-published button action-show" v-if="!data.published" @click="publish()">
           Zobrazit
         </div>
-        <div class="reviewed button action-reject" v-if="!data.published && !data.reviewed" @click="unreview()">
+        <div class="reviewed button action-reject" v-if="!data.published && !data.reviewed" @click="reject()">
           Zakázat
         </div>
         <div class="reviewed button action-delete" v-if="type === 'shout'" @click="remove()">

@@ -28,10 +28,11 @@ export default {
       })
       this.toggle = false
     },
-    unreview() {
+    reject() {
       this.socket.put(`/messages/${this.data.id}`, {
         id: this.data.id,
-        reviewed: false,
+        reviewed: true,
+        published: false,
         _csrf: window.CSRF
       })
       this.toggle = false
