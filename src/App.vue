@@ -190,7 +190,7 @@ const App = Vue.component('app', {
       }
     },
     addMessage(message) {
-      const m = this.messages.map(m => {
+      const updateMessage = m => {
         if (m.id === message.id) {
           return {
             ...message,
@@ -198,31 +198,33 @@ const App = Vue.component('app', {
           }
         }
         return m
-      })
-      let n = this.newmessages
-      if (new Date(message.created) > new Date(this.messages[0].created)) {
-        n.push(message)
-        n.sort(sortByDate)
-        n = _.slice(n, 0, PER_PAGE)
       }
-      this.newmessages = n
-      this.messages = m
-      this.updateNewCount()
+      const messages = this.messages.map(updateMessage)
+      let newmessages = this.newmessages.map(updateMessage)
+      if (new Date(message.created) > new Date(this.messages[0].created)) {
+        newmessages.push(message)
+        newmessages.sort(sortByDate)
+        newmessages = _.slice(newmessages, 0, PER_PAGE)
+      }
+      this.newmessages = newmessages
+      this.messages = messages
     },
     removeMessage(id, response, parent) {
       if (!response) {
         this.messages = this.messages.filter(e => e.id !== id)
         this.newmessages = this.newmessages.filter(e => e.id !== id)
-        return this.updateNewCount()
+        return
       }
-      this.messages.forEach(m => {
+      const removeChildMessage = m => {
         if (m.id === parent && m.relatedMessage) {
           m.relatedMessage = m.relatedMessage.filter(e => e.id !== id)
         }
-      })
+      }
+      this.messages.forEach(removeChildMessage)
+      this.newmessages.forEach(removeChildMessage)
     },
     addReply(message) {
-      this.messages = this.messages.map(m => {
+      const addReplyMessage = m => {
         if (m.id === message.parentMessage) {
           const newParentMessage = {...m}
           if (newParentMessage.relatedMessage) {
@@ -244,17 +246,15 @@ const App = Vue.component('app', {
           return newParentMessage
         }
         return m
-      })
+      }
+      this.messages = this.messages.map(addReplyMessage)
+      this.newmessages = this.newmessages.map(addReplyMessage)
     },
     mergeMessages() {
       let m = _.unionBy(this.messages, this.newmessages, 'id')
       m.sort(sortByDate)
       this.newmessages = []
       this.messages = _.slice(m, 0, PER_PAGE)
-      this.updateNewCount()
-    },
-    updateNewCount() {
-      // @TODO REMOVE
     },
     getUser() {
       socket.request({
