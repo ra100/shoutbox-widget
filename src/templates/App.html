@@ -40,7 +40,7 @@
     <div class="messages">
       <div class="new-messages" v-if="newmessages.length > 0" @click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
       <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" :user="user" :stream="id" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>
-      <template>
+      <template v-if="messages.length > 9">
         <sh-pagination :page="page"/>
       </template>
     </div>

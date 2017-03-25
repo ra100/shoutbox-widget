@@ -65,8 +65,8 @@ export default {
           }
         }
         retry = 0
-        if (data.message) {
-          this.afterSubmit(data.message)
+        if (data) {
+          this.afterSubmit(data)
           this.resetInput()
         }
       })

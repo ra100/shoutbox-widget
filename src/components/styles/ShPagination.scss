@@ -1,21 +1,30 @@
 @import '../../styles/variables';
 
-.pagination-wrapper {
+.pagination {
+  background: linear-gradient(0deg, $shoutbox-bg, rgba($shoutbox-bg, 0));
   display: block;
   float: left;
+  margin-top: -100px;
+  padding-top: 100px;
+  position: relative;
   width: 100%;
-}
 
-.pagination {
-  display: block;
-
-  button {
+  .button {
+    background: $pagination-button-bg;
     border: 0;
+    color: $pagination-text-color;
     cursor: pointer;
+    float: left;
     font-size: 16px;
     line-height: 20px;
     margin: auto;
-    padding: 5px 0;
+    padding: 20px 0;
+    text-align: center;
     width: 100%;
+
+    &:hover {
+      color: $text-color;
+      transition: color 200ms;
+    }
   }
 }

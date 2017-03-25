@@ -56,7 +56,8 @@ export default {
       this.toggle = false
     },
     remove() {
-      this.socket.delete(`/messages/${this.data.id}`, {
+      // DELETE doesn't work in Fx and maybe other browsers
+      this.socket.get(`/messages/destroy/${this.data.id}`, {
         _csrf: window.CSRF
       })
       this.toggle = false

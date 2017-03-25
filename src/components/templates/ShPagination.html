@@ -1,4 +1,4 @@
 <div class="pagination">
-  <button @click="nextPage" v-if="!loading">Načíst víc</button>
+  <div class="button" @click="nextPage" v-if="!loading">Zobrazit starší</div>
   <div class="loading" v-else>Načítávám...</div>
 </div>

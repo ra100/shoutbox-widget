@@ -119,7 +119,6 @@ a {
   margin-bottom: 2px;
   position: relative;
   float: left;
-  font-weight: bold;
   width: 100%;
 
   .name {
@@ -169,7 +168,7 @@ a {
 }
 
 .float-panel {
-  background-color: $shoutbox-bg;
+  background-color: $float-panel;
   border: 1px solid $panel-border;
   padding: 20px;
   position: absolute;
@@ -179,7 +178,7 @@ a {
 }
 
 .az { //Alešov Zobáčik
-  background-color: $shoutbox-bg;
+  background-color: $float-panel;
   border-left: 1px solid $panel-border;
   border-top: 1px solid $panel-border;
   display: block;

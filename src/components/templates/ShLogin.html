@@ -1,11 +1,11 @@
 <div class="login-root">
   <div class="login-options">
     <span class="login-choose">Nejprve se musíte přihlásit! Vyberte službu.</span>
-    <button @click="facebookLogin" class="login-option"><div class="login-icon fb"></div>Facebook</button>
-    <button @click="twitterLogin" class="login-option"><div class="login-icon tw"></div>Twitter</button>
-    <button @click="instagramLogin" class="login-option"><div class="login-icon ig"></div>Instagram</button>
-    <button @click="soundcloudLogin" class="login-option"><div class="login-icon sc"></div>Soundcloud</button>
-    <button @click="emailLogin" class="login-option"><div class="login-icon mail"></div>Rozhlasový účet</button>
+    <div @click="facebookLogin" class="login-option"><div class="login-icon fb"></div>Facebook</div>
+    <div @click="twitterLogin" class="login-option"><div class="login-icon tw"></div>Twitter</div>
+    <div @click="instagramLogin" class="login-option"><div class="login-icon ig"></div>Instagram</div>
+    <div @click="soundcloudLogin" class="login-option"><div class="login-icon sc"></div>Soundcloud</div>
+    <div @click="emailLogin" class="login-option"><div class="login-icon mail"></div>Rozhlasový účet</div>
   </div>
   <div class="float-panel email-login" v-show='form'>
     <div class="az"></div>

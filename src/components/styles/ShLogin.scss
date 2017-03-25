@@ -35,7 +35,7 @@ $link-color: #2e6fb3;
   margin-bottom: 2px;
   padding: 20px 20px 10px;
   position: absolute;
-  top: 80px;
+  top: 79px;
   width: calc(100% - 40px);
   z-index: 5;
 }
@@ -78,7 +78,7 @@ $link-color: #2e6fb3;
   width: 40px;
 
   &.mail {
-    background-image: url('/static/btn_mail_sprite.svg');
+    background-image: url('/static/btn_cro_sprite.svg');
   }
 
   &.fb {

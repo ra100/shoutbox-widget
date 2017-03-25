@@ -64,11 +64,15 @@ export default {
       this.showReplies = true
     },
     toggleReply() {
-      this.showReply = !this.showReply
+      if (this.user) {
+        this.showReply = !this.showReply
+        return
+      }
+      window.eventHub.$emit('login-toggle')
     },
     sumbit(message) {
-      this.afterSubmit(message)
       this.showReply = false
+      this.afterSubmit(message)
     }
   }
 }

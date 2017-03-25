@@ -1,4 +1,4 @@
-<style lang="scss" src="./styles/ShPagination.scss"></style>
+<style scoped lang="scss" src="./styles/ShPagination.scss"></style>
 <template lang="html" src="./templates/ShPagination.html"></template>
 <script>
 export default {

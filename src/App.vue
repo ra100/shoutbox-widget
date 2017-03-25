@@ -77,11 +77,13 @@ const App = Vue.component('app', {
     socket.on('stream', this.processEvent)
     window.eventHub.$on('user-load', this.getUser)
     window.eventHub.$on('user-form', this.showUserForm)
+    window.eventHub.$on('login-toggle', this.loginToggle)
     this.reload().then(this.getUser)
   },
   beforeDestroy() {
     window.eventHub.$off('user-load', this.getUser)
     window.eventHub.$off('user-form', this.showUserForm)
+    window.eventHub.$off('login-toggle', this.loginToggle)
   },
   methods: {
     reload() {
@@ -387,6 +389,8 @@ const App = Vue.component('app', {
       this.alert = false
     },
     afterSubmit(message) {
+      this.submitHide()
+      this.showAlert()
       message.published = !this.moderated
       if (message.isResponse) {
         this.addReply(message)
@@ -394,8 +398,6 @@ const App = Vue.component('app', {
         this.addMessage(message)
       }
       this.mergeMessages()
-      this.submitHide()
-      this.showAlert()
     }
   }
 })
