@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     maximize() {
-      escListener(this.minimize())
+      escListener(this.minimize)
       document.onkeydown = (event) => { escListener(event, this.minimize) }
       this.show = true
     },
