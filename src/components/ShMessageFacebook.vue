@@ -15,6 +15,7 @@ export default {
     icon
   },
   data() {
+    console.log(this.data)
     const m = this.data
     return {
       author: m.author,
@@ -25,11 +26,9 @@ export default {
       comments: m.metadata.comments,
       media: m.metadata.media,
       video: m.metadata.video,
-      oembed: null
+      oembed: null,
+      text: m.message
     }
-  },
-  computed: {
-    text: function() { return this.text || this.data.message }
   },
   created() {
     this.processOembed(this.data.message)
