@@ -46,13 +46,15 @@
 
   .reply-messages {
     background: $wrapper-bg;
-    border-top: 3px solid $shoutbox-bg;
+    background-image: url('/static/reply_line_small.png');
+    background-position: 15px 0;
+    background-repeat: no-repeat;
     color: $author-handle-color;
     clear: left;
     display: block;
     float: left;
     margin: 0 -10px 0;
-    padding: 0 10px 0;
+    padding: 3px 10px 0;
     width: 100%;
 
     .message {
@@ -286,12 +288,31 @@
       width: 15px;
     }
   }
+
+  &.has-replies {
+    background-image: url('/static/reply_line_start.png');
+    background-repeat: no-repeat;
+    background-position: 5px 14px;
+  }
 }
 
 .show-more-replies {
+  background: url('/static/reply_line.png') no-repeat;
+  background-position: 5px -30px;
   display: block;
   cursor: pointer;
   font-size: 13px;
   font-weight: normal;
-  margin: 7px 20px;
+  padding: 7px 20px;
+}
+
+.reply-wrapper {
+  background: url('/static/reply_line.png') no-repeat;
+  background-position: 5px 0;
+  float: left;
+  width: 100%;
+
+  &:last-child {
+    background-image: url('/static/reply_line_last.png');
+  }
 }

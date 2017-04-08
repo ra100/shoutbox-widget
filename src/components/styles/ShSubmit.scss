@@ -89,14 +89,19 @@ $remove-color: rgb(204, 81, 73);
 }
 
 .submit-reply {
-  position: relative;
-  float: right;
+  clear: left;
+  float: left;
+  margin-top: 25px;
+  max-width: 263px;
+  position: absolute;
+  width: calc(100% - 22px);
 
   .float-panel {
-    float: right;
+    float: left;
+    max-width: 100%;
     position: relative;
     top: 10px;
-    width: 260px;
+    width: 265px;
   }
 
   .az {
@@ -106,8 +111,9 @@ $remove-color: rgb(204, 81, 73);
 
 .meta .submit-reply {
   .float-panel {
-    left: 10px;
-    top: 5px;
+    left: -10px;
+    top: 0px;
+    right: auto;
   }
 
   .az {

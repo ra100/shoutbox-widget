@@ -15,7 +15,6 @@ export default {
     icon
   },
   data() {
-    console.log(this.data)
     const m = this.data
     return {
       author: m.author,

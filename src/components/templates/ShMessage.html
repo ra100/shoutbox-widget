@@ -14,13 +14,15 @@
   <template v-if="type == 'facebook'">
     <sh-message-facebook v-if="type == 'facebook'" :data="data" :socket="socket"/>
   </template>
-  <div class="meta" v-if="!data.isResponse">
+  <div class="meta" :class="{'has-replies': replyCount > 0}" v-if="!data.isResponse">
     <div class="replies"><div class="icon reply"  v-if="!data.isResponse" @click="toggleReply"></div><span v-if="replyCount > 0" >{{replyCount}}</span></div>
     <a class="link" v-if="data.link" v-bind:href="data.link" target="_blank"><div class="icon link"></div></a>
     <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
   </div>
   <div class="reply-messages" v-if="data.relatedMessage && data.relatedMessage.length > 0">
     <div class="show-more-replies" v-if="data.relatedMessage.length > 2 && !showReplies" @click="showMoreReplies">&rsaquo; Zobrazit další reakce</div>
-    <sh-message v-for="(message, index) in replies" :data="message" :socket="getSocket()" :user="user" :renewCsrf="renewCsrf" afterSubmit="afterSubmit"  v-bind:data-index="index" v-bind:key="message.id"/>
+    <div class="reply-wrapper" v-for="(message, index) in replies">
+      <sh-message :data="message" :socket="getSocket()" :user="user" :renewCsrf="renewCsrf" afterSubmit="afterSubmit"  v-bind:data-index="index" v-bind:key="message.id"/>
+    </div>
   </div>
 </div>
