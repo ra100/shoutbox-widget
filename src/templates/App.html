@@ -4,8 +4,8 @@
     <div class="shoutbox-header">
       <div class="shoutbox-title">
         Shoutbox
-        <button v-on:click="setMode('wide')" v-if="mode !== 'wide'" class="button expand" title="Expand" />
-        <button v-else v-on:click="setMode('normal')" class="button contract" title="Contract" />
+        <div v-on:click="setMode('wide')" v-if="mode !== 'wide'" class="button expand" title="Expand" />
+        <div v-else v-on:click="setMode('normal')" class="button contract" title="Contract" />
       </div>
       <div class="login-header">
         <template v-if="user !== true && user !== undefined">
