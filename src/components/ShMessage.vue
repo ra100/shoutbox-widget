@@ -29,9 +29,10 @@ export default {
   },
   computed: {
     replies: function() {
+      const l = this.data.relatedMessage.length
       return this.showReplies
       ? this.data.relatedMessage || []
-      : (this.data.relatedMessage && this.data.relatedMessage.slice(0, 2)) || []
+      : (this.data.relatedMessage && this.data.relatedMessage.slice(l - 2, l)) || []
     },
     replyCount: function() {
       return this.data.relatedMessage ? this.data.relatedMessage.length : 0
