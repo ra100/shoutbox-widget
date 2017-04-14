@@ -88,6 +88,10 @@ a {
   padding: 12px 10px 10px;
   text-transform: uppercase;
 
+  span {
+    cursor: pointer;
+  }
+
   .button {
     background-color: transparent;
     background-image: url('/static/btn_resize_up_sprite.svg');
