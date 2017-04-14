@@ -11,7 +11,7 @@ Vue.use(VeeValidate)
 let retry = 0
 
 export default {
-  props: ['user', 'socket', 'parentId', 'stream', 'afterSubmit', 'renewCsrf'],
+  props: ['user', 'socket', 'parentId', 'stream', 'feed', 'afterSubmit', 'renewCsrf'],
   components: {
     icon
   },
@@ -28,10 +28,11 @@ export default {
   methods: {
     postMessage() {
       this.loading = true
-      let url = '/messages/submit'
+      const url = '/messages/submit'
       let payload = {
         message: this.message,
         stream: this.stream,
+        feed: this.feed,
         _csrf: window.CSRF
       }
       if (typeof this.file !== 'undefined') {
@@ -41,10 +42,8 @@ export default {
         }
       }
       if (this.user && this.user.editor) {
-        url = '/messages'
         payload.reviewed = true
         payload.published = true
-        payload.author = this.user.id
       }
       if (this.parentId) {
         payload.parentMessage = this.parentId

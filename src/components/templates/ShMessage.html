@@ -4,7 +4,7 @@
   [messageState]: true,
   'editor': user && user.editor}">
   <div class="waiting" v-if="messageState === 'not-published' && user && user.editor">Čeká na schválení</div>
-  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :renewCsrf="renewCsrf" :type="type" v-if="user && user.editor"/>
+  <sh-message-admin :user="user" :socket="socket" :data="data" :stream="stream" :feed="feed" :renewCsrf="renewCsrf" :type="type" v-if="user && user.editor"/>
   <template v-if="type == 'shout'">
     <sh-message-shout :data="data" :feed-type="data.feedType" :socket="socket"/>
   </template>
@@ -15,9 +15,9 @@
     <sh-message-facebook v-if="type == 'facebook'" :data="data" :socket="socket"/>
   </template>
   <div class="meta" :class="{'has-replies': replyCount > 0}" v-if="!data.isResponse">
-    <div class="replies"><div class="icon reply"  v-if="!data.isResponse" @click="toggleReply"></div><span v-if="replyCount > 0" >{{replyCount}}</span></div>
+    <div class="replies" @click="toggleReply"><div class="icon reply" v-if="!data.isResponse" ></div><span v-if="replyCount > 0" >{{replyCount}}</span></div>
     <a class="link" v-if="data.link" v-bind:href="data.link" target="_blank"><div class="icon link"></div></a>
-    <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
+    <sh-submit :user="user" :socket="socket" :parentId="data.id" :stream="stream" :feed="feed" :afterSubmit="sumbit" v-if="showReply" :renewCsrf="renewCsrf"/>
   </div>
   <div class="reply-messages" v-if="data.relatedMessage && data.relatedMessage.length > 0">
     <div class="show-more-replies" v-if="data.relatedMessage.length > 2 && !showReplies" @click="showMoreReplies">&rsaquo; Zobrazit další reakce</div>

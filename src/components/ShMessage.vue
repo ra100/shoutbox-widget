@@ -13,21 +13,26 @@ const feedType = type => ({
   facebook_page: 'facebook',
   admin: 'shout',
   form: 'shout'
-}[type])
+})[type]
+
+const messageState = (published, reviewed) => ({
+  true: {true: 'approved', false: 'published'},
+  false: {true: 'rejected', false: 'not-published'}
+})[published || false][reviewed || false]
 
 export default {
   name: 'sh-message',
-  props: ['data', 'socket', 'user', 'stream', 'afterSubmit', 'renewCsrf'],
+  props: ['data', 'socket', 'user', 'stream', 'feed', 'afterSubmit', 'renewCsrf'],
   data() {
-    let m = this.data
-    let type = m.feedType
     return {
-      type: feedType(type),
       showReplies: this.showReplies || false,
       showReply: this.showReply || false
     }
   },
   computed: {
+    type: function() {
+      return feedType(this.data.feedType)
+    },
     replies: function() {
       const l = this.data.relatedMessage.length
       return this.showReplies
@@ -38,16 +43,7 @@ export default {
       return this.data.relatedMessage ? this.data.relatedMessage.length : 0
     },
     messageState: function() {
-      if (this.data.published) {
-        if (this.data.reviewed) {
-          return 'approved'
-        }
-        return 'published'
-      }
-      if (this.data.reviewed) {
-        return 'rejected'
-      }
-      return 'not-published'
+      return messageState(this.data.published, this.data.reviewed)
     }
   },
   components: {
