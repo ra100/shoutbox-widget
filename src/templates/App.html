@@ -25,7 +25,7 @@
         <sh-submit :user="user" :socket="getSocket()" :stream="id" :feed="form[0]" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf"/>
       </template>
       <template v-if="loginvisible && !user">
-        <sh-login :socket="getSocket()"/>
+        <sh-login :socket="getSocket()" :login-first="loginFirst"/>
       </template>
       <template v-if="uservisible && user">
         <sh-user :user="user" :socket="getSocket()"/>

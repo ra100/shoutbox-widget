@@ -1,6 +1,6 @@
 <div class="login-root">
   <div class="login-options">
-    <span class="login-choose">Nejprve se musíte přihlásit! Vyberte službu.</span>
+    <span class="login-choose"><template v-if="loginFirst">Nejprve se musíte přihlásit!</template> Vyberte službu.</span>
     <div @click="facebookLogin" class="login-option"><div class="login-icon fb"></div>Facebook</div>
     <div @click="twitterLogin" class="login-option"><div class="login-icon tw"></div>Twitter</div>
     <div @click="instagramLogin" class="login-option"><div class="login-icon ig"></div>Instagram</div>

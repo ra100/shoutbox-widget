@@ -8,7 +8,7 @@ import VeeValidate from 'vee-validate'
 Vue.use(VeeValidate)
 
 export default {
-  props: ['socket'],
+  props: ['socket', 'login-first'],
   data() {
     return {
       form: this.form || false,

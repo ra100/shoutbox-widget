@@ -70,7 +70,8 @@ const App = Vue.component('app', {
       submitvisible: this.submivisible || false,
       uservisible: this.uservisible || false,
       showMore: this.showMore || true,
-      alert: this.alert || false
+      alert: this.alert || false,
+      loginFirst: this.loginFirst || false
     }
   },
   created() {
@@ -339,6 +340,7 @@ const App = Vue.component('app', {
     },
     loginToggle() {
       this.loginvisible = !this.loginvisible
+      this.loginFirst = false
       this.submitvisible = false
     },
     submitShow() {
@@ -353,6 +355,7 @@ const App = Vue.component('app', {
       this.submitvisible = false
     },
     submitToggle() {
+      this.loginFirst = true
       if (this.submitvisible) {
         this.submitvisible = !this.submitvisible
         this.loginvisible = false
