@@ -34,7 +34,7 @@ export default {
       return feedType(this.data.feedType)
     },
     replies: function() {
-      const l = this.data.relatedMessage.length
+      const l = this.data.relatedMessage ? this.data.relatedMessage.length : 0
       return this.showReplies
       ? this.data.relatedMessage || []
       : (this.data.relatedMessage && this.data.relatedMessage.slice(l - 2, l)) || []

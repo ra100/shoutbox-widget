@@ -128,7 +128,7 @@ const App = Vue.component('app', {
       })
     },
     getMessages() {
-      let skip = this.page * PER_PAGE + this.newmessages.length
+      let skip = this.page * PER_PAGE + (this.newmessages ? this.newmessages.length : 0)
       let url = '/streams/messages'
       if (this.user && this.user.editor) {
         url = '/streams/adminMessages'
@@ -152,7 +152,7 @@ const App = Vue.component('app', {
         if (err || !data) {
           return reject(new Error(err))
         }
-        const l = data.length
+        const l = data ? data.length : 0
         const newData = data.map(m => {
           if ((this.user && this.user.editor) || !m.relatedMessage) {
             return m
@@ -242,7 +242,7 @@ const App = Vue.component('app', {
           } else {
             newParentMessage.relatedMessage = [message]
           }
-          newParentMessage.replies = newParentMessage.relatedMessage.length
+          newParentMessage.replies = newParentMessage.relatedMessage ? newParentMessage.relatedMessage.length : 0
           return newParentMessage
         }
         return m
