@@ -1,12 +1,14 @@
 <template lang="html" src="./templates/ShMessageInstagram.html"></template>
 <script>
 import ShImage from './ShImage'
+import ShInstagramVideo from './ShInstagramVideo'
 import icon from 'vue-icons'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
+    ShInstagramVideo,
     icon
   },
   data() {

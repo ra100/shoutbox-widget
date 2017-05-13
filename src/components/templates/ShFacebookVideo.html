@@ -1,5 +1,5 @@
 <div>
-  <template v-if="play === true">
+  <template v-if="playing === true">
     <div class="iframe-container" :style="'padding-bottom: ' + (video.height  / video.width * 100) + '%;'" v-html="video.embed_html"/>
   </template>
   <div class="video" v-else>

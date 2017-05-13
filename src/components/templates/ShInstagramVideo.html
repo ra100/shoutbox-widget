@@ -1,12 +1,12 @@
 <div class="video">
   <template v-if="playing === true">
-    <video autoplay loop>
-      <source v-for="v of variants" :src="v.url" :type="v.content_type" v-on:click="pause">
+    <video autoplay loop @click="pause">
+      <source :src="video">
       Váš prohlížeč nepodporuje přehrávnání videa.
     </video>
   </template>
   <template v-else>
-    <img :src="img"/>
+    <img :src="img" @click="play"/>
     <div class="play-wrapper" @click="play">
       <icon class="play" name="material-play_circle_outline"/>
     </div>

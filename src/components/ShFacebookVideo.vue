@@ -6,7 +6,7 @@ export default {
   props: ['video'],
   data() {
     return {
-      play: this.play || false
+      playing: this.playing || false
     }
   },
   components: {
@@ -14,10 +14,10 @@ export default {
   },
   methods: {
     play() {
-      this.play = true
+      this.playing = true
     },
     pause() {
-      this.play = false
+      this.playing = false
     }
   }
 }

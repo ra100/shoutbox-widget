@@ -1,9 +1,9 @@
-<template lang="html" src="./templates/ShTwitterVideo.html"></template>
+<template lang="html" src="./templates/ShInstagramVideo.html"></template>
 <script>
 import icon from 'vue-icons'
 
 export default {
-  props: ['variants', 'img'],
+  props: ['video', 'img'],
   data() {
     return {
       playing: this.playing || false

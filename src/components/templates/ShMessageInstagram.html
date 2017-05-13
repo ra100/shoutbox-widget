@@ -13,5 +13,8 @@
     <div class="media" v-if="mediatype === 'image'">
       <sh-image class="photo-single" :thumb="extended.images.low_resolution.url" :img="extended.images.standard_resolution.url" :width="extended.images.standard_resolution.width" :height="extended.images.standard_resolution.height"/>
     </div>
+    <div class="media" v-if="mediatype === 'video'">
+      <sh-instagram-video :video="extended.videos.standard_resolution.url" :img="extended.images.low_resolution.url"/>
+    </div>
   </div>
 </div>
