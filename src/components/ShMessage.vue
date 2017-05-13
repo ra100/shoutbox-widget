@@ -5,6 +5,7 @@ import ShMessageTwitter from './ShMessageTwitter.vue'
 import ShMessageShout from './ShMessageShout.vue'
 import ShMessageFacebook from './ShMessageFacebook.vue'
 import ShMessageAdmin from './ShMessageAdmin.vue'
+import ShMessageInstagram from './ShMessageInstagram.vue'
 import ShSubmit from './ShSubmit.vue'
 
 const feedType = type => ({
@@ -12,7 +13,8 @@ const feedType = type => ({
   twitter_user: 'twitter',
   facebook_page: 'facebook',
   admin: 'shout',
-  form: 'shout'
+  form: 'shout',
+  instagram_user: 'instagram'
 })[type]
 
 const messageState = (published, reviewed) => ({
@@ -51,6 +53,7 @@ export default {
     ShMessageShout,
     ShMessageFacebook,
     ShMessageAdmin,
+    ShMessageInstagram,
     ShSubmit
   },
   methods: {

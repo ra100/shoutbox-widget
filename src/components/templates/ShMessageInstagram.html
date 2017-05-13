@@ -1,0 +1,17 @@
+<div class="message-root">
+  <div class="author">
+    <div class="avatar">
+      <img :src="author.picture" />
+    </div>
+    <div class="author-name">
+      <span class="name">{{author.name}}</span>
+      <span class="date">{{data.created | date}}</span>
+    </div>
+  </div>
+  <div class="text-wrapper">
+    <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
+    <div class="media" v-if="mediatype === 'image'">
+      <sh-image class="photo-single" :thumb="extended.images.low_resolution.url" :img="extended.images.standard_resolution.url" :width="extended.images.standard_resolution.width" :height="extended.images.standard_resolution.height"/>
+    </div>
+  </div>
+</div>
