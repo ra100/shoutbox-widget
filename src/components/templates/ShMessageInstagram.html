@@ -10,11 +10,17 @@
   </div>
   <div class="text-wrapper">
     <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
-    <div class="media" v-if="mediatype === 'image'">
+    <div class="media" v-if="mediatype === 'image' && !extended.carousel_media">
       <sh-image class="photo-single" :thumb="extended.images.low_resolution.url" :img="extended.images.standard_resolution.url" :width="extended.images.standard_resolution.width" :height="extended.images.standard_resolution.height"/>
     </div>
-    <div class="media" v-if="mediatype === 'video'">
+    <div class="media" v-if="mediatype === 'video' && !extended.carousel_media">
       <sh-instagram-video :video="extended.videos.standard_resolution.url" :img="extended.images.low_resolution.url"/>
+    </div>
+    <div class="media" v-if="extended.carousel_media">
+      <template v-for="media in extended.carousel_media">
+        <sh-instagram-video v-if="media.type === 'video'" :video="media.videos.standard_resolution.url" :img="media.images.low_resolution.url"/>
+        <sh-image class="photo-single" v-if="media.type === 'image'" :thumb="media.images.low_resolution.url" :img="media.images.standard_resolution.url" :width="media.images.standard_resolution.width" :height="media.images.standard_resolution.height"/>
+      </template>
     </div>
   </div>
 </div>
