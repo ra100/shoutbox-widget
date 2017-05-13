@@ -80,6 +80,8 @@ const App = Vue.component('app', {
     window.eventHub.$on('user-form', this.showUserForm)
     window.eventHub.$on('login-toggle', this.loginToggle)
     this.reload().then(this.getUser)
+    // get new messages after return from offline
+    socket.on('connect', () => this.getNew().then(this.getUser))
   },
   beforeDestroy() {
     window.eventHub.$off('user-load', this.getUser)
@@ -97,6 +99,46 @@ const App = Vue.component('app', {
         .then(this.getMessages)
         .then(this.processMessages)
         .catch(console.error)
+    },
+    getNew() {
+      if (this.messages.length === 0) {
+        return Promise.resolve()
+      }
+      let url = '/streams/messages'
+      if (this.user && this.user.editor) {
+        url = '/streams/adminMessages'
+      }
+      let timestamp = this.messages[0].created
+      if (this.newmesages.length > 0) {
+        timestamp = this.newmessages[0].created
+      }
+      return new Promise((resolve, reject) => {
+        socket.request({
+          method: 'get',
+          url,
+          data: {
+            id: this.id,
+            timestamp
+          },
+          headers: {
+            'X-CSRF-Token': window.CSRF
+          }
+        }, resolve)
+      })
+      .then(messages => {
+        messages.forEach(message => {
+          if (!message.published && (!this.user || !this.user.editor)) {
+            this.removeMessage(message.id, message.isResponse, message.parentMessage)
+          } else {
+            if (!message.isResponse) {
+              this.addMessage(message)
+            } else {
+              this.addReply(message)
+            }
+          }
+        })
+      })
+      .catch(console.error)
     },
     getName() {
       this.name = document

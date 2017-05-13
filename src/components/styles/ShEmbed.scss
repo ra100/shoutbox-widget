@@ -41,6 +41,10 @@
     overflow: hidden;
   }
 
+  a {
+    cursor: pointer;
+  }
+
   a.media-caption, .media-caption {
     color: $text-color;
     font-size: 12px;

@@ -33,7 +33,7 @@
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
   </div>
-  <div v-if="type === 'facebook' && data.type === 'link'" class="media">
+  <div v-if="type === 'facebook' && ['link', 'share'].indexOf(data.type) > -1" class="media">
     <icon class="quote" name="material-format_quote" v-if="data.title"></icon>
     <blockquote class="insert-html" v-if="data.title">{{data.title}}</blockquote>
     <div class="separator" />
@@ -46,8 +46,11 @@
         {{data.link_description}}
       </div>
     </div>
-    <a class="media-host" :href="data.url" target="_blank">
+    <a v-if="data.type === 'link'" class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
+    </a>
+    <a v-if="data.type === 'share'" class="media-host" :href="data.url" target="_blank">
+      Zdroj: {{getHostname(data.url)}}
     </a>
   </div>
   <div v-if="type === 'facebook' && data.text">

@@ -6,6 +6,8 @@ import ShEmbed from './ShEmbed.vue'
 import icon from 'vue-icons'
 import {urlPattern, processEmbedUrl} from './utils'
 
+const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php?u='
+
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
@@ -36,7 +38,10 @@ export default {
     processOembed(text) {
       // Match url and insert oembed
       if (text.match(urlPattern)) {
-        const url = text.match(urlPattern)[0]
+        let url = text.match(urlPattern)[0]
+        if (url.indexOf(FB_LINK_REDIRECT) === 0) {
+          url = decodeURIComponent.replace(FB_LINK_REDIRECT, '')
+        }
         processEmbedUrl(url, this.socket).then(embed => {
           if (embed.provider_name !== 'NotAvailable') {
             this.mediatype = embed.mediatype

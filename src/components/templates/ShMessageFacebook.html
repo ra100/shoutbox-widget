@@ -12,7 +12,7 @@
     <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
     <div class="media" v-if="media && media.length > 0 && media[0].type !== 'video_inline'">
       <template v-for="m in media">
-        <a class="media-title" v-if="m.title && m.type !== 'photo'" target="_blank" :href="m.url">{{m.title}}</a>
+        <a class="media-title" v-if="m.title && !['photo','share'].includes(m.type)" target="_blank" :href="m.url">{{m.title}}</a>
         <sh-image v-if="m.type === 'photo' && m.media.image"
           class="photo-single"
           :thumb="m.media.image.src"
@@ -28,6 +28,17 @@
               :height="item.media.image.height"/>
           </template>
         </template>
+        <sh-embed v-if="m.type === 'share'" :data="{
+          provider_name: 'Facebook',
+          type: 'share',
+          link_title: m.title,
+          link_description: m.description,
+          image: m.media.image && m.media.image.src,
+          link_url: decodeURIComponent(
+            m.url.replace('https://l.facebook.com/l.php?u=', '')),
+          url: decodeURIComponent(
+            m.url.replace('https://l.facebook.com/l.php?u=', ''))
+        }"/>
       </template>
     </div>
     <sh-embed v-if="mediatype == 'embed'" :data="oembed"/>
