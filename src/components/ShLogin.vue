@@ -110,6 +110,7 @@ export default {
            window.eventHub.$emit('user-load')
          } else {
            if (res.body.error === 'Error.Passport.Already.Authenticated') {
+             window.eventHub.$emit('reload')
              window.eventHub.$emit('user-load')
              return
            }
@@ -140,6 +141,7 @@ export default {
        }).then(res => {
          this.loading = false
          if (res.ok && res.body && res.body.status !== 'error') {
+           window.eventHub.$emit('repload')
            window.eventHub.$emit('user-load')
          } else {
            this.error = res.body.message

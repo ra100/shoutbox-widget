@@ -79,6 +79,7 @@ const App = Vue.component('app', {
     window.eventHub.$on('user-load', this.getUser)
     window.eventHub.$on('user-form', this.showUserForm)
     window.eventHub.$on('login-toggle', this.loginToggle)
+    window.eventHub.$on('reload', this.reload)
     this.reload().then(this.getUser)
     // get new messages after return from offline
     socket.on('connect', () => this.getNew().then(this.getUser))
@@ -87,6 +88,7 @@ const App = Vue.component('app', {
     window.eventHub.$off('user-load', this.getUser)
     window.eventHub.$off('user-form', this.showUserForm)
     window.eventHub.$off('login-toggle', this.loginToggle)
+    window.eventHub.$off('reload', this.reload)
   },
   methods: {
     reload() {
