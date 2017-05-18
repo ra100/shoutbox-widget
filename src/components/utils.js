@@ -26,3 +26,19 @@ export const processEmbedUrl = (url, socket) => {
     })
   })
 }
+
+export const getParameterByName = (param, url) => {
+  if (!url) url = window.location.href
+  const name = param.replace(/[[\]]/g, '\\$&')
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`)
+  const results = regex.exec(url)
+  if (!results) return null
+  if (!results[2]) return ''
+  return decodeURIComponent(results[2].replace(/\+/g, ' '))
+}
+
+export const getHostname = (url) => {
+  const parser = document.createElement('a')
+  parser.href = url
+  return parser.hostname
+}

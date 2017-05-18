@@ -109,7 +109,7 @@ const App = Vue.component('app', {
         url = '/streams/adminMessages'
       }
       let timestamp = this.messages[0].created
-      if (this.newmesages.length > 0) {
+      if (this.newmesages && this.newmesages.length > 0) {
         timestamp = this.newmessages[0].created
       }
       return new Promise((resolve, reject) => {

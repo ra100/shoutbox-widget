@@ -4,9 +4,9 @@ import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import ShEmbed from './ShEmbed.vue'
 import icon from 'vue-icons'
-import {urlPattern, processEmbedUrl} from './utils'
+import {urlPattern, processEmbedUrl, getParameterByName, getHostname} from './utils'
 
-const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php?u='
+const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php'
 
 export default {
   props: ['data', 'feedType', 'socket'],
@@ -33,6 +33,9 @@ export default {
   },
   created() {
     this.processOembed(this.data.message)
+    if (this.data.metadata.media) {
+      this.processMedia(this.data.metadata.media)
+    }
   },
   methods: {
     processOembed(text) {
@@ -40,7 +43,7 @@ export default {
       if (text.match(urlPattern)) {
         let url = text.match(urlPattern)[0]
         if (url.indexOf(FB_LINK_REDIRECT) === 0) {
-          url = decodeURIComponent.replace(FB_LINK_REDIRECT, '')
+          url = decodeURIComponent(getParameterByName('u', url))
         }
         processEmbedUrl(url, this.socket).then(embed => {
           if (embed.provider_name !== 'NotAvailable') {
@@ -53,6 +56,40 @@ export default {
           // console.error(err)
         })
       }
+    },
+    processMedia(media) {
+      const promises = media.map(m =>
+        new Promise(resolve => {
+          if (m.type === 'animated_image_share') {
+            const url = decodeURIComponent(getParameterByName('u', m.url))
+            return resolve({
+              type: 'oembed',
+              oembed: {
+                html: '',
+                host: getHostname(url),
+                provider_name: 'Facebook',
+                image: m.media.image.src,
+                animated: url,
+                url
+              }
+            })
+          }
+          if (m.type === 'share') {
+            const url = decodeURIComponent(getParameterByName('u', m.url))
+            return resolve({
+              provider_name: 'Facebook',
+              type: 'share',
+              link_title: m.title,
+              link_description: m.description,
+              image: m.media.image && m.media.image.src,
+              link_url: url,
+              url
+            })
+          }
+          return resolve(m)
+        })
+      )
+      Promise.all(promises).then(newMedia => { this.media = newMedia })
     }
   }
 }

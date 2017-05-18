@@ -4,6 +4,7 @@
 import icon from 'vue-icons'
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
+import {getHostname} from './utils.js'
 
 const getType = provider => {
   const providers = {
@@ -33,12 +34,12 @@ const filter = (provider, html) => {
 
 export default {
   props: ['data'],
-  data() {
-    const provider = this.data.provider_name
-    const type = getType(provider)
-    return {
-      type,
-      filtered: filter(type, this.data.html)
+  computed: {
+    type: function() {
+      return getType(this.data.provider_name)
+    },
+    filtered: function() {
+      return filter(this.type, this.data.html)
     }
   },
   components: {
@@ -47,11 +48,7 @@ export default {
     icon
   },
   methods: {
-    getHostname(url) {
-      const parser = document.createElement('a')
-      parser.href = url
-      return parser.hostname
-    }
+    getHostname(url) { return getHostname(url) }
   }
 }
 </script>

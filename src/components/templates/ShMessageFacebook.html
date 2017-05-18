@@ -28,20 +28,11 @@
               :height="item.media.image.height"/>
           </template>
         </template>
-        <sh-embed v-if="m.type === 'share'" :data="{
-          provider_name: 'Facebook',
-          type: 'share',
-          link_title: m.title,
-          link_description: m.description,
-          image: m.media.image && m.media.image.src,
-          link_url: decodeURIComponent(
-            m.url.replace('https://l.facebook.com/l.php?u=', '')),
-          url: decodeURIComponent(
-            m.url.replace('https://l.facebook.com/l.php?u=', ''))
-        }"/>
+        <sh-embed v-if="m.type === 'share'" :data="m"/>
+        <sh-embed v-if="m.type === 'oembed'" :data="m.oembed"/>
       </template>
     </div>
-    <sh-embed v-if="mediatype == 'embed'" :data="oembed"/>
+    <sh-embed v-if="mediatype === 'embed'" :data="oembed"/>
     <template v-if="video && video.format">
       <sh-facebook-video :video="video.format[3]"/>
     </template>

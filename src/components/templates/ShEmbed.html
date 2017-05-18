@@ -70,6 +70,12 @@
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
   </div>
+  <div v-if="type === 'facebook' && data.animated" class="media">
+    <img v-if="data.host.includes('giphy')" class="giphy" :src="data.animated"/>
+    <a class="media-host" :href="data.url" target="_blank">
+      Zdroj: {{data.host}}
+    </a>
+  </div>
   <div v-if="type === 'twitter'">
     <icon class="quote" name="material-format_quote"></icon>
     <blockquote class="insert-html" v-html="filtered" />
