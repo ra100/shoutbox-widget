@@ -34,7 +34,13 @@
     </div>
     <sh-embed v-if="mediatype === 'embed'" :data="oembed"/>
     <template v-if="video && video.format">
-      <sh-facebook-video :video="video.format[3]"/>
+      <sh-facebook-video :video="{
+        embed_html: video.format[3].embed_html,
+        filter: video.format[3].filter,
+        height: video.format[3].height,
+        width: video.format[3].width,
+        picture: video.format[2].picture
+      }"/>
     </template>
   </div>
 </div>

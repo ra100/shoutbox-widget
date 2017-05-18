@@ -1,3 +1,4 @@
+<style lang="scss" src="./styles/ShFacebookVideo.scss"></style>
 <template lang="html" src="./templates/ShFacebookVideo.html"></template>
 <script>
 import icon from 'vue-icons'

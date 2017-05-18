@@ -197,6 +197,7 @@ a {
   float: left;
   width: calc(100% - 10px);
   padding: 10px 10px 10px 10px;
+  overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: calc(100vh - 105px);
