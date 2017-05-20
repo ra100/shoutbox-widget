@@ -42,8 +42,8 @@ export default {
         })
     },
     updateUser() {
-      const csrf = window.CSRF
-      const payload = {}
+      this.loading = true
+      const payload = {_csrf: window.CSRF}
       payload.displayname = this.displayname
       if (this.file) {
         payload.image = {
@@ -51,19 +51,14 @@ export default {
           name: this.file.name
         }
       }
-      request.post('https://shoutbox.rozhlas.cz/users/updateme')
-        .set('X-CSRF-Token', csrf)
-        .set('X-Requested-With', 'XMLHttpRequest')
-        .withCredentials()
-        .send(payload)
-        .end((err, res) => {
-          if (err) {
-            return console.error(err)
-          }
-          if (res.ok && res.body) {
-            window.eventHub.$emit('user-load')
-          }
-        })
+      this.socket.post('https://shoutbox.rozhlas.cz/users/updateme', payload, (data, jwres) => {
+        this.loading = false
+        if (jwres.statusCode !== 200) {
+          this.error = 'Chyba odeslání'
+          return
+        }
+        window.eventHub.$emit('user-load')
+      })
     },
     selectFile() {
       this.$refs.upload.click()

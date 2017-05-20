@@ -16,6 +16,7 @@
         <input type="text" id="name" v-model="displayname" name="displayname" v-validate data-vv-rules="required" :class="{'invalid': errors.has('displayname')}"/>
       </div>
     </form>
+    <div class="error" v-if="error">{{error}}</div>
     <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.count() == 0)">Uložit změny</button>
   </template>
 </div>
