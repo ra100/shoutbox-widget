@@ -75,3 +75,18 @@
     opacity: .5;
   }
 }
+
+.section-label {
+  color: $text-color;
+  clear: left;
+  float: left;
+  font-size: 12px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.success {
+  float: left;
+  clear: left;
+  color: $action-approve;
+}

@@ -18,9 +18,37 @@ export default {
       displayname: this.user.displayname,
       picture: this.user.picture,
       file: this.file,
+      email: this.user.email,
+      password: '',
+      newPassword: '',
+      reenteredPassword: '',
       loading: false,
       error: '',
-      errors: this.$validator.errorBag
+      errors: this.$validator.errorBag,
+      success: false
+    }
+  },
+  computed: {
+    matchPassword() {
+      return this.newPassword === this.reenteredPassword
+    },
+    passwordLength() {
+      return this.newPassword.length >= 8
+    },
+    nameChanged() {
+      return this.user.displayname !== this.displayname
+    },
+    emailChanged() {
+      return this.user.email !== this.email
+    },
+    passwordValid() {
+      if (!this.newPassword) {
+        return true
+      }
+      if (this.passwordLength && this.matchPassword && this.password) {
+        return true
+      }
+      return false
     }
   },
   methods: {
@@ -42,9 +70,19 @@ export default {
         })
     },
     updateUser() {
+      this.clearError()
       this.loading = true
       const payload = {_csrf: window.CSRF}
-      payload.displayname = this.displayname
+      if (this.nameChanged) {
+        payload.displayname = this.displayname
+      }
+      if (this.emailChanged) {
+        payload.email = this.email
+      }
+      if (this.newPassword) {
+        payload.password = this.newPassword
+        payload.oldPassword = this.password
+      }
       if (this.file) {
         payload.image = {
           data: this.file,
@@ -54,9 +92,25 @@ export default {
       this.socket.post('https://shoutbox.rozhlas.cz/users/updateme', payload, (data, jwres) => {
         this.loading = false
         if (jwres.statusCode !== 200) {
+          if (typeof jwres.body === 'string') {
+            if (jwres.body === 'CSRF mismatch') {
+              this.error = 'Sezení vypršelo, obnovte stránku'
+              return
+            }
+            this.error = jwres.body
+            return
+          }
+          if (jwres.body.code === 'E_VALIDATION' && jwres.body.invalidAttributes.email) {
+            this.error = 'Email již existuje'
+            return
+          }
           this.error = 'Chyba odeslání'
-          return
+          return console.error(jwres)
         }
+        this.success = true
+        this.password = ''
+        this.newPassword = ''
+        this.reenteredPassword = ''
         window.eventHub.$emit('user-load')
       })
     },
@@ -70,6 +124,10 @@ export default {
       if (!this.errors.has('upload') && this.file) {
         this.picture = window.URL.createObjectURL(this.file)
       }
+    },
+    clearError() {
+      this.error = ''
+      this.success = ''
     }
   }
 }

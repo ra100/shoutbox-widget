@@ -246,7 +246,7 @@ const App = Vue.component('app', {
       }
       const messages = this.messages.map(updateMessage)
       let newmessages = this.newmessages.map(updateMessage)
-      if (new Date(message.created) > new Date(this.messages[0].created)) {
+      if (this.messages.length > 0 && new Date(message.created) > new Date(this.messages[0].created)) {
         newmessages.push(message)
         newmessages.sort(sortByDate)
         newmessages = _.slice(newmessages, 0, PER_PAGE)

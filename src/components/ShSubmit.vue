@@ -52,7 +52,7 @@ export default {
       this.socket.post(url, payload, (data, jwres) => {
         this.loading = false
         if (![200, 201].includes(jwres.statusCode)) {
-          console.log(jwres.statusCode)
+          console.error(jwres.statusCode)
           if (data.text === 'CSRF mismatch' && retry < 3) {
             retry++
             this.renewCsrf(this.postMessage)

@@ -13,10 +13,31 @@
       </div>
       <div class="input-wrapper">
         <label for="name">Změnit přezdívku</label>
-        <input type="text" id="name" v-model="displayname" name="displayname" v-validate data-vv-rules="required" :class="{'invalid': errors.has('displayname')}"/>
+        <input type="text" id="name" v-model="displayname" name="displayname" @change="clearError" v-validate data-vv-rules="required" :class="{'invalid': errors.has('displayname')}"/>
       </div>
+      <div class="input-wrapper">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" v-model="email" name="email" @change="clearError" v-validate data-vv-rules="required|email" :class="{'invalid': errors.has('email')}"/>
+      </div>
+      <div class="section-label">Změnit heslo</div>
+      <div class="input-wrapper">
+        <label for="password">Staré heslo</label>
+        <input type="password" id="password" v-model="password" name="password" @change="clearError" :class="{'invalid': !this.password && this.newPassword}"/>
+      </div>
+      <div class="input-wrapper">
+        <label for="newPassword">Nové heslo</label>
+        <input type="password" id="password" v-model="newPassword" name="newPassword" @change="clearError" :class="{'invalid': !passwordValid}"/>
+      </div>
+      <div class="input-wrapper">
+        <label for="password">Nové heslo znovu</label>
+        <input type="password" id="reentered-password" v-model="reenteredPassword" name="reenteredPassword" @change="clearError" :class="{'invalid': !passwordValid || !matchPassword}"/>
+      </div>
+      <div class="error" v-show="!this.password && this.newPassword">Pro změnu hesla musíte zadat staré heslo</div>
+      <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
+      <div class="error" v-show="newPassword && !passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>
+      <div class="success" v-if="success">Změny uloženy</div>
     </form>
     <div class="error" v-if="error">{{error}}</div>
-    <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.count() == 0)">Uložit změny</button>
+    <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.count() == 0 && passwordValid)">Uložit změny</button>
   </template>
 </div>
