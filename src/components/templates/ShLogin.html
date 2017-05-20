@@ -30,7 +30,7 @@
       </div>
       <div class="form-register" v-if="page === 'register'">
         <div class="input-wrapper">
-          <label for="name">Jméno</label>
+          <label for="name">Přezdívka</label>
           <input type="text" id="name" v-model="name" name="name" v-validate data-vv-rules="required" :class="{'invalid': errors.has('name')}"/>
         </div>
         <div class="input-wrapper">

@@ -263,3 +263,16 @@ a {
   border-radius: 0px;
   background-color: rgba(0, 0, 0, .5);
 }
+
+.avatar {
+  clear: left;
+  float: left;
+  margin: 0 10px 0 0;
+  width: 36px;
+
+  img {
+    float: left;
+    height: 36px;
+    width: 36px;
+  }
+}

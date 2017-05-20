@@ -3,4 +3,19 @@
   <span class="logout" v-if="user !== true && user !== undefined" @click="logout">
     Odhlásit se
   </span>
+  <template v-if="user.protocol === 'local'">
+    <form novalidate>
+      <input type="file" ref="upload" name="upload" accept="image/*" @change="onFileChange" class="field-image-input" v-validate data-vv-rules="image"/>
+      <div class="user-picture" :style="{'background-image': `url(${picture})`}"  @click="selectFile">
+        <div class="user-picture-change">
+          <icon name="material-add" @click="selectFile"></icon>
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label for="name">Změnit přezdívku</label>
+        <input type="text" id="name" v-model="displayname" name="displayname" v-validate data-vv-rules="required" :class="{'invalid': errors.has('displayname')}"/>
+      </div>
+    </form>
+    <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.count() == 0)">Uložit změny</button>
+  </template>
 </div>

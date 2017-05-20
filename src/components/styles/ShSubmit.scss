@@ -3,6 +3,10 @@ $options-bg: #ddd;
 $options-color: #555;
 $remove-color: rgb(204, 81, 73);
 
+.float-panel {
+  top: 85px;
+}
+
 .field-image-input {
   display: none;
 }
@@ -63,6 +67,12 @@ $remove-color: rgb(204, 81, 73);
     margin-top: 18px;
     text-align: center;
     width: 100%;
+
+    transition: opacity 300ms;
+
+    &:hover {
+      opacity: 0.7;
+    }
 
     &:disabled {
       cursor: not-allowed;
