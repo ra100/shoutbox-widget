@@ -126,6 +126,18 @@ export default {
         this.error = 'Hesla se musí shodovat.'
         return
       }
+      if (this.name.length === 0) {
+        this.error = 'Musíte zadat přezdívku'
+        return
+      }
+      if (this.email.length === 0) {
+        this.error = 'Musíte zadat email'
+        return
+      }
+      if (this.password.length <= 8 || this.reenteredPassword.length <= 8) {
+        this.error = 'Heslo musí být aspoň 8 znaků dlouhé'
+        return
+      }
       this.loading = true
       let csrf = window.CSRF
       request

@@ -48,7 +48,7 @@
         <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
         <div class="error" v-show="!passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>
         <div class="error" v-if="error">{{error}}</div>
-        <button @click="register" :disabled="errors.count() > 0 || email.length == 0 || password.length == 0 || reenteredPassword.length == 0 || name.length == 0" class="button">Zaregistrovat</button>
+        <button @click="register" :disabled="errors.count() > 0" class="button">Zaregistrovat</button>
         <div class="links">
           <div class="link" @click="switchLogin">Přihlásit přes existující účet</div>
         </div>
