@@ -127,20 +127,20 @@ const App = Vue.component('app', {
           }
         }, resolve)
       })
-      .then(messages => {
-        messages.forEach(message => {
-          if (!message.published && (!this.user || !this.user.editor)) {
-            this.removeMessage(message.id, message.isResponse, message.parentMessage)
-          } else {
-            if (!message.isResponse) {
-              this.addMessage(message)
+        .then(messages => {
+          messages.forEach(message => {
+            if (!message.published && (!this.user || !this.user.editor)) {
+              this.removeMessage(message.id, message.isResponse, message.parentMessage)
             } else {
-              this.addReply(message)
+              if (!message.isResponse) {
+                this.addMessage(message)
+              } else {
+                this.addReply(message)
+              }
             }
-          }
+          })
         })
-      })
-      .catch(console.error)
+        .catch(console.error)
     },
     getName() {
       this.name = document

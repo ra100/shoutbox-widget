@@ -95,31 +95,32 @@ export default {
       this.loading = true
       let csrf = window.CSRF
       request
-       .post('https://shoutbox.rozhlas.cz/auth/local')
-       .set('X-CSRF-Token', csrf)
-       .withCredentials()
-       .send({
-         identifier: this.email,
-         password: this.password,
-         type: 'local',
-         _csrf: csrf
-       })
-       .then(res => {
-         this.loading = false
-         if (res.ok && res.body && res.body.status !== 'error') {
-           window.eventHub.$emit('user-load')
-         } else {
-           if (res.body.error === 'Error.Passport.Already.Authenticated') {
-             window.eventHub.$emit('reload')
-             window.eventHub.$emit('user-load')
-             return
-           }
-           this.error = res.body.error || 'Chyba při přihlašování'
-         }
-       }).catch(err => {
-         console.error(err.response)
-         this.error = (err.response.body && err.response.body.error) ? err.response.body.error : 'Chyba při přihlašování'
-       })
+        .post('https://shoutbox.rozhlas.cz/auth/local')
+        .set('X-CSRF-Token', csrf)
+        .withCredentials()
+        .send({
+          identifier: this.email,
+          password: this.password,
+          type: 'local',
+          _csrf: csrf
+        })
+        .then(res => {
+          this.loading = false
+          if (res.ok && res.body && res.body.status !== 'error') {
+            window.eventHub.$emit('user-load')
+          } else {
+            if (res.body.error === 'Error.Passport.Already.Authenticated') {
+              window.eventHub.$emit('reload')
+              window.eventHub.$emit('user-load')
+              return
+            }
+            this.error = res.body.error || 'Chyba při přihlašování'
+          }
+        })
+        .catch(err => {
+          console.error(err.response)
+          this.error = (err.response.body && err.response.body.error) ? err.response.body.error : 'Chyba při přihlašování'
+        })
     },
     register() {
       if (this.password !== this.reenteredPassword) {
@@ -141,27 +142,27 @@ export default {
       this.loading = true
       let csrf = window.CSRF
       request
-       .post('https://shoutbox.rozhlas.cz/auth/local/register')
-       .set('X-CSRF-Token', csrf)
-       .withCredentials()
-       .send({
-         email: this.email,
-         username: this.name,
-         displayname: this.name,
-         password: this.password,
-         _csrf: csrf
-       }).then(res => {
-         this.loading = false
-         if (res.ok && res.body && res.body.status !== 'error') {
-           window.eventHub.$emit('repload')
-           window.eventHub.$emit('user-load')
-         } else {
-           this.error = res.body.message
-         }
-       }).catch(err => {
-         console.error(err)
-         this.error = 'Chyba při registraci'
-       })
+        .post('https://shoutbox.rozhlas.cz/auth/local/register')
+        .set('X-CSRF-Token', csrf)
+        .withCredentials()
+        .send({
+          email: this.email,
+          username: this.name,
+          displayname: this.name,
+          password: this.password,
+          _csrf: csrf
+        }).then(res => {
+          this.loading = false
+          if (res.ok && res.body && res.body.status !== 'error') {
+            window.eventHub.$emit('repload')
+            window.eventHub.$emit('user-load')
+          } else {
+            this.error = res.body.message
+          }
+        }).catch(err => {
+          console.error(err)
+          this.error = 'Chyba při registraci'
+        })
     },
     resetPassword() {},
     handleValidate: function (e) {
