@@ -1,4 +1,4 @@
-<style lang='scss' src='./styles/ShEmbed.scss'></style>
+<style lang='scss' src='./styles/ShEmbed.scss' scoped></style>
 <template lang="html" src="./templates/ShEmbed.html"></template>
 <script>
 import icon from 'vue-icons'
@@ -34,6 +34,11 @@ const filter = (provider, html) => {
 
 export default {
   props: ['data'],
+  data() {
+    return {
+      expanded: false
+    }
+  },
   computed: {
     type: function() {
       return getType(this.data.provider_name)
@@ -48,7 +53,10 @@ export default {
     icon
   },
   methods: {
-    getHostname(url) { return getHostname(url) }
+    getHostname(url) { return getHostname(url) },
+    expandToggle() {
+      this.expanded = !this.expanded
+    }
   }
 }
 </script>

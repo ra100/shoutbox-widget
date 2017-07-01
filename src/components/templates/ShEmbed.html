@@ -76,6 +76,24 @@
       Zdroj: {{data.host}}
     </a>
   </div>
+  <template v-if="type === 'facebook' && data.type === 'album'">
+    <a class="media-title" :href="data.link_url" target="_blank">
+      {{data.link_title}}
+    </a>
+    <div class="media-description">
+      {{data.link_description}}
+    </div>
+    <div class="media">
+      <template v-for="(photo, index) in data.media">
+        <sh-image v-show="expanded || index < 3":thumb="photo.images[photo.images.length-1].source" :img="photo.images[0].source" :width="photo.images[0].width" :height="photo.images[0].height"/>
+      </template>
+      <span class="expand-button" v-show="data.media.length > 4 && !expanded" @click="expandToggle">Zobrazit více</span>
+      <span class="expand-button" v-show="data.media.length > 4 && expanded" @click="expandToggle">Zobrazit méně</span>
+    </div>
+    <a class="media-host" :href="data.url" target="_blank">
+      Zdroj: {{data.author_name}} ({{data.provider_name}})
+    </a>
+  </template>
   <div v-if="type === 'twitter'">
     <icon class="quote" name="material-format_quote"></icon>
     <blockquote class="insert-html" v-html="filtered" />
