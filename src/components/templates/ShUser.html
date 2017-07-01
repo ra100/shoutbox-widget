@@ -13,11 +13,11 @@
       </div>
       <div class="input-wrapper">
         <label for="name">Změnit přezdívku</label>
-        <input type="text" id="name" v-model="displayname" name="displayname" @change="clearError" v-validate data-vv-rules="required" :class="{'invalid': errors.has('displayname')}"/>
+        <input type="text" id="name" v-model="displayname" name="displayname" @change="clearError" v-validate data-vv-rules="required" :class="{'invalid': errors.errors.find(f => f.field === 'displayname')}"/>
       </div>
       <div class="input-wrapper">
         <label for="email">E-mail</label>
-        <input type="email" id="email" v-model="email" name="email" @change="clearError" v-validate data-vv-rules="required|email" :class="{'invalid': errors.has('email')}"/>
+        <input type="email" id="email" v-model="email" name="email" @change="clearError" v-validate data-vv-rules="required|email" :class="{'invalid': errors.errors.find(f => f.field === 'email')}"/>
       </div>
       <div class="section-label">Změnit heslo</div>
       <div class="input-wrapper">
@@ -38,6 +38,6 @@
       <div class="success" v-if="success">Změny uloženy</div>
     </form>
     <div class="error" v-if="error">{{error}}</div>
-    <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.count() == 0 && passwordValid)">Uložit změny</button>
+    <button v-on:click="updateUser" class="button" :disabled="!(displayname && displayname.trim().length > 0 && errors.errors.length === 0 && passwordValid)">Uložit změny</button>
   </template>
 </div>

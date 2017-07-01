@@ -1,4 +1,4 @@
-<style lang="scss" src="./styles/ShSubmit.scss"></style>
+<style lang="scss" src="./styles/ShSubmit.scss" scoped></style>
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
 // import request from 'superagent'
@@ -17,12 +17,11 @@ export default {
   },
   data() {
     return {
-      message: this.message,
-      file: this.file,
-      image: this.image,
-      loading: this.loading || false,
-      error: this.error || false,
-      errors: this.$validator.errorBag
+      message: '',
+      file: '',
+      image: '',
+      loading: false,
+      error: false
     }
   },
   methods: {
@@ -87,7 +86,7 @@ export default {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()
-      if (!this.errors.has('upload') && this.file) {
+      if (!this.errors.errors.find(f => f.field === 'upload') && this.file) {
         this.image = window.URL.createObjectURL(this.file)
       }
     }

@@ -24,7 +24,6 @@ export default {
       reenteredPassword: '',
       loading: false,
       error: '',
-      errors: this.$validator.errorBag,
       success: false
     }
   },
@@ -120,7 +119,7 @@ export default {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()
-      if (!this.errors.has('upload') && this.file) {
+      if (!this.errors.errors.find(f => f.field === 'upload') && this.file) {
         this.picture = window.URL.createObjectURL(this.file)
       }
     },

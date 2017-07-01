@@ -11,20 +11,21 @@ export default {
   props: ['socket', 'login-first'],
   data() {
     return {
-      form: this.form || false,
-      page: this.page || 'login',
-      error: this.error || '',
-      email: this.email || '',
-      password: this.password || '',
-      reenteredPassword: this.reenteredPassword || '',
-      name: this.name || '',
-      errors: this.$validator.errorBag,
-      matchPassword: () => {
-        return this.password === this.reenteredPassword
-      },
-      passwordLength: () => {
-        return this.password.length >= 8
-      }
+      form: false,
+      page: 'login',
+      error: '',
+      email: '',
+      password: '',
+      reenteredPassword: '',
+      name: ''
+    }
+  },
+  computed: {
+    matchPassword() {
+      return this.password === this.reenteredPassword
+    },
+    passwordLength() {
+      return this.password.length >= 8 || this.password.length === 0
     }
   },
   methods: {
@@ -85,7 +86,7 @@ export default {
     },
     login() {
       this.$validator.validateAll()
-      if (this.errors.any()) {
+      if (this.errors.errors.length > 0) {
         return
       }
       if (!this.email || !this.password) {

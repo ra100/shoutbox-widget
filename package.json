@@ -85,7 +85,7 @@
     "url-loader": "^0.5.9",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.0.0",
-    "vue-icons": "git://github.com/raphhhhh/vue-icons.git",
+    "vue-icons": "git://github.com/raphhhhh/vue-icons.git#c47d5225bf70920c39f21ad0d318d851f265af5e",
     "vue-loader": "^11.1.0",
     "vue-style-loader": "^2.0.0",
     "webpack": "^1.14.0",
