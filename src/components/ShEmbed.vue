@@ -1,7 +1,7 @@
 <style lang='scss' src='./styles/ShEmbed.scss' scoped></style>
 <template lang="html" src="./templates/ShEmbed.html"></template>
 <script>
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import {getHostname} from './utils.js'
@@ -34,16 +34,16 @@ const filter = (provider, html) => {
 
 export default {
   props: ['data'],
-  data() {
+  data () {
     return {
       expanded: false
     }
   },
   computed: {
-    type: function() {
+    type: function () {
       return getType(this.data.provider_name)
     },
-    filtered: function() {
+    filtered: function () {
       return filter(this.type, this.data.html)
     }
   },
@@ -53,8 +53,8 @@ export default {
     icon
   },
   methods: {
-    getHostname(url) { return getHostname(url) },
-    expandToggle() {
+    getHostname (url) { return getHostname(url) },
+    expandToggle () {
       this.expanded = !this.expanded
     }
   }

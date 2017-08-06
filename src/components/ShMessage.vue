@@ -25,26 +25,26 @@ const messageState = (published, reviewed) => ({
 export default {
   name: 'sh-message',
   props: ['data', 'socket', 'user', 'stream', 'feed', 'afterSubmit', 'renewCsrf'],
-  data() {
+  data () {
     return {
       showReplies: this.showReplies || false,
       showReply: this.showReply || false
     }
   },
   computed: {
-    type: function() {
+    type: function () {
       return feedType(this.data.feedType)
     },
-    replies: function() {
+    replies: function () {
       const l = this.data.relatedMessage ? this.data.relatedMessage.length : 0
       return this.showReplies
         ? this.data.relatedMessage || []
         : (this.data.relatedMessage && this.data.relatedMessage.slice(l - 2, l)) || []
     },
-    replyCount: function() {
+    replyCount: function () {
       return this.data.relatedMessage ? this.data.relatedMessage.length : 0
     },
-    messageState: function() {
+    messageState: function () {
       return messageState(this.data.published, this.data.reviewed)
     }
   },
@@ -57,20 +57,20 @@ export default {
     ShSubmit
   },
   methods: {
-    getSocket() {
+    getSocket () {
       return this.socket
     },
-    showMoreReplies() {
+    showMoreReplies () {
       this.showReplies = true
     },
-    toggleReply() {
+    toggleReply () {
       if (this.user) {
         this.showReply = !this.showReply
         return
       }
       window.eventHub.$emit('login-toggle')
     },
-    sumbit(message) {
+    sumbit (message) {
       this.showReply = false
       this.afterSubmit(message)
     }

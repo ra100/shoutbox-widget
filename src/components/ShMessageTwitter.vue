@@ -4,7 +4,7 @@
 import ShTwitterVideo from './ShTwitterVideo.vue'
 import ShImage from './ShImage.vue'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl} from './utils'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
 
@@ -80,7 +80,7 @@ const textSplit = (message, entities) => {
 
 export default {
   props: ['data', 'socket'],
-  data() {
+  data () {
     let m = this.data
     let text = textSplit(
       this.data.message,
@@ -106,7 +106,7 @@ export default {
     icon
   },
   methods: {
-    processOembed(text) {
+    processOembed (text) {
       text.forEach(e => {
         if (e.entity && e.entity.expanded_url && !e.entity.expanded_url.includes('twitter')) {
           // Match youtube and insert oembed

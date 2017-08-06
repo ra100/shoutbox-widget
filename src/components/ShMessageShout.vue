@@ -2,7 +2,7 @@
 <script>
 import ShImage from './ShImage'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl} from './utils'
 
 export default {
@@ -12,7 +12,7 @@ export default {
     ShEmbed,
     icon
   },
-  data() {
+  data () {
     const m = this.data
     return {
       author: m.author,
@@ -22,11 +22,11 @@ export default {
       oembed: null
     }
   },
-  created() {
+  created () {
     this.processOembed(this.data.message)
   },
   methods: {
-    processOembed(text) {
+    processOembed (text) {
       // Match url and insert oembed
       if (text.match(urlPattern)) {
         const url = text.match(urlPattern)[0]

@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/ShMessageAdmin.scss"></style>
 <template lang="html" src="./templates/ShMessageAdmin.html"></template>
 <script>
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import ShSubmit from './ShSubmit'
 
 export default {
@@ -10,17 +10,17 @@ export default {
     icon
   },
   props: ['data', 'socket', 'user', 'stream', 'renewCsrf', 'type'],
-  data() {
+  data () {
     return {
       showReply: this.showReply || false,
       toggle: this.toggle || false
     }
   },
   methods: {
-    getSocket() {
+    getSocket () {
       return this.socket
     },
-    review() {
+    review () {
       this.socket.put(`/messages/${this.data.id}`, {
         id: this.data.id,
         reviewed: true,
@@ -28,7 +28,7 @@ export default {
       })
       this.toggle = false
     },
-    reject() {
+    reject () {
       this.socket.put(`/messages/${this.data.id}`, {
         id: this.data.id,
         reviewed: true,
@@ -37,7 +37,7 @@ export default {
       })
       this.toggle = false
     },
-    publish() {
+    publish () {
       this.socket.put(`/messages/${this.data.id}`, {
         id: this.data.id,
         published: true,
@@ -46,7 +46,7 @@ export default {
       })
       this.toggle = false
     },
-    unpublish() {
+    unpublish () {
       this.socket.put(`/messages/${this.data.id}`, {
         id: this.data.id,
         published: false,
@@ -55,14 +55,14 @@ export default {
       })
       this.toggle = false
     },
-    remove() {
+    remove () {
       // DELETE doesn't work in Fx and maybe other browsers
       this.socket.get(`/messages/destroy/${this.data.id}`, {
         _csrf: window.CSRF
       })
       this.toggle = false
     },
-    toggleFloat() {
+    toggleFloat () {
       this.toggle = !this.toggle
     }
   }

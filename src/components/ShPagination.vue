@@ -3,13 +3,13 @@
 <script>
 export default {
   props: ['page'],
-  data() {
+  data () {
     return {
       loading: this.loading || false
     }
   },
   methods: {
-    nextPage() {
+    nextPage () {
       this.loading = true
       this.$parent.nextPage(() => {
         this.loading = false

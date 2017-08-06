@@ -3,7 +3,7 @@
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl, getParameterByName, getHostname} from './utils'
 
 const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php'
@@ -16,7 +16,7 @@ export default {
     ShEmbed,
     icon
   },
-  data() {
+  data () {
     const m = this.data
     return {
       author: m.author,
@@ -31,14 +31,14 @@ export default {
       text: m.message
     }
   },
-  created() {
+  created () {
     this.processOembed(this.data.message)
     if (this.data.metadata.media) {
       this.processMedia(this.data.metadata.media)
     }
   },
   methods: {
-    processOembed(text) {
+    processOembed (text) {
       // Match url and insert oembed
       if (text.match(urlPattern)) {
         let url = text.match(urlPattern)[0]
@@ -57,7 +57,7 @@ export default {
         })
       }
     },
-    processMedia(media) {
+    processMedia (media) {
       const promises = media.map(m =>
         new Promise(resolve => {
           if (m.type === 'animated_image_share') {

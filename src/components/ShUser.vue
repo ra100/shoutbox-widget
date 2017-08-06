@@ -2,7 +2,7 @@
 <template lang="html" src="./templates/ShUser.html"></template>
 <script>
 import request from 'superagent'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
@@ -13,7 +13,7 @@ export default {
   components: {
     icon
   },
-  data() {
+  data () {
     return {
       displayname: this.user.displayname,
       picture: this.user.picture,
@@ -28,19 +28,19 @@ export default {
     }
   },
   computed: {
-    matchPassword() {
+    matchPassword () {
       return this.newPassword === this.reenteredPassword
     },
-    passwordLength() {
+    passwordLength () {
       return this.newPassword.length >= 8
     },
-    nameChanged() {
+    nameChanged () {
       return this.user.displayname !== this.displayname
     },
-    emailChanged() {
+    emailChanged () {
       return this.user.email !== this.email
     },
-    passwordValid() {
+    passwordValid () {
       if (!this.newPassword) {
         return true
       }
@@ -51,7 +51,7 @@ export default {
     }
   },
   methods: {
-    logout() {
+    logout () {
       const csrf = window.CSRF
       request.get('https://shoutbox.rozhlas.cz/logout')
         .set('X-CSRF-Token', csrf)
@@ -67,7 +67,7 @@ export default {
           }
         })
     },
-    updateUser() {
+    updateUser () {
       this.clearError()
       this.loading = true
       const payload = {_csrf: window.CSRF}
@@ -112,10 +112,10 @@ export default {
         window.eventHub.$emit('user-load')
       })
     },
-    selectFile() {
+    selectFile () {
       this.$refs.upload.click()
     },
-    onFileChange(event) {
+    onFileChange (event) {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()
@@ -123,7 +123,7 @@ export default {
         this.picture = window.URL.createObjectURL(this.file)
       }
     },
-    clearError() {
+    clearError () {
       this.error = ''
       this.success = ''
     }

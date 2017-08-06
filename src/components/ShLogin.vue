@@ -9,7 +9,7 @@ Vue.use(VeeValidate)
 
 export default {
   props: ['socket', 'login-first'],
-  data() {
+  data () {
     return {
       form: false,
       page: 'login',
@@ -21,70 +21,70 @@ export default {
     }
   },
   computed: {
-    matchPassword() {
+    matchPassword () {
       return this.password === this.reenteredPassword
     },
-    passwordLength() {
+    passwordLength () {
       return this.password.length >= 8 || this.password.length === 0
     }
   },
   methods: {
-    switchLogin() {
+    switchLogin () {
       this.$validator.errorBag.clear()
       this.page = 'login'
     },
-    switchRegister() {
+    switchRegister () {
       this.$validator.errorBag.clear()
       this.page = 'register'
     },
-    switchForgotten() {
+    switchForgotten () {
       this.$validator.errorBag.clear()
       this.page = 'forgotten'
     },
-    twitterLogin() {
+    twitterLogin () {
       this.form = false
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/twitter', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
-      let oauthInterval = window.setInterval(function() {
+      let oauthInterval = window.setInterval(function () {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
           window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
-    emailLogin() {
+    emailLogin () {
       this.form = true
     },
-    facebookLogin() {
+    facebookLogin () {
       this.form = false
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/facebook', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
-      let oauthInterval = window.setInterval(function() {
+      let oauthInterval = window.setInterval(function () {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
           window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
-    instagramLogin() {
+    instagramLogin () {
       this.form = false
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/instagram', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
-      let oauthInterval = window.setInterval(function() {
+      let oauthInterval = window.setInterval(function () {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
           window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
-    soundcloudLogin() {
+    soundcloudLogin () {
       this.form = false
       let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
-      let oauthInterval = window.setInterval(function() {
+      let oauthInterval = window.setInterval(function () {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)
           window.eventHub.$emit('user-load')
         }
       }, 1000)
     },
-    login() {
+    login () {
       this.$validator.validateAll()
       if (this.errors.errors.length > 0) {
         return
@@ -123,7 +123,7 @@ export default {
           this.error = (err.response.body && err.response.body.error) ? err.response.body.error : 'Chyba při přihlašování'
         })
     },
-    register() {
+    register () {
       if (this.password !== this.reenteredPassword) {
         this.error = 'Hesla se musí shodovat.'
         return
@@ -165,7 +165,7 @@ export default {
           this.error = 'Chyba při registraci'
         })
     },
-    resetPassword() {},
+    resetPassword () {},
     handleValidate: function (e) {
       e.target.$validity.validate()
     }

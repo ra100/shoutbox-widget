@@ -2,7 +2,7 @@
 <script>
 import ShImage from './ShImage'
 import ShInstagramVideo from './ShInstagramVideo'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 
 export default {
   props: ['data', 'feedType', 'socket'],
@@ -11,7 +11,7 @@ export default {
     ShInstagramVideo,
     icon
   },
-  data() {
+  data () {
     const m = this.data
     return {
       author: m.author,

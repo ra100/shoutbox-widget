@@ -2,7 +2,7 @@
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
 // import request from 'superagent'
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
@@ -15,7 +15,7 @@ export default {
   components: {
     icon
   },
-  data() {
+  data () {
     return {
       message: '',
       file: '',
@@ -25,7 +25,7 @@ export default {
     }
   },
   methods: {
-    postMessage() {
+    postMessage () {
       this.loading = true
       const url = '/messages/submit'
       let payload = {
@@ -69,20 +69,20 @@ export default {
         }
       })
     },
-    selectFile() {
+    selectFile () {
       this.$refs.upload.click()
     },
-    removeFile() {
+    removeFile () {
       this.image = undefined
       this.file = undefined
     },
-    resetInput() {
+    resetInput () {
       this.error = false
       this.message = ''
       this.file = undefined
       this.image = undefined
     },
-    onFileChange(event) {
+    onFileChange (event) {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()

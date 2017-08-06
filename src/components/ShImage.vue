@@ -17,23 +17,23 @@ const escListener = (evt, callback) => {
 // position: left, right, full
 export default {
   props: ['thumb', 'img', 'width', 'height', 'position'],
-  data() {
+  data () {
     return {
       show: false
     }
   },
   computed: {
-    padding() {
+    padding () {
       return this.position === 'full' && ((this.height / this.width) * 100) + '%'
     }
   },
   methods: {
-    maximize() {
+    maximize () {
       escListener(this.minimize)
       document.onkeydown = (event) => { escListener(event, this.minimize) }
       this.show = true
     },
-    minimize() {
+    minimize () {
       document.onkeydown = null
       this.show = false
     }

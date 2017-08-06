@@ -29,7 +29,7 @@ request.get(`${io.sails.url}/csrfToken`).then(res => {
   window.CSRF = res.body._csrf
 })
 
-function sortByDate(a, b) {
+function sortByDate (a, b) {
   if (new Date(a.created) < new Date(b.created)) {
     return 1
   } else if (new Date(a.created) > new Date(b.created)) {
@@ -39,7 +39,7 @@ function sortByDate(a, b) {
   }
 }
 
-Vue.filter('date', function(value) {
+Vue.filter('date', function (value) {
   return dateFormat(new Date(value), 'd.m.yyyy H:MM')
 })
 
@@ -55,7 +55,7 @@ const App = Vue.component('app', {
     ShPagination,
     ShUser
   },
-  data() {
+  data () {
     return {
       name: this.name,
       id: this.id,
@@ -74,7 +74,7 @@ const App = Vue.component('app', {
       loginFirst: this.loginFirst || false
     }
   },
-  created() {
+  created () {
     socket.on('stream', this.processEvent)
     window.eventHub.$on('user-load', this.getUser)
     window.eventHub.$on('user-form', this.showUserForm)
@@ -84,14 +84,14 @@ const App = Vue.component('app', {
     // get new messages after return from offline
     socket.on('connect', () => this.getNew().then(this.getUser))
   },
-  beforeDestroy() {
+  beforeDestroy () {
     window.eventHub.$off('user-load', this.getUser)
     window.eventHub.$off('user-form', this.showUserForm)
     window.eventHub.$off('login-toggle', this.loginToggle)
     window.eventHub.$off('reload', this.reload)
   },
   methods: {
-    reload() {
+    reload () {
       this.newmessages = []
       this.messages = []
       this.page = 0
@@ -102,7 +102,7 @@ const App = Vue.component('app', {
         .then(this.processMessages)
         .catch(console.error)
     },
-    getNew() {
+    getNew () {
       if (this.messages.length === 0) {
         return Promise.resolve()
       }
@@ -142,12 +142,12 @@ const App = Vue.component('app', {
         })
         .catch(console.error)
     },
-    getName() {
+    getName () {
       this.name = document
         .getElementById('shoutbox')
         .getAttribute('data-shoutbox-name')
     },
-    getStream() {
+    getStream () {
       return new Promise((resolve, reject) => {
         socket.request({
           method: 'get',
@@ -161,7 +161,7 @@ const App = Vue.component('app', {
         }, resolve)
       })
     },
-    processStream(data, err) {
+    processStream (data, err) {
       return new Promise((resolve, reject) => {
         if (err) {
           return reject(new Error(err))
@@ -172,7 +172,7 @@ const App = Vue.component('app', {
         resolve()
       })
     },
-    getMessages() {
+    getMessages () {
       let skip = this.page * PER_PAGE + (this.newmessages ? this.newmessages.length : 0)
       let url = '/streams/messages'
       if (this.user && this.user.editor) {
@@ -192,7 +192,7 @@ const App = Vue.component('app', {
         }, resolve)
       })
     },
-    processMessages(data, err) {
+    processMessages (data, err) {
       return new Promise((resolve, reject) => {
         if (err || !data) {
           return reject(new Error(err))
@@ -210,7 +210,7 @@ const App = Vue.component('app', {
         resolve(l)
       })
     },
-    processEvent(event) {
+    processEvent (event) {
       switch (event.verb) {
         case 'addedTo':
           let message = event.added
@@ -234,7 +234,7 @@ const App = Vue.component('app', {
           break
       }
     },
-    addMessage(message) {
+    addMessage (message) {
       const updateMessage = m => {
         if (m.id === message.id) {
           return {
@@ -254,7 +254,7 @@ const App = Vue.component('app', {
       this.newmessages = newmessages
       this.messages = messages
     },
-    removeMessage(id, response, parent) {
+    removeMessage (id, response, parent) {
       if (!response) {
         this.messages = this.messages.filter(e => e.id !== id)
         this.newmessages = this.newmessages.filter(e => e.id !== id)
@@ -268,7 +268,7 @@ const App = Vue.component('app', {
       this.messages.forEach(removeChildMessage)
       this.newmessages.forEach(removeChildMessage)
     },
-    addReply(message) {
+    addReply (message) {
       const addReplyMessage = m => {
         if (m.id === message.parentMessage) {
           const newParentMessage = {...m}
@@ -295,13 +295,13 @@ const App = Vue.component('app', {
       this.messages = this.messages.map(addReplyMessage)
       this.newmessages = this.newmessages.map(addReplyMessage)
     },
-    mergeMessages() {
+    mergeMessages () {
       let m = _.unionBy(this.messages, this.newmessages, 'id')
       m.sort(sortByDate)
       this.newmessages = []
       this.messages = _.slice(m, 0, PER_PAGE)
     },
-    getUser() {
+    getUser () {
       socket.request({
         method: 'get',
         url: '/users/me',
@@ -318,7 +318,7 @@ const App = Vue.component('app', {
         this.reload()
       })
     },
-    getPermissions() {
+    getPermissions () {
       socket.request({
         method: 'get',
         url: `/streams/${this.id}`,
@@ -346,13 +346,13 @@ const App = Vue.component('app', {
         }
       })
     },
-    getSocket() {
+    getSocket () {
       return socket
     },
-    getCsrf() {
+    getCsrf () {
       return window.CSRF
     },
-    renewCsrf(callback) {
+    renewCsrf (callback) {
       request.get(`${io.sails.url}/csrfToken`).then(res => {
         window.CSRF = res.body._csrf
         if (callback) {
@@ -360,7 +360,7 @@ const App = Vue.component('app', {
         }
       })
     },
-    nextPage(callback) {
+    nextPage (callback) {
       this.page++
       this.getMessages()
         .then(this.processMessages)
@@ -372,33 +372,33 @@ const App = Vue.component('app', {
         .catch(console.error)
         .then(callback)
     },
-    setMode(mode) {
+    setMode (mode) {
       this.mode = mode
     },
-    loginShow() {
+    loginShow () {
       this.loginvisible = true
       this.submitvisible = false
     },
-    loginHide() {
+    loginHide () {
       this.loginvisible = false
     },
-    loginToggle() {
+    loginToggle () {
       this.loginvisible = !this.loginvisible
       this.loginFirst = false
       this.submitvisible = false
     },
-    submitShow() {
+    submitShow () {
       if (this.user) {
         this.submitvisible = true
       } else {
         this.loginvisible = true
       }
     },
-    submitHide() {
+    submitHide () {
       this.loginvisible = false
       this.submitvisible = false
     },
-    submitToggle() {
+    submitToggle () {
       this.loginFirst = true
       if (this.submitvisible) {
         this.submitvisible = !this.submitvisible
@@ -414,28 +414,28 @@ const App = Vue.component('app', {
       this.loginvisible = false
       this.uservisible = false
     },
-    userShow() {
+    userShow () {
       this.uservisible = true
       this.submitvisible = false
     },
-    userHide() {
+    userHide () {
       this.uservisible = false
     },
-    userToggle() {
+    userToggle () {
       this.uservisible = !this.uservisible
       this.submitvisible = false
     },
-    showUserForm() {
+    showUserForm () {
       this.user = true
     },
-    showAlert() {
+    showAlert () {
       this.alert = true
       setTimeout(() => this.hideAlert(), 10000)
     },
-    hideAlert() {
+    hideAlert () {
       this.alert = false
     },
-    afterSubmit(message) {
+    afterSubmit (message) {
       this.submitHide()
       this.showAlert()
       message.published = !this.moderated

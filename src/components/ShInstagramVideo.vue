@@ -1,11 +1,11 @@
 <style lang="scss" src="./styles/ShFacebookVideo.scss"></style>
 <template lang="html" src="./templates/ShInstagramVideo.html"></template>
 <script>
-import icon from 'vue-icons'
+import icon from 'ceri-icon'
 
 export default {
   props: ['video', 'img'],
-  data() {
+  data () {
     return {
       playing: this.playing || false
     }
@@ -14,10 +14,10 @@ export default {
     icon
   },
   methods: {
-    play() {
+    play () {
       this.playing = true
     },
-    pause() {
+    pause () {
       this.playing = false
     }
   }
