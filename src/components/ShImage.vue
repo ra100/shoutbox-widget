@@ -14,11 +14,23 @@ const escListener = (evt, callback) => {
   }
 }
 
+const paddings = {
+  left: '200%',
+  right: '100%',
+  full: '100%'
+}
+
+// position: left, right, full
 export default {
-  props: ['thumb', 'img', 'width', 'height'],
+  props: ['thumb', 'img', 'width', 'height', 'position'],
   data() {
     return {
       show: false
+    }
+  },
+  computed: {
+    padding() {
+      return paddings[this.position] || '100%'
     }
   },
   methods: {

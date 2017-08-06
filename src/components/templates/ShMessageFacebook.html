@@ -18,14 +18,48 @@
           :thumb="m.media.image.src"
           :img="m.media.image.src"
           :width="m.media.image.width"
-          :height="m.media.image.height"/>
+          :height="m.media.image.height"
+          position="full"/>
         <template v-if="m.subattachments">
-          <template v-for="(item, index) in m.subattachments.data">
-            <sh-image v-if="item.media && item.media.image && index <= 4"
-              :thumb="item.media.image.src"
-              :img="item.media.image.src"
-              :width="item.media.image.width"
-              :height="item.media.image.height"/>
+          <template v-if="m.subattachments.data.length === 1">
+            <sh-image v-if="m.subattachments.data[0].media && m.subattachments.data[0].media.image"
+              :thumb="m.subattachments.data[0].media.image.src"
+              :img="m.subattachments.data[0].media.image.src"
+              :width="m.subattachments.data[0].media.image.width"
+              :height="m.subattachments.data[0].media.image.height"
+              position="full"/>
+          </template>
+          <template v-if="m.subattachments.data.length === 2">
+            <template v-for="(item, index) in m.subattachments.data">
+              <sh-image v-if="item.media && item.media.image"
+                :thumb="item.media.image.src"
+                :img="item.media.image.src"
+                :width="item.media.image.width"
+                :height="item.media.image.height"
+                position="left"/>
+            </template>
+          </template>
+          <template v-if="m.subattachments.data.length >= 3">
+            <sh-image v-if="m.subattachments.data[0].media && m.subattachments.data[0].media.image"
+              :thumb="m.subattachments.data[0].media.image.src"
+              :img="m.subattachments.data[0].media.image.src"
+              :width="m.subattachments.data[0].media.image.width"
+              :height="m.subattachments.data[0].media.image.height"
+              position="left"/>
+            <div class="photo-wrap-right">
+              <sh-image v-if="m.subattachments.data[1].media && m.subattachments.data[1].media.image"
+                :thumb="m.subattachments.data[1].media.image.src"
+                :img="m.subattachments.data[1].media.image.src"
+                :width="m.subattachments.data[1].media.image.width"
+                :height="m.subattachments.data[1].media.image.height"
+                position="right"/>
+              <sh-image v-if="m.subattachments.data[2].media && m.subattachments.data[2].media.image"
+                :thumb="m.subattachments.data[2].media.image.src"
+                :img="m.subattachments.data[2].media.image.src"
+                :width="m.subattachments.data[2].media.image.width"
+                :height="m.subattachments.data[2].media.image.height"
+                position="right"/>
+            </div>
           </template>
         </template>
         <sh-embed v-if="m.type === 'share'" :data="m"/>

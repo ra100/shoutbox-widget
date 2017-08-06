@@ -84,11 +84,48 @@
       {{data.link_description}}
     </div>
     <div class="media">
-      <template v-for="(photo, index) in data.media">
-        <sh-image v-show="expanded || index < 3":thumb="photo.images[photo.images.length-1].source" :img="photo.images[0].source" :width="photo.images[0].width" :height="photo.images[0].height"/>
+      <template v-if="data.media">
+        <template v-if="data.media.length === 1">
+          <sh-image
+            :thumb="data.media[0][photo.images.length-1].source"
+            :img="data.media[0].source"
+            :width="data.media[0].width"
+            :height="data.media[0].height"
+            position="full"/>
+        </template>
+        <template v-if="data.media.length === 2">
+          <template v-for="(item, index) in data.media">
+            <sh-image
+              :thumb="item[photo.images.length-1].source"
+              :img="item.source"
+              :width="item.width"
+              :height="item.height"
+              position="left"/>
+          </template>
+        </template>
+        <template v-if="data.media.length >= 3">
+          <sh-image
+            :thumb="data.media[0][photo.images.length-1].source"
+            :img="data.media[0].source"
+            :width="data.media[0].width"
+            :height="data.media[0].height"
+            position="left"/>
+          <div class="photo-wrap-right">
+            <sh-image
+              :thumb="data.media[1][photo.images.length-1].source"
+              :img="data.media[1].source"
+              :width="data.media[1].width"
+              :height="data.media[1].height"
+              position="right"/>
+            <sh-image
+              :thumb="data.media[2][photo.images.length-1].source"
+              :img="data.media[2].source"
+              :width="data.media[2].width"
+              :height="data.media[2].height"
+              position="right"/>
+          </div>
+        </template>
       </template>
-      <span class="expand-button" v-show="data.media.length > 4 && !expanded" @click="expandToggle">Zobrazit více</span>
-      <span class="expand-button" v-show="data.media.length > 4 && expanded" @click="expandToggle">Zobrazit méně</span>
     </div>
     <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
