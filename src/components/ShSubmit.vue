@@ -29,7 +29,7 @@ export default {
         feed: this.feed,
         _csrf: window.CSRF
       }
-      if (typeof this.file !== 'undefined') {
+      if (typeof this.file !== 'undefined' && this.file !== '') {
         payload.image = {
           data: this.file,
           name: this.file.name
