@@ -44,7 +44,14 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('./node_modules/ceri/lib')]
+        include: [resolve('src'), resolve('test')],
+        options: {
+          presets: [
+            'es2015',
+            'stage-2'
+          ],
+          'plugins': ['transform-runtime']
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -68,14 +75,6 @@ module.exports = {
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /ceri-icon\/icon/,
-        loader: 'ceri-icon',
-        enforce: 'post',
-        options: {
-          icons: ['ma-repeat', 'ma-star', 'ma-play_circle_outline', 'ma-add_a_photo', 'ma-remove_circle_outline', 'ma-comment', 'ma-thumbs_up_down', 'ma-format_quote', 'ma-add', 'ma-delete_forever']
         }
       }
     ]

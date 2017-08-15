@@ -276,3 +276,41 @@ a {
     width: 36px;
   }
 }
+
+.icon {
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  display: block;
+  height: 20px;
+  transition: opacity .5s;
+  width: 20px;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.material-add {
+    background-image: url('/static/ma-add.svg');
+  }
+
+  &.material-play_circle_outline {
+    background-image: url('/static/ma-play_circle_outline.svg');
+  }
+
+  &.quote {
+    background-image: url('/static/ma-quote.svg');
+  }
+
+  &.material-remove_circle_outline {
+    background-image: url('/static/ma-remove_circle_outline.svg');
+  }
+
+  &.material-add_photo {
+    background-image: url('/static/ma-add_photo.svg');
+    background-size: 28px 28px;
+    height: 28px;
+    width: 28px;
+  }
+
+}

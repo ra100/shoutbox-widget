@@ -1,6 +1,6 @@
 <div class="embed">
   <div v-if="type === 'photo'">
-    <icon class="quote" name="material-format_quote" v-if="data.title"></icon>
+    <div class="icon quote" v-if="data.title"></div>
     <blockquote class="insert-html" v-if="data.title">{{data.title}}</blockquote>
     <div class="separator" />
     <sh-image class="photo-single" :thumb="data.thumbnail_url" :img="data.thumbnail_url" :width="data.thumbnail_width" :height="data.thumbnail_height" />
@@ -25,7 +25,7 @@
     </a>
   </div>
   <div v-if="type === 'facebook' && data.type === 'photo'">
-    <icon class="quote" name="material-format_quote" v-if="data.title"></icon>
+    <div class="icon quote" v-if="data.title"></div>
     <blockquote class="insert-html" v-if="data.title">{{data.title}}</blockquote>
     <div class="separator" />
     <sh-image class="photo-single" :thumb="data.image" :img="data.image" :width="data.width" :height="data.height" />
@@ -34,7 +34,7 @@
     </a>
   </div>
   <div v-if="type === 'facebook' && ['link', 'share'].indexOf(data.type) > -1" class="media">
-    <icon class="quote" name="material-format_quote" v-if="data.title"></icon>
+    <div class="icon quote" v-if="data.title"></div>
     <blockquote class="insert-html" v-if="data.title">{{data.title}}</blockquote>
     <div class="separator" />
     <span v-if="data.image" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
@@ -54,14 +54,14 @@
     </a>
   </div>
   <div v-if="type === 'facebook' && data.text">
-    <icon class="quote" name="material-format_quote"></icon>
+    <div class="icon quote"></div>
     <blockquote>{{data.text}}</blockquote>
     <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})
     </a>
   </div>
   <div v-if="type === 'facebook' && data.html">
-    <icon class="quote" name="material-format_quote" v-if="data.title"></icon>
+    <div class="icon quote" v-if="data.title"></div>
     <blockquote class="insert-html" v-if="data.title">{{data.title}}</blockquote>
     <div class="separator" />
     <div v-if="data.type === 'youtube'" class="media iframe-container" :style="data.style" v-html="data.html" />
@@ -132,7 +132,7 @@
     </a>
   </template>
   <div v-if="type === 'twitter'">
-    <icon class="quote" name="material-format_quote"></icon>
+    <div class="icon quote"></div>
     <blockquote class="insert-html" v-html="filtered" />
     <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.author_name}} ({{data.provider_name}})

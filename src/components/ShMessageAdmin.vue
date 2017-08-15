@@ -1,13 +1,11 @@
 <style lang="scss" src="./styles/ShMessageAdmin.scss"></style>
 <template lang="html" src="./templates/ShMessageAdmin.html"></template>
 <script>
-import icon from 'ceri-icon'
 import ShSubmit from './ShSubmit'
 
 export default {
   components: {
-    ShSubmit,
-    icon
+    ShSubmit
   },
   props: ['data', 'socket', 'user', 'stream', 'renewCsrf', 'type'],
   data () {

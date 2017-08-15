@@ -2,15 +2,13 @@
 <script>
 import ShImage from './ShImage'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl} from './utils'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
-    ShEmbed,
-    icon
+    ShEmbed
   },
   data () {
     const m = this.data

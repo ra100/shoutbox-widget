@@ -1,7 +1,6 @@
 <style lang='scss' src='./styles/ShEmbed.scss' scoped></style>
 <template lang="html" src="./templates/ShEmbed.html"></template>
 <script>
-import icon from 'ceri-icon'
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import {getHostname} from './utils.js'
@@ -49,8 +48,7 @@ export default {
   },
   components: {
     ShImage,
-    ShFacebookVideo,
-    icon
+    ShFacebookVideo
   },
   methods: {
     getHostname (url) { return getHostname(url) },

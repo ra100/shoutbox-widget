@@ -2,7 +2,6 @@
 <template lang="html" src="./templates/ShUser.html"></template>
 <script>
 import request from 'superagent'
-import icon from 'ceri-icon'
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
@@ -10,9 +9,6 @@ Vue.use(VeeValidate)
 
 export default {
   props: ['user', 'socket'],
-  components: {
-    icon
-  },
   data () {
     return {
       displayname: this.user.displayname,

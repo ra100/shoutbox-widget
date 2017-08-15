@@ -2,14 +2,12 @@
 <script>
 import ShImage from './ShImage'
 import ShInstagramVideo from './ShInstagramVideo'
-import icon from 'ceri-icon'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
-    ShInstagramVideo,
-    icon
+    ShInstagramVideo
   },
   data () {
     const m = this.data

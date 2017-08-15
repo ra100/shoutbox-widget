@@ -3,7 +3,6 @@
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl, getParameterByName, getHostname} from './utils'
 
 const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php'
@@ -13,8 +12,7 @@ export default {
   components: {
     ShImage,
     ShFacebookVideo,
-    ShEmbed,
-    icon
+    ShEmbed
   },
   data () {
     const m = this.data

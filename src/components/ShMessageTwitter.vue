@@ -4,7 +4,6 @@
 import ShTwitterVideo from './ShTwitterVideo.vue'
 import ShImage from './ShImage.vue'
 import ShEmbed from './ShEmbed.vue'
-import icon from 'ceri-icon'
 import {urlPattern, processEmbedUrl} from './utils'
 const entityTypes = ['hashtags', 'urls', 'user_mentions', 'media', 'symbols']
 
@@ -102,8 +101,7 @@ export default {
   components: {
     ShTwitterVideo,
     ShImage,
-    ShEmbed,
-    icon
+    ShEmbed
   },
   methods: {
     processOembed (text) {

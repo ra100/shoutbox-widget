@@ -1,8 +1,6 @@
 <style lang="scss" src="./styles/ShSubmit.scss" scoped></style>
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
-// import request from 'superagent'
-import icon from 'ceri-icon'
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 
@@ -12,9 +10,6 @@ let retry = 0
 
 export default {
   props: ['user', 'socket', 'parentId', 'stream', 'feed', 'afterSubmit', 'renewCsrf'],
-  components: {
-    icon
-  },
   data () {
     return {
       message: '',
@@ -86,7 +81,7 @@ export default {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()
-      if (!this.errors.errors.find(f => f.field === 'upload') && this.file) {
+      if (this.errors && this.errors.errors && !this.errors.errors.find(f => f.field === 'upload') && this.file) {
         this.image = window.URL.createObjectURL(this.file)
       }
     }

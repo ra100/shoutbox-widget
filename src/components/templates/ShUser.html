@@ -8,7 +8,7 @@
       <input type="file" ref="upload" name="upload" accept="image/*" @change="onFileChange" class="field-image-input" v-validate data-vv-rules="image"/>
       <div class="user-picture" :style="{'background-image': `url(${picture})`}"  @click="selectFile">
         <div class="user-picture-change">
-          <icon name="material-add" @click="selectFile"></icon>
+          <div class="icon add material-add" @click="selectFile"></div>
         </div>
       </div>
       <div class="input-wrapper">
