@@ -9,7 +9,8 @@ import ShPagination from './components/ShPagination.vue'
 import Vue from 'vue'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
-import _ from 'lodash/array'
+import slice from 'lodash.slice'
+import unionBy from 'lodash.unionby'
 import dateFormat from 'dateformat'
 import request from 'superagent'
 import linkify from 'vue-linkify'
@@ -249,7 +250,7 @@ const App = Vue.component('app', {
       if (this.messages.length > 0 && new Date(message.created) > new Date(this.messages[0].created)) {
         newmessages.push(message)
         newmessages.sort(sortByDate)
-        newmessages = _.slice(newmessages, 0, PER_PAGE)
+        newmessages = slice(newmessages, 0, PER_PAGE)
       }
       this.newmessages = newmessages
       this.messages = messages
@@ -296,10 +297,10 @@ const App = Vue.component('app', {
       this.newmessages = this.newmessages.map(addReplyMessage)
     },
     mergeMessages () {
-      let m = _.unionBy(this.messages, this.newmessages, 'id')
+      let m = unionBy(this.messages, this.newmessages, 'id')
       m.sort(sortByDate)
       this.newmessages = []
-      this.messages = _.slice(m, 0, PER_PAGE)
+      this.messages = slice(m, 0, PER_PAGE)
     },
     getUser () {
       socket.request({
