@@ -1,8 +1,4 @@
-$options-bg: #ddd;
-$options-title-color: #555;
-$options-color: rgba(30, 30, 30, 1);
-$options-color-over: rgba(30, 30, 30, 0.5);
-$link-color: #2e6fb3;
+@import '../../styles/variables';
 
 .float-panel {
   top: 150px;

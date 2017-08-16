@@ -1,5 +1,104 @@
 @import '../../styles/variables';
 
+$options-bg: #ddd;
+$options-title-color: #555;
+$options-color: rgba(30, 30, 30, 1);
+$options-color-over: rgba(30, 30, 30, 0.5);
+$link-color: #2e6fb3;
+
+.float-panel {
+  top: 150px;
+
+  &.email-login {
+    top: 387px;
+
+    .az {
+      left: 32px;
+    }
+  }
+}
+
+.az {
+  left: 55px;
+}
+
+.input-wrapper {
+  width: 100%;
+  float: left;
+}
+
+label {
+  color: $options-color;
+  float: left;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+input {
+  box-shadow: #ccc 0px 2px 7px 0px inset;
+  border: none;
+  clear: left;
+  color: $options-title-color;
+  float: left;
+  margin-bottom: 12px;
+  padding: 8px 6px;
+  width: calc(100% - 12px);
+  font-size: 15px;
+  font-weight: bold;
+
+  &.invalid {
+    outline: 1px solid rgb(208, 78, 78);
+  }
+
+  &:active, &:focus {
+    outline: 1px solid rgb(24, 148, 255);
+  }
+}
+
+.form-login,
+.form-register {
+  .button {
+    background: $link-color;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+
+    &:disabled {
+      opacity: .5;
+    }
+  }
+}
+
+.links {
+  color: $link-color;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link {
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.separator {
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .logout {
   float: right;
   font-size: 14px;

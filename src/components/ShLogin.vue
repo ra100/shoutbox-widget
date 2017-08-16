@@ -1,4 +1,4 @@
-<style lang="scss" src="./styles/ShLogin.scss"></style>
+<style lang="scss" src="./styles/ShLogin.scss" scoped></style>
 <template lang="html" src="./templates/ShLogin.html"></template>
 <script>
 import request from 'superagent'

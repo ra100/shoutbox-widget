@@ -82,8 +82,8 @@ const App = Vue.component('app', {
     window.eventHub.$on('login-toggle', this.loginToggle)
     window.eventHub.$on('reload', this.reload)
     this.reload().then(this.getUser)
-    // get new messages after return from offline
     socket.on('connect', () => this.getNew().then(this.getUser))
+    // get new messages after return from offline
   },
   beforeDestroy () {
     window.eventHub.$off('user-load', this.getUser)
@@ -310,7 +310,8 @@ const App = Vue.component('app', {
           'X-CSRF-Token': window.CSRF
         }
       }, (data, resp) => {
-        if (resp.statusCode !== 200) {
+        if (resp.statusCode !== 200 || !data || !data.username) {
+          console.warn(resp)
           this.user = undefined
         } else {
           this.user = {...data, editor: false}

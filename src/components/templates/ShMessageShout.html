@@ -11,7 +11,12 @@
   <div class="text-wrapper">
     <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
     <div class="media" v-if="mediatype === 'photo'">
-      <sh-image class="photo-single" :thumb="extended.medium.path" :img="extended.original.path" :width="extended.large.width" :height="extended.large.height"/>
+      <sh-image class="photo-single"
+        :thumb="extended.medium.path"
+        :img="extended.original.path"
+        :width="extended.large.width"
+        :height="extended.large.height"
+        position="full"/>
     </div>
     <sh-embed v-if="mediatype == 'embed'" :data="oembed"/>
   </div>
