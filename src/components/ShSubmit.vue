@@ -14,6 +14,14 @@ export default {
       error: false
     }
   },
+  computed: {
+    buttonDisabled () {
+      return !(
+        ((this.message && this.message.trim().length > 0) ||
+        (typeof this.file !== 'undefined' && this.file !== '')) &&
+        this.errors.items.length === 0)
+    }
+  },
   methods: {
     postMessage () {
       this.loading = true
