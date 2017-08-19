@@ -2,10 +2,6 @@
 <template lang="html" src="./templates/ShLogin.html"></template>
 <script>
 import request from 'superagent'
-import Vue from 'vue'
-import VeeValidate from 'vee-validate'
-
-Vue.use(VeeValidate)
 
 export default {
   props: ['socket', 'login-first'],
@@ -26,6 +22,15 @@ export default {
     },
     passwordLength () {
       return this.password.length >= 8 || this.password.length === 0
+    },
+    emailInvalid () {
+      return this.errors.errors.find(f => f.field === 'email')
+    },
+    passwordInvalid () {
+      return this.errors.errors.find(f => f.field === 'password')
+    },
+    nameInvalid () {
+      return this.errors.errors.find(f => f.field === 'name')
     }
   },
   methods: {
@@ -76,7 +81,7 @@ export default {
     },
     soundcloudLogin () {
       this.form = false
-      let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=400')
+      let oauthWindow = window.open('https://shoutbox.rozhlas.cz/auth/soundcloud', 'Shoutbox Auth', 'location=0,status=0,width=800,height=600')
       let oauthInterval = window.setInterval(function () {
         if (oauthWindow.closed) {
           window.clearInterval(oauthInterval)

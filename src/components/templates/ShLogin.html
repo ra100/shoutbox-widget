@@ -17,7 +17,7 @@
           </div>
           <div class="input-wrapper">
             <label for="password">Heslo</label>
-            <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid': errors.errors.find(f => f.field === 'password')}"/>
+            <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid': passwordInvalid}"/>
           </div>
           <div class="error" v-if="error">{{error}}</div>
         </form>
@@ -31,19 +31,19 @@
       <div class="form-register" v-if="page === 'register'">
         <div class="input-wrapper">
           <label for="name">Přezdívka</label>
-          <input type="text" id="name" v-model="name" name="name" v-validate data-vv-rules="required" :class="{'invalid': errors.errors.find(f => f.field === 'name')}"/>
+          <input type="text" id="name" v-model="name" name="name" v-validate data-vv-rules="required" :class="{'invalid': nameInvalid}"/>
         </div>
         <div class="input-wrapper">
           <label for="email">E-mail</label>
-          <input type="email" id="email" v-model="email" name="email" v-validate data-vv-rules="required|email" :class="{'invalid': errors.errors.find(f => f.field === 'email')}"/>
+          <input type="email" id="email" v-model="email" name="email" v-validate data-vv-rules="required|email" :class="{'invalid': emailInvalid}"/>
         </div>
         <div class="input-wrapper">
           <label for="password">Heslo</label>
-          <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid':errors.errors.find(f => f.field === 'password')}"/>
+          <input type="password" id="password" v-model="password" name="password" v-validate data-vv-rules="required|min:8" :class="{'invalid': passwordInvalid}"/>
         </div>
         <div class="input-wrapper">
           <label for="password">Kontrola hesla</label>
-          <input type="password" id="reentered-password" v-model="reenteredPassword" name="reenteredPassword" v-validate data-vv-rules="required|min:8" :class="{'invalid': errors.errors.find(f => f.field === 'reenteredPassword')}"/>
+          <input type="password" id="reentered-password" v-model="reenteredPassword" name="reenteredPassword" v-validate data-vv-rules="required|min:8" :class="{'invalid': passwordInvalid}"/>
         </div>
         <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
         <div class="error" v-show="!passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>
@@ -56,7 +56,7 @@
       <div class="form-login" v-if="page === 'forgotten'">
         <div class="input-wrapper">
           <label for="email">Zadejte e-mail</label>
-          <input type="email" id="email" v-model="email" name="email" v-validate.initial data-vv-rules="required|email" :class="{'invalid': errors.errors.find(f => f.field === 'email')}"/>
+          <input type="email" id="email" v-model="email" name="email" v-validate.initial data-vv-rules="required|email" :class="{'invalid': emailInvalid}"/>
         </div>
         <div class="message">Na Váš e-mail bude zaslál odkaz na obnovení hesla.</div>
         <div class="error" v-if="error">{{error}}</div>

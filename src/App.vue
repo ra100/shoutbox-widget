@@ -14,6 +14,7 @@ import unionBy from 'lodash.unionby'
 import dateFormat from 'dateformat'
 import request from 'superagent'
 import linkify from 'vue-linkify'
+import VeeValidate from 'vee-validate'
 
 const PER_PAGE = 10
 
@@ -45,8 +46,12 @@ Vue.filter('date', function (value) {
 })
 
 Vue.directive('linkified', linkify)
+Vue.use(VeeValidate)
 
 window.eventHub = new Vue()
+window.setShoutAuth = (data) => {
+  window.authData = data
+}
 
 const App = Vue.component('app', {
   components: {

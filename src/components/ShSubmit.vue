@@ -1,11 +1,6 @@
 <style lang="scss" src="./styles/ShSubmit.scss" scoped></style>
 <template lang="html" src="./templates/ShSubmit.html"></template>
 <script>
-import Vue from 'vue'
-import VeeValidate from 'vee-validate'
-
-Vue.use(VeeValidate)
-
 let retry = 0
 
 export default {
