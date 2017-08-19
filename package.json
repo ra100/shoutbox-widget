@@ -24,7 +24,7 @@
     "socket.io-client": "^2.0.3",
     "stylus": "^0.54.5",
     "superagent": "^3.5.2",
-    "vee-validate": "^2.0.0-beta.18",
+    "vee-validate": "^2.0.0-rc.13",
     "vue": "^2.4.2",
     "vue-linkify": "^1.0.1",
     "vue-template-compiler": "^2.4.2"

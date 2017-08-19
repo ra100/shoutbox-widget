@@ -76,7 +76,7 @@ export default {
       this.error = false
       this.file = event.target.files[0] || event.dataTransfer.files[0]
       this.$validator.validateAll()
-      if (!this.errors.errors.find(f => f.field === 'upload') && this.file) {
+      if (!this.errors.items.find(f => f.field === 'upload') && this.file) {
         this.image = window.URL.createObjectURL(this.file)
       }
     }

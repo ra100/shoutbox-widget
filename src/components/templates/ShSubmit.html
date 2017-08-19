@@ -7,7 +7,7 @@
           <form novalidate>
             <textarea name="message" v-model="message"></textarea>
             <input type="file" ref="upload" name="upload" accept="image/*" @change="onFileChange" class="field-image-input" v-validate data-vv-rules="image"/>
-            <div :class="{'field-image': true, 'invalid': errors.errors.find(f => f.field === 'upload')}">
+            <div :class="{'field-image': true, 'invalid': errors.items.find(f => f.field === 'upload')}">
               <div class="field-image-button" v-if="!file" @click="selectFile()">
                 <div class="icon material-add_photo"/>
               </div>
@@ -15,11 +15,11 @@
                 <div class="icon material-remove_circle_outline"/>
               </div>
               <img v-if="image" :src="image" class="field-image-image"/>
-              <div v-if="errors.errors.find(f => f.field === 'upload')" class="error">Soubor musí být obrázek</div>
+              <div v-if="errors.items.find(f => f.field === 'upload')" class="error">Soubor musí být obrázek</div>
             </div>
           </form>
           <div class="error" v-if="error">{{error}}</div>
-          <button v-on:click="postMessage" class="button" :disabled="!(message && message.trim().length > 0 && errors.errors.length === 0)">Odeslat</button>
+          <button v-on:click="postMessage" class="button" :disabled="!(message && message.trim().length > 0 && errors.items.length === 0)">Odeslat</button>
         </div>
       </transition>
     </template>

@@ -24,26 +24,32 @@ export default {
       return this.password.length >= 8 || this.password.length === 0
     },
     emailInvalid () {
-      return this.errors.errors.find(f => f.field === 'email')
+      return this.errors.items.find(f => f.field === 'email')
     },
     passwordInvalid () {
-      return this.errors.errors.find(f => f.field === 'password')
+      return this.errors.items.find(f => f.field === 'password')
     },
     nameInvalid () {
-      return this.errors.errors.find(f => f.field === 'name')
+      return this.errors.items.find(f => f.field === 'name')
+    },
+    loginDisabled () {
+      return this.errors.items.length > 0 || this.email.length === 0 || this.password.length === 0
+    },
+    registerDisabled () {
+      return this.errors.items.length > 0
     }
   },
   methods: {
     switchLogin () {
-      this.$validator.errorBag.clear()
+      this.$validator.errors.clear()
       this.page = 'login'
     },
     switchRegister () {
-      this.$validator.errorBag.clear()
+      this.$validator.errors.clear()
       this.page = 'register'
     },
     switchForgotten () {
-      this.$validator.errorBag.clear()
+      this.$validator.errors.clear()
       this.page = 'forgotten'
     },
     twitterLogin () {
@@ -91,7 +97,7 @@ export default {
     },
     login () {
       this.$validator.validateAll()
-      if (this.errors.errors.length > 0) {
+      if (this.errors.items.length > 0) {
         return
       }
       if (!this.email || !this.password) {

@@ -13,7 +13,7 @@
         <form novalidate>
           <div class="input-wrapper">
             <label for="email">E-mail</label>
-            <input type="email" id="email" v-model="email" name="email" v-validate data-vv-rules="required|email" :class="{'invalid': errors.errors.find(f => f.field === 'email')}"/>
+            <input type="email" id="email" v-model="email" name="email" v-validate data-vv-rules="required|email" :class="{'invalid': emailInvalid}"/>
           </div>
           <div class="input-wrapper">
             <label for="password">Heslo</label>
@@ -21,7 +21,7 @@
           </div>
           <div class="error" v-if="error">{{error}}</div>
         </form>
-        <button @click="login" :disabled="errors.errors.length > 0 || email.length == 0 || password.length == 0" class="button">Přihlásit se</button>
+        <button @click="login" :disabled="loginDisabled" class="button">Přihlásit se</button>
         <div class="links">
           <span class="link" @click="switchRegister">Registrace</span>
           <!-- <span class="separator link">|</span>
@@ -48,7 +48,7 @@
         <div class="error" v-show="!matchPassword">Heslo se neshoduje</div>
         <div class="error" v-show="!passwordLength">Heslo musí být aspoň 8 znaků dlouhé</div>
         <div class="error" v-if="error">{{error}}</div>
-        <button @click="register" :disabled="errors.errors.length > 0" class="button">Zaregistrovat</button>
+        <button @click="register" :disabled="registerDisabled" class="button">Zaregistrovat</button>
         <div class="links">
           <div class="link" @click="switchLogin">Přihlásit přes existující účet</div>
         </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="message">Na Váš e-mail bude zaslál odkaz na obnovení hesla.</div>
         <div class="error" v-if="error">{{error}}</div>
-        <div @click="resetPassword" :disabled="errors.errors.length > 0" class="button">Resetovat heslo</div>
+        <div @click="resetPassword" :disabled="registerDisabled" class="button">Resetovat heslo</div>
         <div class="links">
           <span class="link" @click="switchLogin">Přihlášení</span>
           <span class="separator link">|</span>
