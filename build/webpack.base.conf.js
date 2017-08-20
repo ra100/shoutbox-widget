@@ -76,15 +76,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        enforce: 'post',
-        test: /\.js$/,
-        exclude: /\/(node_modules|bower_components)\//,
-        loader: 'autopolyfiller-loader',
-        query: {
-          browsers: ['last 2 versions', 'ie >= 9']
-        }
       }
     ]
   }

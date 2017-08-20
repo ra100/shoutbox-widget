@@ -10,8 +10,8 @@
   </div>
   <div v-if="type === 'html'" class="media iframe-container" :style="data.style" v-html="data.html" />
   <div v-if="type === 'inspector'" class="media">
-    <span v-if="data.image && !data.host.includes('giphy')" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
-    <div v-if="!data.host.includes('giphy')" class="embed-right">
+    <span v-if="data.image && data.host.indexOf('giphy') < 0" class="media-image" :style="{'background-image':  'url(' + data.image + ')'}"></span>
+    <div v-if="data.host.indexOf('giphy') < 0" class="embed-right">
       <a class="media-title" :href="data.url" target="_blank">
         {{data.title}}
       </a>
@@ -19,7 +19,7 @@
         {{data.description}}
       </div>
     </div>
-    <img v-if="data.host.includes('giphy')" class="giphy" :src="data.image"/>
+    <img v-if="data.host.indexOf('giphy') >= 0" class="giphy" :src="data.image"/>
     <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.host}}
     </a>
@@ -71,7 +71,7 @@
     </a>
   </div>
   <div v-if="type === 'facebook' && data.animated" class="media">
-    <img v-if="data.host.includes('giphy')" class="giphy" :src="data.animated"/>
+    <img v-if="data.host.indexOf('giphy') >= 0" class="giphy" :src="data.animated"/>
     <a class="media-host" :href="data.url" target="_blank">
       Zdroj: {{data.host}}
     </a>

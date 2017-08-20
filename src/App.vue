@@ -7,6 +7,7 @@ import ShSubmit from './components/ShSubmit.vue'
 import ShUser from './components/ShUser.vue'
 import ShPagination from './components/ShPagination.vue'
 import Vue from 'vue'
+import VeeValidate from 'vee-validate'
 import socketIOClient from 'socket.io-client'
 import sailsIOClient from 'sails.io.js'
 import slice from 'lodash.slice'
@@ -45,6 +46,7 @@ Vue.filter('date', function (value) {
 })
 
 Vue.directive('linkified', linkify)
+Vue.use(VeeValidate)
 
 window.eventHub = new Vue()
 window.setShoutAuth = (data) => {

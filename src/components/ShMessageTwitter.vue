@@ -106,7 +106,7 @@ export default {
   methods: {
     processOembed (text) {
       text.forEach(e => {
-        if (e.entity && e.entity.expanded_url && !e.entity.expanded_url.includes('twitter')) {
+        if (e.entity && e.entity.expanded_url && e.entity.expanded_url.indexOf('twitter') < 0) {
           // Match youtube and insert oembed
           if (e.entity.expanded_url.match(urlPattern)) {
             const url = e.entity.expanded_url
