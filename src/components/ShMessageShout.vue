@@ -2,13 +2,15 @@
 <script>
 import ShImage from './ShImage'
 import ShEmbed from './ShEmbed.vue'
+import ShTextTrim from './ShTextTrim.vue'
 import {urlPattern, processEmbedUrl} from './utils'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
-    ShEmbed
+    ShEmbed,
+    ShTextTrim
   },
   data () {
     const m = this.data

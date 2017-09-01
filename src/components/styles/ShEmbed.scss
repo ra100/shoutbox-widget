@@ -6,6 +6,10 @@
   margin-top: 10px;
   width: 100%;
 
+  &:nth-child(1){
+    margin-top: 0;
+  }
+
   .media, .video {
     margin-top: 0px;
   }

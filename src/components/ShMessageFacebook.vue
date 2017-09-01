@@ -3,6 +3,7 @@
 import ShImage from './ShImage'
 import ShFacebookVideo from './ShFacebookVideo'
 import ShEmbed from './ShEmbed.vue'
+import ShTextTrim from './ShTextTrim.vue'
 import {urlPattern, processEmbedUrl, getParameterByName, getHostname} from './utils'
 
 const FB_LINK_REDIRECT = 'https://l.facebook.com/l.php'
@@ -12,7 +13,8 @@ export default {
   components: {
     ShImage,
     ShFacebookVideo,
-    ShEmbed
+    ShEmbed,
+    ShTextTrim
   },
   data () {
     const m = this.data

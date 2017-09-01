@@ -2,12 +2,14 @@
 <script>
 import ShImage from './ShImage'
 import ShInstagramVideo from './ShInstagramVideo'
+import ShTextTrim from './ShTextTrim.vue'
 
 export default {
   props: ['data', 'feedType', 'socket'],
   components: {
     ShImage,
-    ShInstagramVideo
+    ShInstagramVideo,
+    ShTextTrim
   },
   data () {
     const m = this.data

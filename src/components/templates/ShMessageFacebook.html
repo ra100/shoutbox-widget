@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="text-wrapper">
-    <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
+    <sh-text-trim :text="text" />
     <div class="media" v-if="media && media.length > 0 && media[0].type !== 'video_inline'">
       <template v-for="m in media">
         <a class="media-title" v-if="m.title && !['photo','share'].includes(m.type)" target="_blank" :href="m.url">{{m.title}}</a>

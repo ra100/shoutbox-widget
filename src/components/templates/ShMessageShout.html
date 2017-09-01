@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="text-wrapper">
-    <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
+    <sh-text-trim :text="text" />
     <div class="media" v-if="mediatype === 'photo'">
       <sh-image class="photo-single"
         :thumb="extended.medium.path"

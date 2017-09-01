@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="text-wrapper">
-    <div class="text" v-html="text" v-linkified:options="{ className: 'link' }"/>
+    <sh-text-trim :text="text" />
     <div class="media" v-if="mediatype === 'image' && !extended.carousel_media">
       <sh-image class="photo-single" :thumb="extended.images.low_resolution.url" :img="extended.images.standard_resolution.url" :width="extended.images.standard_resolution.width" :height="extended.images.standard_resolution.height"/>
     </div>
