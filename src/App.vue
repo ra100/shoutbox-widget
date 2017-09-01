@@ -332,11 +332,8 @@ const App = Vue.component('app', {
           'X-CSRF-Token': window.CSRF
         }
       }, (data, resp) => {
-        if (resp.statusCode === 200) {
-          this.user = {
-            ...this.user,
-            editor: true
-          }
+        if (resp.statusCode === 200 && !data.error) {
+          this.user.editor = true
           this.getMessages()
             .then(data => {
               this.messages = []
@@ -345,10 +342,7 @@ const App = Vue.component('app', {
             .then(this.processMessages)
             .catch(console.error)
         } else {
-          this.user = {
-            ...this.user,
-            editor: false
-          }
+          this.user.editor = false
         }
       })
     },
