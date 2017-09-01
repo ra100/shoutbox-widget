@@ -137,9 +137,9 @@
 
 .author-name {
   float: left;
-  max-width: calc(100% - 47px);
+  max-width: calc(100% - 70px);
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: hidden;
 }
 

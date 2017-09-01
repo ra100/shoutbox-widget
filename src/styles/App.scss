@@ -128,7 +128,9 @@ a {
   .name {
     display: inline-block;
     font-size: 14px;
+    line-height: 1.5em;
     margin-left: 5px;
+    max-width: calc(100% - 52px);
     transition: opacity 500ms;
 
     &:hover {
@@ -143,6 +145,8 @@ a {
 .user-toggle {
   cursor: pointer;
   float: left;
+  max-width: calc(100% - 100px);
+  width: 100%;
 }
 
 .login-link {
