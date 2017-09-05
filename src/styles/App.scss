@@ -1,321 +1,320 @@
 @import 'variables';
 
-body {
-  font-family: Helvetica, sans-serif;
+#shoutbox {
   font-size: 16px;
-}
-
-*:focus {
-  outline: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.error {
-  width: 100%;
-  display: block;
-  float: left;
-  padding: 10px 0 0;
-  color: $error-color;
-}
-
-.shoutbox-wrapper {
-  display: block;
-  float: left;
-  max-width: 100vw;
-  position: relative;
-  transition: width 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
-  width: 325px;
-
-  .shoutbox-widget {
-    background: $shoutbox-bg;
-    display: block;
-    float: left;
-    margin: auto;
-    padding: 0;
-    width: 100%;
+  
+  *:focus {
+    outline: none;
   }
 
-  &.wide {
-    background: $wrapper-bg;
-    margin: 0px 0 0px -430px;
-    width: 750px;
-    z-index: 5000;
-
-    .submit-reply {
-      .float-panel {
-        // margin: 35px 10px 0;
-      }
-    }
-  }
-}
-
-
-.left .shoutbox-wrapper.wide {
-  margin: 0 0 0 -460px;
-}
-
-.right .shoutbox-wrapper.wide {
-  margin: 0;
-}
-
-.shoutbox-underlay {
-  background: rgba(0, 0, 0, 0.5);
-  display: block;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: -1;
-}
-
-
-.shoutbox-title {
-  background-color: $header-title-bg;
-  color: $header-title-color;
-  line-height: 19px;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 0px;
-  padding: 12px 10px 10px;
-  text-transform: uppercase;
-
-  span {
-    cursor: pointer;
-  }
-
-  .button {
-    background-color: transparent;
-    background-image: url('/static/btn_resize_up_sprite.svg');
-    background-size: 40px 20px;
-    background-position: 0px 0px;
-    border: none;
-    color: transparent;
-    cursor: pointer;
-    height: 20px;
-    float: right;
-    margin-top: 0;
-    overflow: hidden;
-    width: 20px;
+  a {
+    color: inherit;
+    text-decoration: none;
 
     &:hover {
-      background-position: -20px 0px;
-    }
-
-    &.contract {
-      background-image: url('/static/btn_resize_down_sprite.svg');
-    }
-  }
-}
-
-.login-header {
-  background-color: $login-header-bg;
-  color: $login-header-color;
-  font-size: 14px;
-  line-height: 36px;
-  position: relative;
-  float: left;
-  width: 100%;
-
-  .name {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.5em;
-    margin-left: 5px;
-    max-width: calc(100% - 52px);
-    transition: opacity 500ms;
-
-    &:hover {
-      opacity: 0.5;
-    }
-    &.active {
       text-decoration: underline;
     }
   }
-}
 
-.user-toggle {
-  cursor: pointer;
-  float: left;
-  max-width: calc(100% - 100px);
-  width: 100%;
-}
-
-.login-link {
-  cursor: pointer;
-  float: left;
-  margin-left: 10px;
-  transition: opacity 200ms;
-
-  &:hover,
-  &.active {
-    opacity: 0.5;
-    text-decoration: underline;
-  }
-}
-
-.new-message-link {
-  cursor: pointer;
-  float: right;
-  margin-right: 10px;
-  transition: opacity 200ms;
-
-  &:hover,
-  &.active {
-    opacity: 0.5;
-    text-decoration: underline;
-  }
-}
-
-.float-panel {
-  background-color: $float-panel;
-  border: 1px solid $panel-border;
-  padding: 20px;
-  position: absolute;
-  top: 80px;
-  width: 283px;
-  z-index: 20;
-}
-
-.az { //Alešov Zobáčik
-  background-color: $float-panel;
-  border-left: 1px solid $panel-border;
-  border-top: 1px solid $panel-border;
-  display: block;
-  height: 14px;
-  left: 55px;
-  position: absolute;
-  transform: rotate(45deg);
-  top: -8px;
-  width: 14px;
-}
-
-.messages {
-  float: left;
-  width: calc(100% - 10px);
-  padding: 10px 10px 10px 10px;
-  overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: calc(100vh - 105px);
-  -webkit-overflow-scrolling: touch;
-}
-
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: opacity 1s ease-in;
-  transform: translateZ(0);
-}
-
-.fade-in-enter, .fade-in-leave-active {
-  opacity: 0;
-  transform: translateZ(0);
-}
-
-.div.contract,
-.div.expand {
-  float: right;
-}
-
-.new-messages,
-.pagination button {
-  background: $message-bg;
-  color: $link-color;
-  cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 5px;
-  padding: 10px;
-  text-align: center;
-  width: calc(100% - 20px);
-}
-
-.alert-popup {
-  background: $message-bg;
-  color: $action-approve;
-  cursor: pointer;
-  float: left;
-  margin: 10px 10px 0;
-  max-height: 5em;
-  overflow: hidden;
-  padding: 10px;
-  position: relative;
-  text-align: center;
-  width: calc(100% - 40px);
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: max-height .5s, padding .5s;
-}
-
-.fade-enter, .fade-leave-to {
-  max-height: 0;
-  padding: 0 10px;
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 0px;
-  background-color: rgba(0, 0, 0, .5);
-}
-
-.avatar {
-  clear: left;
-  float: left;
-  margin: 0 10px 0 0;
-  width: 36px;
-
-  img {
+  .error {
+    width: 100%;
+    display: block;
     float: left;
-    height: 36px;
+    padding: 10px 0 0;
+    color: $error-color;
+  }
+
+  .shoutbox-wrapper {
+    display: block;
+    float: left;
+    max-width: 100vw;
+    position: relative;
+    transition: width 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
+    width: 325px;
+
+    .shoutbox-widget {
+      background: $shoutbox-bg;
+      display: block;
+      float: left;
+      margin: auto;
+      padding: 0;
+      width: 100%;
+    }
+
+    &.wide {
+      background: $wrapper-bg;
+      margin: 0px 0 0px -430px;
+      width: 750px;
+      z-index: 5000;
+
+      .submit-reply {
+        .float-panel {
+          // margin: 35px 10px 0;
+        }
+      }
+    }
+  }
+
+
+  .left .shoutbox-wrapper.wide {
+    margin: 0 0 0 -460px;
+  }
+
+  .right .shoutbox-wrapper.wide {
+    margin: 0;
+  }
+
+  .shoutbox-underlay {
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+  }
+
+
+  .shoutbox-title {
+    background-color: $header-title-bg;
+    color: $header-title-color;
+    line-height: 19px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding: 12px 10px 10px;
+    text-transform: uppercase;
+
+    span {
+      cursor: pointer;
+    }
+
+    .button {
+      background-color: transparent;
+      background-image: url('/static/btn_resize_up_sprite.svg');
+      background-size: 40px 20px;
+      background-position: 0px 0px;
+      border: none;
+      color: transparent;
+      cursor: pointer;
+      height: 20px;
+      float: right;
+      margin-top: 0;
+      overflow: hidden;
+      width: 20px;
+
+      &:hover {
+        background-position: -20px 0px;
+      }
+
+      &.contract {
+        background-image: url('/static/btn_resize_down_sprite.svg');
+      }
+    }
+  }
+
+  .login-header {
+    background-color: $login-header-bg;
+    color: $login-header-color;
+    font-size: 14px;
+    line-height: 36px;
+    position: relative;
+    float: left;
+    width: 100%;
+
+    .name {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.5em;
+      margin-left: 5px;
+      max-width: calc(100% - 52px);
+      transition: opacity 500ms;
+
+      &:hover {
+        opacity: 0.5;
+      }
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .user-toggle {
+    cursor: pointer;
+    float: left;
+    max-width: calc(100% - 100px);
+    width: 100%;
+  }
+
+  .login-link {
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+    transition: opacity 200ms;
+
+    &:hover,
+    &.active {
+      opacity: 0.5;
+      text-decoration: underline;
+    }
+  }
+
+  .new-message-link {
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    transition: opacity 200ms;
+
+    &:hover,
+    &.active {
+      opacity: 0.5;
+      text-decoration: underline;
+    }
+  }
+
+  .float-panel {
+    background-color: $float-panel;
+    border: 1px solid $panel-border;
+    padding: 20px;
+    position: absolute;
+    top: 80px;
+    width: 283px;
+    z-index: 20;
+  }
+
+  .az { //Alešov Zobáčik
+    background-color: $float-panel;
+    border-left: 1px solid $panel-border;
+    border-top: 1px solid $panel-border;
+    display: block;
+    height: 14px;
+    left: 55px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: -8px;
+    width: 14px;
+  }
+
+  .messages {
+    float: left;
+    width: calc(100% - 10px);
+    padding: 10px 10px 10px 10px;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: calc(100vh - 105px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fade-in-enter-active, .fade-in-leave-active {
+    transition: opacity 1s ease-in;
+    transform: translateZ(0);
+  }
+
+  .fade-in-enter, .fade-in-leave-active {
+    opacity: 0;
+    transform: translateZ(0);
+  }
+
+  .div.contract,
+  .div.expand {
+    float: right;
+  }
+
+  .new-messages,
+  .pagination button {
+    background: $message-bg;
+    color: $link-color;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding: 10px;
+    text-align: center;
+    width: calc(100% - 20px);
+  }
+
+  .alert-popup {
+    background: $message-bg;
+    color: $action-approve;
+    cursor: pointer;
+    float: left;
+    margin: 10px 10px 0;
+    max-height: 5em;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: calc(100% - 40px);
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: max-height .5s, padding .5s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    max-height: 0;
+    padding: 0 10px;
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .avatar {
+    clear: left;
+    float: left;
+    margin: 0 10px 0 0;
     width: 36px;
-  }
-}
 
-.icon {
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  display: block;
-  height: 20px;
-  transition: opacity .5s;
-  width: 20px;
-
-  &:hover {
-    opacity: 0.6;
+    img {
+      float: left;
+      height: 36px;
+      width: 36px;
+    }
   }
 
-  &.material-add {
-    background-image: url('/static/ma-add.svg');
-  }
+  .icon {
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    display: block;
+    height: 20px;
+    transition: opacity .5s;
+    width: 20px;
 
-  &.material-play_circle_outline {
-    background-image: url('/static/ma-play_circle_outline.svg');
-  }
+    &:hover {
+      opacity: 0.6;
+    }
 
-  &.quote {
-    background-image: url('/static/ma-quote.svg');
-  }
+    &.material-add {
+      background-image: url('/static/ma-add.svg');
+    }
 
-  &.material-remove_circle_outline {
-    background-image: url('/static/ma-remove_circle_outline.svg');
-  }
+    &.material-play_circle_outline {
+      background-image: url('/static/ma-play_circle_outline.svg');
+    }
 
-  &.material-add_photo {
-    background-image: url('/static/ma-add_photo.svg');
-    background-size: 28px 28px;
-    height: 28px;
-    width: 28px;
-  }
+    &.quote {
+      background-image: url('/static/ma-quote.svg');
+    }
 
+    &.material-remove_circle_outline {
+      background-image: url('/static/ma-remove_circle_outline.svg');
+    }
+
+    &.material-add_photo {
+      background-image: url('/static/ma-add_photo.svg');
+      background-size: 28px 28px;
+      height: 28px;
+      width: 28px;
+    }
+
+  }
 }
