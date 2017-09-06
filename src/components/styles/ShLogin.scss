@@ -1,172 +1,175 @@
 @import '../../styles/variables';
 
-.float-panel {
-  top: 150px;
+.shoutbox-wrapper {
+  .float-panel {
+    top: 150px;
 
-  &.email-login {
-    top: 387px;
+    &.email-login {
+      top: 387px;
 
-    .az {
-      left: 32px;
+      .az {
+        left: 32px;
+      }
     }
   }
-}
 
-.az {
-  left: 55px;
-}
-
-.login-choose {
-  float: left;
-  line-height: 1em;
-  margin: 0 0 20px;
-}
-
-.login-options {
-  background-color: $options-bg;
-  color: $options-title-color;
-  float: left;
-  font-size: 12px;
-  line-height: 32px;
-  margin-bottom: 2px;
-  padding: 20px 20px 10px;
-  position: absolute;
-  top: 79px;
-  width: calc(100% - 40px);
-  z-index: 5;
-}
-
-.login-option {
-  border: none;
-  color: $options-color;
-  cursor: pointer;
-  display: block;
-  float: left;
-  font-size: 16px;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 10px;
-  padding: 0;
-  position: relative;
-  text-align: left;
-  width: 100%;
-  transition: color 20ms;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: $options-color-over;
-
-    .login-icon {
-      background-position: -40px 0px;
-    }
-  }
-}
-
-.login-icon {
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  background-size: 80px 40px;
-  display: block;
-  float: left;
-  height: 40px;
-  margin-right: 10px;
-  width: 40px;
-
-  &.mail {
-    background-image: url('/static/btn_cro_sprite.svg');
+  .az {
+    left: 55px;
   }
 
-  &.fb {
-    background-image: url('/static//btn_fb_sprite.svg');
+  .login-choose {
+    float: left;
+    line-height: 1em;
+    margin: 0 0 20px;
   }
 
-  &.tw {
-    background-image: url('/static/btn_tw_sprite.svg');
+  .login-options {
+    background-color: $options-bg;
+    color: $options-title-color;
+    float: left;
+    font-size: 12px;
+    line-height: 32px;
+    margin-bottom: 2px;
+    padding: 20px 20px 10px;
+    position: absolute;
+    top: 79px;
+    width: calc(100% - 40px);
+    z-index: 5;
   }
 
-  &.ig {
-    background-image: url('/static/btn_inst_sprite.svg');
-  }
-
-  &.sc {
-    background-image: url('/static/btn_sc_sprite.svg');
-  }
-}
-
-.input-wrapper {
-  width: 100%;
-  float: left;
-}
-
-label {
-  color: $options-color;
-  float: left;
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-input {
-  box-shadow: #ccc 0px 2px 7px 0px inset;
-  border: none;
-  clear: left;
-  color: $options-title-color;
-  float: left;
-  margin-bottom: 12px;
-  padding: 8px 6px;
-  width: calc(100% - 12px);
-  font-size: 15px;
-  font-weight: bold;
-
-  &.invalid {
-    outline: 1px solid rgb(208, 78, 78);
-  }
-
-  &:active, &:focus {
-    outline: 1px solid rgb(24, 148, 255);
-  }
-}
-
-.form-login,
-.form-register {
-  .button {
-    background: $link-color;
+  .login-option {
     border: none;
-    color: #fff;
+    color: $options-color;
     cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 35px;
-    margin-top: 18px;
-    text-align: center;
+    display: block;
+    float: left;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 10px;
+    padding: 0;
+    position: relative;
+    text-align: left;
     width: 100%;
+    transition: color 20ms;
 
-    &:disabled {
-      opacity: .5;
+    &:active,
+    &:focus,
+    &:hover {
+      color: $options-color-over;
+
+      .login-icon {
+        background-position: -40px 0;
+      }
     }
   }
-}
 
-.links {
-  color: $link-color;
-  text-align: center;
-  margin-top: 20px;
-}
+  .login-icon {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 80px 40px;
+    display: block;
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+    width: 40px;
 
-.link {
-  cursor: pointer;
-  font-size: 14px;
+    &.mail {
+      background-image: url('/static/btn_cro_sprite.svg');
+    }
 
-  &:hover {
-    text-decoration: underline;
+    &.fb {
+      background-image: url('/static//btn_fb_sprite.svg');
+    }
+
+    &.tw {
+      background-image: url('/static/btn_tw_sprite.svg');
+    }
+
+    &.ig {
+      background-image: url('/static/btn_inst_sprite.svg');
+    }
+
+    &.sc {
+      background-image: url('/static/btn_sc_sprite.svg');
+    }
   }
 
-  &.separator {
-    margin: 0 10px;
+  .input-wrapper {
+    width: 100%;
+    float: left;
+  }
+
+  label {
+    color: $options-color;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  input {
+    box-shadow: #ccc 0 2px 7px 0 inset;
+    border: none;
+    clear: left;
+    color: $options-title-color;
+    float: left;
+    margin-bottom: 12px;
+    padding: 8px 6px;
+    width: calc(100% - 12px);
+    font-size: 15px;
+    font-weight: bold;
+
+    &.invalid {
+      outline: 1px solid rgb(208, 78, 78);
+    }
+
+    &:active,
+    &:focus {
+      outline: 1px solid rgb(24, 148, 255);
+    }
+  }
+
+  .form-login,
+  .form-register {
+    .button {
+      background: $link-color;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 35px;
+      margin-top: 18px;
+      text-align: center;
+      width: 100%;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .links {
+    color: $link-color;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .link {
+    cursor: pointer;
+    font-size: 14px;
 
     &:hover {
-      text-decoration: none;
+      text-decoration: underline;
+    }
+
+    &.separator {
+      margin: 0 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }

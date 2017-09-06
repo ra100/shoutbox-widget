@@ -1,90 +1,94 @@
 @import '../../styles/variables';
 
-.embed {
-  clear: left;
-  float: left;
-  margin-top: 10px;
-  width: 100%;
-
-  &:nth-child(1){
-    margin-top: 0;
-  }
-
-  .media, .video {
-    margin-top: 0px;
-  }
-
-  .media-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100px;
-    width: 100px;
-  }
-
-  .embed-right {
-    display: block;
-    margin-left: 10px;
-    width: calc(100% - 110px);
-  }
-
-  .media-description {
-    font-size: 12px;
-    color: $author-handle-color;
-    line-height: 1em;
-    max-height: 4em;
-    overflow: hidden;
-  }
-
-  a {
-    cursor: pointer;
-  }
-
-  a.media-caption, .media-caption {
-    color: $text-color;
-    font-size: 12px;
-    float: left;
-    clear: left;
-  }
-
-  a.media-host {
-    color: $author-handle-color;
+.shoutbox-wrapper {
+  .embed {
     clear: left;
     float: left;
-    font-size: 12px;
-    margin-top: 5px;
+    margin-top: 10px;
     width: 100%;
-    text-align: left;
-  }
 
-  .giphy {
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
+    &:nth-child(1) {
+      margin-top: 0;
+    }
 
-  .separator {
-    display: block;
-    float: left;
-    width: 100%;
-    height: 10px;
-  }
+    .media,
+    .video {
+      margin-top: 0;
+    }
 
-  .expand-button {
-    background: $pagination-button-bg;
-    border: 0;
-    color: $pagination-text-color;
-    cursor: pointer;
-    float: left;
-    font-size: 16px;
-    line-height: 20px;
-    margin: auto;
-    padding: 20px 0;
-    text-align: center;
+    .media-image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100px;
+      width: 100px;
+    }
 
-    &:hover {
+    .embed-right {
+      display: block;
+      margin-left: 10px;
+      width: calc(100% - 110px);
+    }
+
+    .media-description {
+      font-size: 12px;
+      color: $author-handle-color;
+      line-height: 1em;
+      max-height: 4em;
+      overflow: hidden;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    .media-caption,
+    a.media-caption {
       color: $text-color;
-      transition: color 200ms;
+      font-size: 12px;
+      float: left;
+      clear: left;
+    }
+
+    a.media-host {
+      color: $author-handle-color;
+      clear: left;
+      float: left;
+      font-size: 12px;
+      margin-top: 5px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .giphy {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .separator {
+      display: block;
+      float: left;
+      width: 100%;
+      height: 10px;
+    }
+
+    .expand-button {
+      background: $pagination-button-bg;
+      border: 0;
+      color: $pagination-text-color;
+      cursor: pointer;
+      float: left;
+      font-size: 16px;
+      line-height: 20px;
+      margin: auto;
+      padding: 20px 0;
+      text-align: center;
+
+      &:hover {
+        color: $text-color;
+        transition: color 200ms;
+      }
     }
   }
 }

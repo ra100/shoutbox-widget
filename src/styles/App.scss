@@ -1,29 +1,45 @@
 @import 'variables';
 
-body {
-  font-family: Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-*:focus {
-  outline: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+#shoutbox {
+  .shoutbox-wrapper {
+    font-family: 'Helvetica', Arial;
+    font-size: 16px;
   }
-}
 
-.error {
-  width: 100%;
-  display: block;
-  float: left;
-  padding: 10px 0 0;
-  color: $error-color;
+  .shoutbox-wrapper.normal {
+    width: 100%;
+    height: 41px;
+    overflow: hidden;
+    @media (min-width: $breakpoint_desktop) {
+      height: 917px;
+      overflow: unset;
+    }
+
+    .messages {
+      max-width: 100%;
+      max-height: 0;
+      @media (min-width: $breakpoint_desktop) {
+        max-height: 850px;
+      }
+    }
+  }
+
+  .shoutbox-wrapper.wide {
+    width: 100%;
+    margin: 0 !important;
+    @media (min-width: $breakpoint_desktop) {
+      width: 200%;
+      margin: 0 0 0 -100% !important;
+    }
+
+    .messages {
+      max-width: 100%;
+      max-height: 350px;
+      @media (min-width: $breakpoint_desktop) {
+        max-height: 850px;
+      }
+    }
+  }
 }
 
 .shoutbox-wrapper {
@@ -33,6 +49,209 @@ a {
   position: relative;
   transition: width 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
   width: 325px;
+
+  .login-header {
+    background-color: $login-header-bg;
+    color: $login-header-color;
+    font-size: 14px;
+    line-height: 36px;
+    position: relative;
+    float: left;
+    width: 100%;
+
+    .name {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.5em;
+      margin-left: 5px;
+      max-width: calc(100% - 52px);
+      transition: opacity 500ms;
+
+      &:hover {
+        opacity: 0.5;
+      }
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .user-toggle {
+    cursor: pointer;
+    float: left;
+    max-width: calc(100% - 100px);
+    width: 100%;
+  }
+
+  .login-link {
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+    transition: opacity 200ms;
+
+    &:hover,
+    &.active {
+      opacity: 0.5;
+      text-decoration: underline;
+    }
+  }
+
+  .new-message-link {
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    transition: opacity 200ms;
+
+    &:hover,
+    &.active {
+      opacity: 0.5;
+      text-decoration: underline;
+    }
+  }
+
+  .float-panel {
+    background-color: $float-panel;
+    border: 1px solid $panel-border;
+    padding: 20px;
+    position: absolute;
+    top: 80px;
+    width: 283px;
+    z-index: 20;
+  }
+
+  .az { //Alešov Zobáčik
+    background-color: $float-panel;
+    border-left: 1px solid $panel-border;
+    border-top: 1px solid $panel-border;
+    display: block;
+    height: 14px;
+    left: 55px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: -8px;
+    width: 14px;
+  }
+
+  .messages {
+    float: left;
+    width: calc(100% - 10px);
+    padding: 10px 10px 10px 10px;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: calc(100vh - 105px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fade-in-enter-active, .fade-in-leave-active {
+    transition: opacity 1s ease-in;
+    transform: translateZ(0);
+  }
+
+  .fade-in-enter, .fade-in-leave-active {
+    opacity: 0;
+    transform: translateZ(0);
+  }
+
+  .div.contract,
+  .div.expand {
+    float: right;
+  }
+
+  .new-messages,
+  .pagination button {
+    background: $message-bg;
+    color: $link-color;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding: 10px;
+    text-align: center;
+    width: calc(100% - 20px);
+  }
+
+  .alert-popup {
+    background: $message-bg;
+    color: $action-approve;
+    cursor: pointer;
+    float: left;
+    margin: 10px 10px 0;
+    max-height: 5em;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: calc(100% - 40px);
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: max-height .5s, padding .5s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    max-height: 0;
+    padding: 0 10px;
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .avatar {
+    clear: left;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 36px;
+
+    img {
+      float: left;
+      height: 36px;
+      width: 36px;
+    }
+  }
+
+  .icon {
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    display: block;
+    height: 20px;
+    transition: opacity .5s;
+    width: 20px;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &.material-add {
+      background-image: url('/static/ma-add.svg');
+    }
+
+    &.material-play_circle_outline {
+      background-image: url('/static/ma-play_circle_outline.svg');
+    }
+
+    &.quote {
+      background-image: url('/static/ma-quote.svg');
+    }
+
+    &.material-remove_circle_outline {
+      background-image: url('/static/ma-remove_circle_outline.svg');
+    }
+
+    &.material-add_photo {
+      background-image: url('/static/ma-add_photo.svg');
+      background-size: 28px 28px;
+      height: 28px;
+      width: 28px;
+    }
+  }
 
   .shoutbox-widget {
     background: $shoutbox-bg;
@@ -55,8 +274,34 @@ a {
       }
     }
   }
-}
 
+  *:focus {
+    outline: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  form {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .error {
+    width: 100%;
+    display: block;
+    float: left;
+    padding: 10px 0 0;
+    color: $error-color;
+  }
+}
 
 .left .shoutbox-wrapper.wide {
   margin: 0 0 0 -460px;
@@ -67,7 +312,7 @@ a {
 }
 
 .shoutbox-underlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
   display: block;
   height: 100vh;
   left: 0;
@@ -114,208 +359,4 @@ a {
       background-image: url('/static/btn_resize_down_sprite.svg');
     }
   }
-}
-
-.login-header {
-  background-color: $login-header-bg;
-  color: $login-header-color;
-  font-size: 14px;
-  line-height: 36px;
-  position: relative;
-  float: left;
-  width: 100%;
-
-  .name {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.5em;
-    margin-left: 5px;
-    max-width: calc(100% - 52px);
-    transition: opacity 500ms;
-
-    &:hover {
-      opacity: 0.5;
-    }
-    &.active {
-      text-decoration: underline;
-    }
-  }
-}
-
-.user-toggle {
-  cursor: pointer;
-  float: left;
-  max-width: calc(100% - 100px);
-  width: 100%;
-}
-
-.login-link {
-  cursor: pointer;
-  float: left;
-  margin-left: 10px;
-  transition: opacity 200ms;
-
-  &:hover,
-  &.active {
-    opacity: 0.5;
-    text-decoration: underline;
-  }
-}
-
-.new-message-link {
-  cursor: pointer;
-  float: right;
-  margin-right: 10px;
-  transition: opacity 200ms;
-
-  &:hover,
-  &.active {
-    opacity: 0.5;
-    text-decoration: underline;
-  }
-}
-
-.float-panel {
-  background-color: $float-panel;
-  border: 1px solid $panel-border;
-  padding: 20px;
-  position: absolute;
-  top: 80px;
-  width: 283px;
-  z-index: 20;
-}
-
-.az { //Alešov Zobáčik
-  background-color: $float-panel;
-  border-left: 1px solid $panel-border;
-  border-top: 1px solid $panel-border;
-  display: block;
-  height: 14px;
-  left: 55px;
-  position: absolute;
-  transform: rotate(45deg);
-  top: -8px;
-  width: 14px;
-}
-
-.messages {
-  float: left;
-  width: calc(100% - 10px);
-  padding: 10px 10px 10px 10px;
-  overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: calc(100vh - 105px);
-  -webkit-overflow-scrolling: touch;
-}
-
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: opacity 1s ease-in;
-  transform: translateZ(0);
-}
-
-.fade-in-enter, .fade-in-leave-active {
-  opacity: 0;
-  transform: translateZ(0);
-}
-
-.div.contract,
-.div.expand {
-  float: right;
-}
-
-.new-messages,
-.pagination button {
-  background: $message-bg;
-  color: $link-color;
-  cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 5px;
-  padding: 10px;
-  text-align: center;
-  width: calc(100% - 20px);
-}
-
-.alert-popup {
-  background: $message-bg;
-  color: $action-approve;
-  cursor: pointer;
-  float: left;
-  margin: 10px 10px 0;
-  max-height: 5em;
-  overflow: hidden;
-  padding: 10px;
-  position: relative;
-  text-align: center;
-  width: calc(100% - 40px);
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: max-height .5s, padding .5s;
-}
-
-.fade-enter, .fade-leave-to {
-  max-height: 0;
-  padding: 0 10px;
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 0px;
-  background-color: rgba(0, 0, 0, .5);
-}
-
-.avatar {
-  clear: left;
-  float: left;
-  margin: 0 10px 0 0;
-  width: 36px;
-
-  img {
-    float: left;
-    height: 36px;
-    width: 36px;
-  }
-}
-
-.icon {
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  display: block;
-  height: 20px;
-  transition: opacity .5s;
-  width: 20px;
-
-  &:hover {
-    opacity: 0.6;
-  }
-
-  &.material-add {
-    background-image: url('/static/ma-add.svg');
-  }
-
-  &.material-play_circle_outline {
-    background-image: url('/static/ma-play_circle_outline.svg');
-  }
-
-  &.quote {
-    background-image: url('/static/ma-quote.svg');
-  }
-
-  &.material-remove_circle_outline {
-    background-image: url('/static/ma-remove_circle_outline.svg');
-  }
-
-  &.material-add_photo {
-    background-image: url('/static/ma-add_photo.svg');
-    background-size: 28px 28px;
-    height: 28px;
-    width: 28px;
-  }
-
 }

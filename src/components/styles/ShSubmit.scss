@@ -3,131 +3,133 @@ $options-bg: #ddd;
 $options-color: #555;
 $remove-color: rgb(204, 81, 73);
 
-.float-panel {
-  top: 85px;
-}
-
-.field-image-input {
-  display: none;
-}
-
-.field-image-button {
-  color: $options-color;
-  cursor: pointer;
-  font-size: 22px;
-  float: left;
-
-  &:hover {
-    color: $link-color;
-  }
-}
-
-.field-image-remove {
-  color: $remove-color;
-  cursor: pointer;
-  font-size: 22px;
-  float: left;
-
-  &:hover {
-    opacity: 0.5;
-  }
-}
-
-.field-image-image {
-  float: left;
-  display: block;
-  margin-left: 10px;
-  max-height: 50px;
-  max-width: 50px;
-}
-
-.image-name {
-  float: left;
-  line-height: 28px;
-  margin-left: 10px;
-  overflow: hidden;
-}
-
-.submit-message {
-  right: 0px;
-
-  .az {
-    left: auto;
-    right: 43px;
+.shoutbox-wrapper {
+  .float-panel {
+    top: 85px;
   }
 
-  .button {
-    background: $link-color;
-    border: none;
-    color: #fff;
+  .field-image-input {
+    display: none;
+  }
+
+  .field-image-button {
+    color: $options-color;
     cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 35px;
-    margin-top: 18px;
-    text-align: center;
-    width: 100%;
-
-    transition: opacity 300ms;
+    font-size: 22px;
+    float: left;
 
     &:hover {
-      opacity: 0.7;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: .5;
+      color: $link-color;
     }
   }
 
-  textarea {
-    box-shadow: #ccc 0px 2px 7px 0px inset;
-    border: none;
+  .field-image-remove {
+    color: $remove-color;
+    cursor: pointer;
+    font-size: 22px;
+    float: left;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .field-image-image {
+    float: left;
+    display: block;
+    margin-left: 10px;
+    max-height: 50px;
+    max-width: 50px;
+  }
+
+  .image-name {
+    float: left;
+    line-height: 28px;
+    margin-left: 10px;
+    overflow: hidden;
+  }
+
+  .submit-message {
+    right: 0px;
+
+    .az {
+      left: auto;
+      right: 43px;
+    }
+
+    .button {
+      background: $link-color;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 35px;
+      margin-top: 18px;
+      text-align: center;
+      width: 100%;
+
+      transition: opacity 300ms;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+      }
+    }
+
+    textarea {
+      box-shadow: #ccc 0px 2px 7px 0px inset;
+      border: none;
+      clear: left;
+      color: $options-color;
+      float: left;
+      margin-bottom: 12px;
+      max-width: calc(100% - 12px);
+      padding: 6px;
+      width: calc(100% - 12px);
+      font-size: 14px;
+
+      &:active, &:focus {
+        outline: 1px solid rgb(24, 148, 255);
+      }
+    }
+  }
+
+  .submit-reply {
     clear: left;
-    color: $options-color;
     float: left;
-    margin-bottom: 12px;
-    max-width: calc(100% - 12px);
-    padding: 6px;
-    width: calc(100% - 12px);
-    font-size: 14px;
+    margin-top: 25px;
+    max-width: 263px;
+    position: absolute;
+    width: calc(100% - 22px);
 
-    &:active, &:focus {
-      outline: 1px solid rgb(24, 148, 255);
+    .float-panel {
+      float: left;
+      max-width: 100%;
+      position: relative;
+      top: 10px;
+      width: 265px;
+    }
+
+    .az {
+      right: 25px;
     }
   }
-}
 
-.submit-reply {
-  clear: left;
-  float: left;
-  margin-top: 25px;
-  max-width: 263px;
-  position: absolute;
-  width: calc(100% - 22px);
+  .meta .submit-reply {
+    .float-panel {
+      left: -10px;
+      top: 0px;
+      right: auto;
+    }
 
-  .float-panel {
-    float: left;
-    max-width: 100%;
-    position: relative;
-    top: 10px;
-    width: 265px;
-  }
-
-  .az {
-    right: 25px;
-  }
-}
-
-.meta .submit-reply {
-  .float-panel {
-    left: -10px;
-    top: 0px;
-    right: auto;
-  }
-
-  .az {
-    left: 10px;
-    right: auto;
+    .az {
+      left: 10px;
+      right: auto;
+    }
   }
 }

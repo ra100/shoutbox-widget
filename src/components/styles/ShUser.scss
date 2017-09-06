@@ -1,63 +1,153 @@
 @import '../../styles/variables';
 
-$options-bg: #ddd;
-$options-title-color: #555;
-$options-color: rgba(30, 30, 30, 1);
-$options-color-over: rgba(30, 30, 30, 0.5);
-$link-color: #2e6fb3;
+.shoutbox-wrapper {
+  .float-panel {
+    top: 150px;
 
-.float-panel {
-  top: 150px;
+    &.email-login {
+      top: 387px;
 
-  &.email-login {
-    top: 387px;
-
-    .az {
-      left: 32px;
+      .az {
+        left: 32px;
+      }
     }
   }
-}
 
-.az {
-  left: 55px;
-}
-
-.input-wrapper {
-  width: 100%;
-  float: left;
-}
-
-label {
-  color: $options-color;
-  float: left;
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-input {
-  box-shadow: #ccc 0px 2px 7px 0px inset;
-  border: none;
-  clear: left;
-  color: $options-title-color;
-  float: left;
-  margin-bottom: 12px;
-  padding: 8px 6px;
-  width: calc(100% - 12px);
-  font-size: 15px;
-  font-weight: bold;
-
-  &.invalid {
-    outline: 1px solid rgb(208, 78, 78);
+  .az {
+    left: 55px;
   }
 
-  &:active, &:focus {
-    outline: 1px solid rgb(24, 148, 255);
+  .input-wrapper {
+    width: 100%;
+    float: left;
   }
-}
 
-.form-login,
-.form-register {
+  label {
+    color: $options-color;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  input {
+    box-shadow: #ccc 0 2px 7px 0 inset;
+    border: none;
+    clear: left;
+    color: $options-title-color;
+    float: left;
+    margin-bottom: 12px;
+    padding: 8px 6px;
+    width: calc(100% - 12px);
+    font-size: 15px;
+    font-weight: bold;
+
+    &.invalid {
+      outline: 1px solid rgb(208, 78, 78);
+    }
+
+    &:active,
+    &:focus {
+      outline: 1px solid rgb(24, 148, 255);
+    }
+  }
+
+  .form-login,
+  .form-register {
+    .button {
+      background: $link-color;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 35px;
+      margin-top: 18px;
+      text-align: center;
+      width: 100%;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .links {
+    color: $link-color;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .link {
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.separator {
+      margin: 0 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .logout {
+    float: right;
+    font-size: 14px;
+    color: $link;
+    cursor: pointer;
+
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .float-panel {
+    top: 85px;
+  }
+
+  .user-picture {
+    background-repeat: no-repeat;
+    background-size: cover;
+    clear: left;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 48px;
+    margin-bottom: 20px;
+    width: 48px;
+    transition: opacity 300ms;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .user-picture-change {
+    background: $link;
+    border-radius: 20px;
+    color: $play-button-color;
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    height: 20px;
+    left: 38px;
+    position: relative;
+    top: -9px;
+    width: 20px;
+    transition: opacity 300ms;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
   .button {
     background: $link-color;
     border: none;
@@ -69,127 +159,34 @@ input {
     margin-top: 18px;
     text-align: center;
     width: 100%;
-
-    &:disabled {
-      opacity: .5;
-    }
-  }
-}
-
-.links {
-  color: $link-color;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.link {
-  cursor: pointer;
-  font-size: 14px;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &.separator {
-    margin: 0 10px;
+    transition: opacity 300ms;
 
     &:hover {
-      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
-}
 
-.logout {
-  float: right;
-  font-size: 14px;
-  color: $link;
-  cursor: pointer;
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: underline;
-  }
-}
-
-.float-panel {
-  top: 85px;
-}
-
-.user-picture {
-  background-repeat: no-repeat;
-  background-size: cover;
-  clear: left;
-  cursor: pointer;
-  display: block;
-  float: left;
-  height: 48px;
-  margin-bottom: 20px;
-  width: 48px;
-  transition: opacity 300ms;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.user-picture-change {
-  background: $link;
-  border-radius: 20px;
-  color: $play-button-color;
-  cursor: pointer;
-  float: left;
-  font-size: 20px;
-  height: 20px;
-  left: 38px;
-  position: relative;
-  top: -9px;
-  width: 20px;
-  transition: opacity 300ms;
-
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
-.button {
-  background: $link-color;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  line-height: 35px;
-  margin-top: 18px;
-  text-align: center;
-  width: 100%;
-  transition: opacity 300ms;
-
-  &:hover {
-    opacity: 0.7;
+  .section-label {
+    color: $text-color;
+    clear: left;
+    float: left;
+    font-size: 12px;
+    margin-bottom: 15px;
+    margin-top: 10px;
   }
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: .5;
+  .success {
+    float: left;
+    clear: left;
+    color: $action-approve;
   }
-}
 
-.section-label {
-  color: $text-color;
-  clear: left;
-  float: left;
-  font-size: 12px;
-  margin-bottom: 15px;
-  margin-top: 10px;
-}
-
-.success {
-  float: left;
-  clear: left;
-  color: $action-approve;
-}
-
-.field-image-input {
-  display: none;
+  .field-image-input {
+    display: none;
+  }
 }

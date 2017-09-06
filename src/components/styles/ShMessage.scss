@@ -1,350 +1,354 @@
 @import '../../styles/variables';
 
-.message-root {
-  float: left;
-  padding: 10px 10px 5px;
-  width: calc(100% - 20px);
-}
-
-.message {
-  background: $message-bg;
-  clear: left;
-  float: left;
-  font-size: 0.9em;
-  margin: 0 0 3px;
-  position: relative;
-  width: 100%;
-
-  &.rejected {
-    background-image: url('/static/ico_hidden.svg');
-    background-size: 22px;
-    background-repeat: no-repeat;
-    background-position-y: 27px;
-    background-position-x: calc(100% - 47px);
-
-    .message-root {
-      opacity: .6;
-    }
-  }
-
-  &.not-published {
-    .message-root {
-      opacity: .6;
-    }
-  }
-
-  &.editor.not-published {
-    .message-root {
-      width: calc(100% - 24px);
-      border: 2px solid $action-reject;
-    }
-
-    .message-admin-root {
-      top: 66px;
-    }
-  }
-
-  .reply-messages {
-    background: $wrapper-bg;
-    background-image: url('/static/reply_line_small.png');
-    background-position: 15px 0;
-    background-repeat: no-repeat;
-    color: $author-handle-color;
-    clear: left;
-    display: block;
+.shoutbox-wrapper {
+  .message-root {
     float: left;
-    margin: 0 -10px 0;
-    padding: 3px 10px 0;
-    width: 100%;
-
-    .message {
-      margin-left: 20px;
-      width: calc(100% - 20px);
-    }
+    padding: 10px 10px 5px;
+    width: calc(100% - 20px);
   }
 
-  .photo {
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: inline-block;
-    height: auto;
-    width: 140px;
-
-    &.photo-left {
-      height: 284px;
-      margin-right: 4px;
-    }
-    &.photo-right {
-      height: 140px;
-    }
-  }
-
-  .photo-wrap-right {
-    width: 138px;
-  }
-
-  .video {
-    img {
-      cursor: pointer;
-      max-width: 100%;
-    }
-
-    video {
-      // margin-top: 10px;
-      max-width: 100%;
-    }
-  }
-
-  .iframe-container {
+  .message {
+    background: $message-bg;
     clear: left;
-    flex: 1;
-    height: 0;
-    margin-bottom: 5px;
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    position: relative;
-
-    iframe {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-  }
-}
-
-.waiting {
-  background: $wrapper-bg url('/static/ico_warn.png') no-repeat left center;
-  font-size: 13px;
-  padding: 10px 10px 8px 25px;
-}
-
-.author .avatar {
-  clear: left;
-  float: left;
-  margin: 0 10px 0 0;
-  width: 36px;
-
-  img {
-    float: left;
-    height: 36px;
-    width: 36px;
-  }
-}
-
-.author-name {
-  float: left;
-  max-width: calc(100% - 70px);
-  text-overflow: ellipsis;
-  white-space: pre-wrap;
-  overflow: hidden;
-}
-
-.author {
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  float: left;
-  margin: 0 0 10px;
-  width: 100%;
-
-  .name {
-    clear: left;
-    color: $author-color;
-    float: left;
-    font-size: 1em;
-    font-weight: bold;
-    margin-top: 3px;
-  }
-
-  .date {
-    clear: left;
-    color: $author-handle-color;
     float: left;
     font-size: 0.9em;
-    margin-top: 3px;
-  }
-}
+    margin: 0 0 3px;
+    position: relative;
+    width: 100%;
 
-.twitter > .message-root > .author {
-  background-image: url('/static/src_tw.svg');
-}
+    &.rejected {
+      background-image: url('/static/ico_hidden.svg');
+      background-size: 22px;
+      background-repeat: no-repeat;
+      background-position-y: 27px;
+      background-position-x: calc(100% - 47px);
 
-.facebook > .message-root > .author {
-  background-image: url('/static/src_fb.svg');
-}
-
-.instagram > .message-root > .author {
-  background-image: url('/static/src_insta.svg');
-}
-
-.shout > .message-root > .author {
-  // Default picture for shoutbox login
-}
-
-.shout .admin .author {
-  background-image: url('/static/src_R_wave.svg');
-  .name {
-    color: $wave-color;
-  }
-}
-
-.text-wrapper {
-  color: $text-color;
-  display: block;
-  float: left;
-  font-size: 14px;
-  width: 100%;
-
-  a {
-    color: $link-color;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  blockquote {
-    margin: 0 0 0 5px;
-    float: left;
-    max-width: calc(100% - 35px);
-
-    p {
-      margin: 0;
-    }
-  }
-
-  .quote {
-    color: $author-handle-color;
-    float: left;
-    font-size: 24px;
-  }
-}
-
-.text {
-  clear: left;
-  float: left;
-  word-wrap: break-word;
-  word-break: break-word;
-}
-
-.media {
-  float: left;
-  // margin-top: 10px;
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: space-between;
-  justify-content: center;
-}
-
-.meta {
-  border-top: 1px solid $shoutbox-bg;
-  color: $meta-color;
-  clear: left;
-  display: block;
-  float: left;
-  margin: 5px 0px 0;
-  padding: 5px 10px;
-  width: calc(100% - 20px);
-
-  .likes,
-  .shares,
-  .link,
-  .replies {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    float: left;
-    height: 20px;
-    line-height: 13px;
-    margin-right: 10px;
-
-    span {
-      margin-left: 2px;
-      font-size: 13px;
-      height: 13px;
-      vertical-align: text-top;
+      .message-root {
+        opacity: 0.6;
+      }
     }
 
-    &:hover {
-      color: $link-color;
-      background-position: -20px 0px;
+    &.not-published {
+      .message-root {
+        opacity: 0.6;
+      }
+    }
 
-      .reply {
-        background-position: -15px 0px;
+    &.editor.not-published {
+      .message-root {
+        width: calc(100% - 24px);
+        border: 2px solid $action-reject;
+      }
+
+      .message-admin-root {
+        top: 66px;
+      }
+    }
+
+    .reply-messages {
+      background: $wrapper-bg;
+      background-image: url('/static/reply_line_small.png');
+      background-position: 15px 0;
+      background-repeat: no-repeat;
+      color: $author-handle-color;
+      clear: left;
+      display: block;
+      float: left;
+      margin: 0 -10px;
+      padding: 3px 10px 0;
+      width: 100%;
+
+      .message {
+        margin-left: 20px;
+        width: calc(100% - 20px);
+      }
+    }
+
+    .photo {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline-block;
+      height: auto;
+      width: 140px;
+
+      &.photo-left {
+        height: 284px;
+        margin-right: 4px;
+      }
+
+      &.photo-right {
+        height: 140px;
+      }
+    }
+
+    .photo-wrap-right {
+      width: 138px;
+    }
+
+    .video {
+      img {
+        cursor: pointer;
+        max-width: 100%;
+      }
+
+      video {
+        // margin-top: 10px;
+        max-width: 100%;
+      }
+    }
+
+    .iframe-container {
+      clear: left;
+      flex: 1;
+      height: 0;
+      margin-bottom: 5px;
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      padding-top: 35px;
+      position: relative;
+
+      iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
       }
     }
   }
 
-  .replies {
-    cursor: pointer;
+  .waiting {
+    background: $wrapper-bg url('/static/ico_warn.png') no-repeat left center;
+    font-size: 13px;
+    padding: 10px 10px 8px 25px;
   }
 
-  .icon {
-    background-position: 0px 0px;
+  .author .avatar {
+    clear: left;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 36px;
+
+    img {
+      float: left;
+      height: 36px;
+      width: 36px;
+    }
+  }
+
+  .author-name {
+    float: left;
+    max-width: calc(100% - 70px);
+    text-overflow: ellipsis;
+    white-space: unset;
+    overflow: hidden;
+  }
+
+  .author {
+    background-position: top right;
     background-repeat: no-repeat;
-    background-size: 40px 20px;
+    background-size: 20px 20px;
+    float: left;
+    margin: 0 0 10px;
+    width: 100%;
+
+    .name {
+      clear: left;
+      color: $author-color;
+      float: left;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 3px;
+    }
+
+    .date {
+      clear: left;
+      color: $author-handle-color;
+      float: left;
+      font-size: 0.9em;
+      margin-top: 3px;
+    }
+  }
+
+  .twitter > .message-root > .author {
+    background-image: url('/static/src_tw.svg');
+  }
+
+  .facebook > .message-root > .author {
+    background-image: url('/static/src_fb.svg');
+  }
+
+  .instagram > .message-root > .author {
+    background-image: url('/static/src_insta.svg');
+  }
+
+  .shout > .message-root > .author {
+    // Default picture for shoutbox login
+  }
+
+  .shout .admin .author {
+    background-image: url('/static/src_R_wave.svg');
+
+    .name {
+      color: $wave-color;
+    }
+  }
+
+  .text-wrapper {
+    color: $text-color;
     display: block;
-    height: 20px;
-    width: 20px;
+    float: left;
+    font-size: 14px;
+    width: 100%;
 
-    &.link {
-      background-image: url('/static/btn_link_sprite.svg');
+    a {
+      color: $link-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    &.reply {
-      background-size: 30px 20px;
-      background-image: url('/static/btn_reply_sprite.svg');
+    blockquote {
+      margin: 0 0 0 5px;
+      float: left;
+      max-width: calc(100% - 35px);
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .quote {
+      color: $author-handle-color;
+      float: left;
+      font-size: 24px;
+    }
+  }
+
+  .text {
+    clear: left;
+    float: left;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .media {
+    float: left;
+    // margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: center;
+  }
+
+  .meta {
+    border-top: 1px solid $shoutbox-bg;
+    color: $meta-color;
+    clear: left;
+    display: block;
+    float: left;
+    margin: 5px 0 0;
+    padding: 5px 10px;
+    width: calc(100% - 20px);
+
+    .likes,
+    .link,
+    .replies,
+    .shares {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      float: left;
       height: 20px;
-      width: 15px;
+      line-height: 13px;
+      margin-right: 10px;
+
+      span {
+        margin-left: 2px;
+        font-size: 13px;
+        height: 13px;
+        vertical-align: text-top;
+      }
+
+      &:hover {
+        color: $link-color;
+        background-position: -20px 0;
+
+        .reply {
+          background-position: -15px 0;
+        }
+      }
     }
 
-    &.material-add_photo {
-      background-size: 28px 28px;
-      height: 28px;
-      width: 28px;
+    .replies {
+      cursor: pointer;
+    }
+
+    .icon {
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: 40px 20px;
+      display: block;
+      height: 20px;
+      width: 20px;
+
+      &.link {
+        background-image: url('/static/btn_link_sprite.svg');
+      }
+
+      &.reply {
+        background-size: 30px 20px;
+        background-image: url('/static/btn_reply_sprite.svg');
+        height: 20px;
+        width: 15px;
+      }
+
+      &.material-add_photo {
+        background-size: 28px 28px;
+        height: 28px;
+        width: 28px;
+      }
+    }
+
+    &.has-replies {
+      background-image: url('/static/reply_line_start.png');
+      background-repeat: no-repeat;
+      background-position: 5px 14px;
     }
   }
 
-  &.has-replies {
-    background-image: url('/static/reply_line_start.png');
-    background-repeat: no-repeat;
-    background-position: 5px 14px;
+  .show-more-replies {
+    background: url('/static/reply_line.png') no-repeat;
+    background-position: 5px -30px;
+    display: block;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 7px 20px;
   }
-}
 
-.show-more-replies {
-  background: url('/static/reply_line.png') no-repeat;
-  background-position: 5px -30px;
-  display: block;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: normal;
-  padding: 7px 20px;
-}
+  .reply-wrapper {
+    background: url('/static/reply_line.png') no-repeat;
+    background-position: 5px 0;
+    float: left;
+    width: 100%;
 
-.reply-wrapper {
-  background: url('/static/reply_line.png') no-repeat;
-  background-position: 5px 0;
-  float: left;
-  width: 100%;
-
-  &:last-child {
-    background-image: url('/static/reply_line_last.png');
+    &:last-child {
+      background-image: url('/static/reply_line_last.png');
+    }
   }
-}
 
-.media-title {
-  color: $text-color;
-  font-weight: bold;
-  margin-bottom: 5px;
-  line-height: 1em;
-  max-height: 2em;
-  overflow: hidden;
-  width: 100%;
+  .media-title {
+    color: $text-color;
+    font-weight: bold;
+    margin-bottom: 5px;
+    line-height: 1em;
+    max-height: 2em;
+    overflow: hidden;
+    width: 100%;
+  }
 }
