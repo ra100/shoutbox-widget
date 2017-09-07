@@ -15,6 +15,7 @@ import unionBy from 'lodash.unionby'
 import dateFormat from 'dateformat'
 import request from 'superagent'
 import linkify from 'vue-linkify'
+import uniqby from 'lodash.uniqby'
 
 const PER_PAGE = 10
 
@@ -78,6 +79,11 @@ const App = Vue.component('app', {
       showMore: this.showMore || true,
       alert: this.alert || false,
       loginFirst: this.loginFirst || false
+    }
+  },
+  computed: {
+    uniqueMessages: function () {
+      return uniqby(this.messages, 'id')
     }
   },
   created () {

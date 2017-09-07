@@ -19,7 +19,7 @@ export default {
       return this.socket
     },
     review () {
-      this.socket.put(`/messages/${this.data.id}`, {
+      this.socket().put(`/messages/${this.data.id}`, {
         id: this.data.id,
         reviewed: true,
         _csrf: window.CSRF
@@ -27,7 +27,7 @@ export default {
       this.toggle = false
     },
     reject () {
-      this.socket.put(`/messages/${this.data.id}`, {
+      this.socket().put(`/messages/${this.data.id}`, {
         id: this.data.id,
         reviewed: true,
         published: false,
@@ -36,7 +36,7 @@ export default {
       this.toggle = false
     },
     publish () {
-      this.socket.put(`/messages/${this.data.id}`, {
+      this.socket().put(`/messages/${this.data.id}`, {
         id: this.data.id,
         published: true,
         reviewed: true,
@@ -45,7 +45,7 @@ export default {
       this.toggle = false
     },
     unpublish () {
-      this.socket.put(`/messages/${this.data.id}`, {
+      this.socket().put(`/messages/${this.data.id}`, {
         id: this.data.id,
         published: false,
         reviewed: true,
@@ -55,7 +55,7 @@ export default {
     },
     remove () {
       // DELETE doesn't work in Fx and maybe other browsers
-      this.socket.get(`/messages/destroy/${this.data.id}`, {
+      this.socket().get(`/messages/destroy/${this.data.id}`, {
         _csrf: window.CSRF
       })
       this.toggle = false

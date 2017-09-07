@@ -22,13 +22,13 @@
         <div :class="{'new-message-link': true, 'active': submitvisible}" @click="submitToggle" v-if="form && form.length > 0">Přidat vzkaz</div>
       </div>
       <template v-if="submitvisible && user">
-        <sh-submit :user="user" :socket="getSocket()" :stream="id" :feed="form[0]" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf"/>
+        <sh-submit :user="user" :socket="getSocket" :stream="id" :feed="form[0]" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf"/>
       </template>
       <template v-if="loginvisible && !user">
-        <sh-login :socket="getSocket()" :login-first="loginFirst"/>
+        <sh-login :socket="getSocket" :login-first="loginFirst"/>
       </template>
       <template v-if="uservisible && user">
-        <sh-user :user="user" :socket="getSocket()"/>
+        <sh-user :user="user" :socket="getSocket"/>
       </template>
     </div>
     <transition name="fade">
@@ -39,7 +39,7 @@
     </transition>
     <div class="messages">
       <div class="new-messages" v-if="newmessages && newmessages.length > 0" @click="mergeMessages">Zobrazit nové [{{newmessages.length}}]</div>
-      <sh-message v-for="(message, index) in messages" :data="message" :socket="getSocket()" :user="user" :stream="id" :feed="form[0]" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>
+      <sh-message v-for="(message, index) in uniqueMessages" :data="message" :socket="getSocket" :user="user" :stream="id" :feed="form[0]" :afterSubmit="afterSubmit" :renewCsrf="renewCsrf" v-bind:data-index="index" v-bind:key="message.id"/>
       <template v-if="messages && messages.length > 9">
         <sh-pagination :page="page"/>
       </template>

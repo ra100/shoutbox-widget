@@ -46,7 +46,7 @@ export default {
         payload.parentMessage = this.parentId
         payload.isResponse = true
       }
-      this.socket.post(url, payload, (data, jwres) => {
+      this.socket().post(url, payload, (data, jwres) => {
         this.loading = false
         if (![200, 201].includes(jwres.statusCode)) {
           console.error(jwres.statusCode)

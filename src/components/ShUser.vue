@@ -62,6 +62,7 @@ export default {
     updateUser () {
       this.clearError()
       this.loading = true
+      const url = '/users/updateme'
       const payload = {_csrf: window.CSRF}
       if (this.nameChanged) {
         payload.displayname = this.displayname
@@ -79,7 +80,7 @@ export default {
           name: this.file.name
         }
       }
-      this.socket.post('https://shoutbox.rozhlas.cz/users/updateme', payload, (data, jwres) => {
+      this.socket().post(url, payload, (data, jwres) => {
         this.loading = false
         if (jwres.statusCode !== 200) {
           if (typeof jwres.body === 'string') {
