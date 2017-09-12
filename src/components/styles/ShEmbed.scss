@@ -13,7 +13,9 @@
 
     .media,
     .video {
+      float: left;
       margin-top: 0;
+      position: relative;
     }
 
     .media-image {

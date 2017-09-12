@@ -45,15 +45,15 @@ export default {
         if (url.indexOf(FB_LINK_REDIRECT) === 0) {
           url = decodeURIComponent(getParameterByName('u', url))
         }
-        processEmbedUrl(url, this.socket).then(embed => {
+        processEmbedUrl(url, this.socket()).then(embed => {
           if (embed.provider_name !== 'NotAvailable') {
             this.mediatype = embed.mediatype
             this.oembed = embed.oembed
             // Remove link from text
             this.text = text && text.replace(url, '').trim()
           }
-        }).catch(() => {
-          // console.error(err)
+        }).catch((err) => {
+          console.error(err)
         })
       }
     },
@@ -84,6 +84,25 @@ export default {
               image: m.media.image && m.media.image.src,
               link_url: url,
               url
+            })
+          }
+          if (m.type === 'video_inline' && !this.oembed) {
+            return processEmbedUrl(m.url, this.socket()).then(embed => {
+              if (embed.provider_name !== 'NotAvailable') {
+                this.video = {
+                  format: [{}, {}, {picture: embed.oembed.image}, {
+                    embed_html: embed.oembed.html,
+                    picture: embed.oembed.image,
+                    width: embed.oembed.width,
+                    height: embed.oembed.height,
+                    filter: true,
+                    format: 'format'
+                  }]
+                }
+              }
+              return m
+            }).catch((err) => {
+              console.error(err)
             })
           }
           return resolve(m)

@@ -87,6 +87,9 @@
     }
 
     .video {
+      float: left;
+      position: relative;
+
       img {
         cursor: pointer;
         max-width: 100%;
