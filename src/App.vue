@@ -13,7 +13,7 @@ import sailsIOClient from 'sails.io.js'
 import slice from 'lodash.slice'
 import unionBy from 'lodash.unionby'
 import dateFormat from 'dateformat'
-import request from 'superagent'
+import axios from 'axios'
 import linkify from 'vue-linkify'
 import uniqby from 'lodash.uniqby'
 
@@ -28,8 +28,8 @@ const socket = io.socket
 window.CSRF = ''
 window.sailsURL = io.sails.url
 
-request.get(`${io.sails.url}/csrfToken`).then(res => {
-  window.CSRF = res.body._csrf
+axios.get(`${io.sails.url}/csrfToken`).then(res => {
+  window.CSRF = res.data._csrf
 })
 
 function sortByDate (a, b) {
@@ -359,10 +359,10 @@ const App = Vue.component('app', {
       return window.CSRF
     },
     renewCsrf (callback) {
-      request.get(`${io.sails.url}/csrfToken`).then(res => {
-        window.CSRF = res.body._csrf
+      axios.get(`${io.sails.url}/csrfToken`).then(res => {
+        window.CSRF = res.data._csrf
         if (callback) {
-          callback(res.body._csrf)
+          callback(res.data._csrf)
         }
       })
     },

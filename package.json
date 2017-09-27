@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "core-js": "^2.5.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "lodash.slice": "^4.2.0",
@@ -24,7 +25,6 @@
     "snyk": "^1.39.0",
     "socket.io-client": "^2.0.3",
     "stylus": "^0.54.5",
-    "superagent": "^3.5.2",
     "text-clipper": "^1.2.0",
     "vee-validate": "^2.0.0-rc.13",
     "vue": "^2.4.2",

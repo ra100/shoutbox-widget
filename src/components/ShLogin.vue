@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/ShLogin.scss" scoped></style>
 <template lang="html" src="./templates/ShLogin.html"></template>
 <script>
-import request from 'superagent'
+import axios from 'axios'
 
 export default {
   props: ['socket', 'login-first'],
@@ -105,33 +105,37 @@ export default {
       }
       this.error = false
       this.loading = true
-      let csrf = window.CSRF
-      request
-        .post('https://shoutbox.rozhlas.cz/auth/local')
-        .set('X-CSRF-Token', csrf)
-        .withCredentials()
-        .send({
+      const _csrf = window.CSRF
+      axios({
+        method: 'post',
+        url: 'https://shoutbox.rozhlas.cz/auth/local',
+        headers: {
+          'X-CSRF-Token': _csrf
+        },
+        withCredentials: true,
+        data: {
           identifier: this.email,
           password: this.password,
           type: 'local',
-          _csrf: csrf
-        })
+          _csrf
+        }
+      })
         .then(res => {
           this.loading = false
-          if (res.ok && res.body && res.body.status !== 'error') {
+          if (res.status === 200 && res.data && res.data.status !== 'error') {
             window.eventHub.$emit('user-load')
           } else {
-            if (res.body.error === 'Error.Passport.Already.Authenticated') {
+            if (res.data.error === 'Error.Passport.Already.Authenticated') {
               window.eventHub.$emit('reload')
               window.eventHub.$emit('user-load')
               return
             }
-            this.error = res.body.error || 'Chyba při přihlašování'
+            this.error = res.data.message || 'Chyba při přihlašování'
           }
         })
         .catch(err => {
           console.error(err.response)
-          this.error = (err.response.body && err.response.body.error) ? err.response.body.error : 'Chyba při přihlašování'
+          this.error = (err.response.data && err.response.data.error) ? err.response.data.message : 'Chyba při přihlašování'
         })
     },
     register () {
@@ -153,23 +157,28 @@ export default {
       }
       this.loading = true
       let csrf = window.CSRF
-      request
-        .post('https://shoutbox.rozhlas.cz/auth/local/register')
-        .set('X-CSRF-Token', csrf)
-        .withCredentials()
-        .send({
+      axios({
+        method: 'post',
+        url: 'https://shoutbox.rozhlas.cz/auth/local/register',
+        headers: {
+          'X-CSRF-Token': csrf
+        },
+        withCredentials: true,
+        data: {
           email: this.email,
           username: this.name,
           displayname: this.name,
           password: this.password,
           _csrf: csrf
-        }).then(res => {
+        }
+      })
+        .then(res => {
           this.loading = false
-          if (res.ok && res.body && res.body.status !== 'error') {
+          if (res.status === 200 && res.data && res.data.status !== 'error') {
             window.eventHub.$emit('repload')
             window.eventHub.$emit('user-load')
           } else {
-            this.error = res.body.message
+            this.error = res.data.message
           }
         }).catch(err => {
           console.error(err)

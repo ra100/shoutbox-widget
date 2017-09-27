@@ -1,7 +1,7 @@
 <style lang="scss" src="./styles/ShUser.scss" scoped></style>
 <template lang="html" src="./templates/ShUser.html"></template>
 <script>
-import request from 'superagent'
+import axios from 'axios'
 
 export default {
   props: ['user', 'socket'],
@@ -45,18 +45,26 @@ export default {
   methods: {
     logout () {
       const csrf = window.CSRF
-      request.get('https://shoutbox.rozhlas.cz/logout')
-        .set('X-CSRF-Token', csrf)
-        .set('X-Requested-With', 'XMLHttpRequest')
-        .withCredentials()
-        .end((err, res) => {
-          if (!err && res.ok && res.body) {
+      axios({
+        method: 'get',
+        url: 'https://shoutbox.rozhlas.cz/logout',
+        headers: {
+          'X-CSRF-Token': csrf,
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        withCredentials: true
+      })
+        .then(res => {
+          if (res.data) {
             this.$parent._data.user = undefined
             this.$parent._data.loginvisible = false
             this.$parent._data.uservisible = false
             this.$parent._data.submitvisible = false
             this.$parent.renewCsrf(() => window.eventHub.$emit('user-load'))
           }
+        })
+        .catch(err => {
+          console.error('Logout error', err)
         })
     },
     updateUser () {
