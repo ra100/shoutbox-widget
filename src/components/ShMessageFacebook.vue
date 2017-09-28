@@ -60,50 +60,65 @@ export default {
     processMedia (media) {
       const promises = media.map(m =>
         new Promise(resolve => {
-          if (m.type === 'animated_image_share') {
-            const url = decodeURIComponent(getParameterByName('u', m.url))
-            return resolve({
-              type: 'oembed',
-              oembed: {
-                html: '',
-                host: getHostname(url),
-                provider_name: 'Facebook',
-                image: m.media.image.src,
-                animated: url,
-                url
-              }
-            })
-          }
-          if (m.type === 'share') {
-            const url = decodeURIComponent(getParameterByName('u', m.url))
-            return resolve({
-              provider_name: 'Facebook',
-              type: 'share',
-              link_title: m.title,
-              link_description: m.description,
-              image: m.media.image && m.media.image.src,
-              link_url: url,
-              url
-            })
-          }
-          if (m.type === 'video_inline' && !this.oembed) {
-            return processEmbedUrl(m.url, this.socket()).then(embed => {
-              if (embed.provider_name !== 'NotAvailable') {
-                this.video = {
-                  format: [{}, {}, {picture: embed.oembed.image}, {
-                    embed_html: embed.oembed.html,
-                    picture: embed.oembed.image,
-                    width: embed.oembed.width,
-                    height: embed.oembed.height,
-                    filter: true,
-                    format: 'format'
-                  }]
+          const url = decodeURIComponent(getParameterByName('u', m.url))
+          switch (m.type) {
+            case 'animated_image_share':
+              return resolve({
+                type: 'oembed',
+                oembed: {
+                  html: '',
+                  host: getHostname(url),
+                  provider_name: 'Facebook',
+                  image: m.media.image.src,
+                  animated: url,
+                  url
                 }
-              }
-              return m
-            }).catch((err) => {
-              console.error(err)
-            })
+              })
+
+            case 'share':
+              return resolve({
+                provider_name: 'Facebook',
+                type: 'share',
+                link_title: m.title,
+                link_description: m.description,
+                image: m.media.image && m.media.image.src,
+                link_url: url,
+                url
+              })
+            case 'video_inline':
+              if (this.oembed) { break }
+              return processEmbedUrl(m.url, this.socket()).then(embed => {
+                if (embed.provider_name !== 'NotAvailable') {
+                  this.video = {
+                    format: [{}, {}, {picture: embed.oembed.image}, {
+                      embed_html: embed.oembed.html,
+                      picture: embed.oembed.image,
+                      width: embed.oembed.width,
+                      height: embed.oembed.height,
+                      filter: true,
+                      format: 'format'
+                    }]
+                  }
+                }
+                return m
+              }).catch((err) => {
+                console.error(err)
+              })
+
+            case 'video_share_youtube':
+              processEmbedUrl(
+                decodeURIComponent(getParameterByName('u', m.url)),
+                this.socket())
+                .then(embed => {
+                  if (embed.provider_name !== 'NotAvailable') {
+                    this.mediatype = embed.mediatype
+                    this.oembed = embed.oembed
+                  }
+                })
+                .catch((err) => {
+                  console.error(err)
+                })
+              break
           }
           return resolve(m)
         })
