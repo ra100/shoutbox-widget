@@ -30,7 +30,7 @@ Include in html
 
 ```html
 <div id="shoutbox" class="box EXPANDDIRECTION" data-shoutbox-name="STREAM_MACHINE_NAME">
-  <app id="shoutbox-widget"/>
+  <app id="shoutbox-widget" title="Shoutbox"/>
 </div>
 ```
 

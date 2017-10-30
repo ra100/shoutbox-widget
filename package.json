@@ -1,6 +1,6 @@
 {
   "name": "shoutbox-widget",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Shoutbox widget in Vue.js",
   "author": "ra100 <git@ra100.net>",
   "private": true,
