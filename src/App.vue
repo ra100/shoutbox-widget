@@ -62,6 +62,7 @@ const App = Vue.component('app', {
     ShPagination,
     ShUser
   },
+  props: ['title'],
   data () {
     return {
       name: this.name,

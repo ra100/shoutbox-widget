@@ -3,7 +3,7 @@
   <div class="shoutbox-widget">
     <div class="shoutbox-header">
       <div class="shoutbox-title">
-        <span @click="reload">Shoutbox</span>
+        <span @click="reload">{{title || 'Shoutbox'}}</span>
         <div @click="setMode('wide')" v-if="mode !== 'wide'" class="button expand" title="Expand" />
         <div v-else v-on:click="setMode('normal')" class="button contract" title="Contract" />
       </div>
