@@ -110,11 +110,11 @@ export default {
           // Match youtube and insert oembed
           if (e.entity.expanded_url.match(urlPattern)) {
             const url = e.entity.expanded_url
-            processEmbedUrl(url, this.socket).then(embed => {
+            processEmbedUrl(url, this.socket()).then(embed => {
               this.mediatype = embed.mediatype
               this.oembed = embed.oembed
             }).catch(err => {
-              console.error(err)
+              console.error(err, url)
             })
           }
         }

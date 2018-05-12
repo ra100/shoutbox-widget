@@ -207,7 +207,7 @@ const App = Vue.component('app', {
     },
     processMessages (data, err) {
       return new Promise((resolve, reject) => {
-        if (err || !data) {
+        if (err || !data || !Array.isArray(data)) {
           return reject(new Error(err))
         }
         const l = data ? data.length : 0
